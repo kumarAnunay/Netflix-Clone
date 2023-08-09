@@ -9,6 +9,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    box-shadow: inset 0px 0px 180px 100px black;
 }
 
 .logo {

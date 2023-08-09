@@ -85,7 +85,7 @@ const Signup = () => {
     }
   };
 
-  const loginBtnHandler = (event) => {
+  const loginWithGoogle = (event) => {
     event.preventDefault();
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -103,14 +103,32 @@ const Signup = () => {
         navigate("/home");
       })
       .catch((error) => {
-        console.log("ERROR", error);
+        console.log("Google Authentication Error:", error);
       });
+  };
+
+  const loginWithGitHub = async () => {
+    // try {
+    //   const result = await signInWithPopup(auth, githubProvider);
+    //   const { displayName, email } = result.user;
+    //   localStorage.setItem(
+    //     "user",
+    //     JSON.stringify({
+    //       username: displayName,
+    //       email: email,
+    //       islogged: true,
+    //     })
+    //   );
+    //   navigate("/home");
+    // } catch (error) {
+    //   console.error("GitHub Authentication Error:", error);
+    // }
   };
 
   useEffect(() => {
     if (registered) {
       setTimeout(() => {
-        navigate("home");
+        navigate("/signin");
       }, 1000);
     }
   }, [registered]);
@@ -118,7 +136,12 @@ const Signup = () => {
   return (
     <div className="sign">
       <div className="logo">
-        <img src={headerLogo} className="headerLogo" alt="NETFLIX" />
+        <img
+          src={headerLogo}
+          className="headerLogo"
+          alt="NETFLIX"
+          onClick={() => navigate("/")}
+        />
       </div>
       <div className="container">
         <div className="signupForm">
@@ -214,16 +237,16 @@ const Signup = () => {
             </button>
           </form>
           <div className="loginBttns">
-            <button type="submit" className="logoBtn" onClick={loginBtnHandler}>
+            <button type="submit" className="logoBtn" onClick={loginWithGoogle}>
               <img src={googleLogo} alt="Google" className="logoImg" />
             </button>
-            <button type="submit" className="logoBtn" onClick={loginBtnHandler}>
+            <button type="submit" className="logoBtn" onClick={loginWithGitHub}>
               <img src={githubLogo} alt="Github" className="logoImg" />
             </button>
           </div>
           <div className="bottomText">
             Already have an account?
-            <Link to="/" className="link1">
+            <Link to="/signin" className="link1">
               Login
             </Link>
           </div>

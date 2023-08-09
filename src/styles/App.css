@@ -1,8 +1,8 @@
+/* signin */
 .sign {
     min-height: 100vh;
     width: 100%;
     background: url("../assets/images/login-bg.jpg");
-    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
@@ -15,13 +15,15 @@
     display: flex;
     justify-content: left;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.3), transparent;
 }
 
 .headerLogo {
-    height: 90px;
-    width: 210px;
+    height: 70px;
+    width: 190px;
     z-index: 1;
+    margin-left: 50px;
+    margin-top: 30px;
+    cursor: pointer;
 }
 
 .container {
@@ -82,6 +84,10 @@
     margin-top: 20px;
     margin-bottom: 14px;
     cursor: pointer;
+}
+
+.signinBtn:hover {
+    background-color: #87050b;
 }
 
 .forgot {
@@ -181,6 +187,8 @@
     justify-content: space-between;
 }
 
+/* signup */
+
 .success {
     margin-top: 5px;
     font-size: 18px;
@@ -210,4 +218,334 @@
 .logoImg {
     width: 30px;
     height: 30px;
+}
+
+/* default */
+
+#container {
+    background: url(../assets/images/login-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid black;
+    width: 100%;
+    box-shadow: inset 0px 0px 250px 130px black;
+}
+
+.defaultPage {
+    font-family: sans-serif !important;
+    overflow-x: hidden;
+}
+
+.logo_Default {
+    width: 200px;
+    height: 50px;
+    padding-left: 35px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.language {
+    font-size: 15px;
+    background-color: black;
+    color: white;
+    opacity: 0.8;
+    padding: 10px 17px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.navbar_Default {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn_Default {
+    display: flex;
+    width: 250px;
+    justify-content: space-around;
+    align-items: center;
+    padding-right: 30px;
+    margin-bottom: 20px;
+}
+
+.borderDivs {
+    background-color: #232323;
+    height: 10px;
+}
+
+.signinBtn1 {
+    font-size: 15px;
+    background-color: #e50914;
+    color: white;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.getStatedBtn {
+    background-color: #e50914;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bolder;
+    border: none;
+    width: 180px;
+    color: #fff;
+    padding: 16px;
+    margin-top: 20px;
+    margin-bottom: 14px;
+    cursor: pointer;
+}
+
+.signinBtn1:hover,
+.getStatedBtn:hover {
+    background-color: #87050b;
+}
+
+#description {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+.descriptionBigger {
+    color: white;
+    font-size: 50px;
+}
+
+.desscriptionSmall {
+    color: white;
+    font-size: 20px;
+    padding: 8px;
+    padding-bottom: 15px;
+}
+
+#finish-btn {
+    padding: 10px 20px 10px 20px;
+    font-size: 23px;
+    background-color: #e50914;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.box {
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.image {
+    width: 220px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.detail>h1 {
+    font-size: 55px;
+    padding-bottom: 7px;
+}
+
+.detail>p {
+    font-size: 20px;
+}
+
+.detail {
+    color: white;
+    justify-content: center;
+    padding: 10%;
+
+}
+
+.question_Blocks {
+    background-color: #303030;
+    margin-bottom: 10px;
+    width: 600px;
+    padding: 20px;
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.questionBlock {
+    padding: 70px;
+    font-size: 30px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#question {
+    background-color: black;
+}
+
+.questionCall {
+    color: rgba(255, 255, 255, 0.7);
+    padding-top: 80px;
+}
+
+#last {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.footer_List {
+    color: gray;
+}
+
+.footerDropdown {
+    font-size: 15px;
+    padding: 10px 17px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+#defaultFooter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.footerItem {
+    padding-top: 20px;
+    font-size: 14px;
+    width: fit-content;
+    cursor: pointer;
+    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.footerItem:hover {
+    color: #e50914;
+}
+
+.bottom {
+    width: 800px;
+}
+
+.netflixIndia {
+    color: gray;
+    padding-top: 40px;
+    padding-bottom: 50px;
+}
+
+.questionBlockHeader {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.fourthPoster {
+    width: 440px;
+}
+
+@media screen and (max-width:720px) {
+
+    .logo_Default {
+        width: 150px;
+        height: 50px;
+    }
+
+    .detail>h1 {
+        font-size: 28px;
+    }
+
+    .detail>p {
+        font-size: 14px;
+    }
+
+    .descriptionBigger {
+        font-size: 30px;
+    }
+
+    .desscriptionSmall {
+        font-size: 16px;
+    }
+
+    .fourthPoster {
+        width: 250px;
+    }
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .questionBlockHeader {
+        font-size: 30px;
+    }
+
+    .question_Blocks {
+        font-size: 14px;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:550px) {
+    .defaultFooter {
+        display: none;
+    }
+
+    .language {
+        font-size: 10px;
+        padding: 10px 9px;
+    }
+
+    .btn_Default {
+        padding-right: 10px;
+    }
+
+    .logo_Default {
+        padding-left: 10px;
+        width: 110px;
+        height: 40px;
+    }
+
+}
+
+@media screen and (min-width:551px) and (max-width: 850px) {
+    .footerItem {
+        font-size: 14px;
+    }
+
+    .bottom {
+        padding-left: 40px;
+    }
+
+    .questionCall {
+        font-size: 16px;
+    }
+
+    #defaultFooter {
+        display: flex;
+        justify-content: left;
+        gap: 100px;
+    }
+
+    .question_Blocks {
+        font-size: 14px;
+    }
+
+    .questionBlockHeader {
+        font-size: 30px;
+    }
+
+    .box {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
 }

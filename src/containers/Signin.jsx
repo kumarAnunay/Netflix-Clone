@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { TextField } from "@mui/material";
 import headerLogo from "../assets/images/headerLogo.png";
@@ -16,6 +17,7 @@ const Signin = () => {
   const passwordErrorRef = useRef(null);
   const learnRef = useRef(null);
   const learnMoreRef = useRef(null);
+  const navigate = useNavigate();
 
   const { email, password } = signin;
 
@@ -72,7 +74,12 @@ const Signin = () => {
   return (
     <div className="sign">
       <div className="logo">
-        <img src={headerLogo} className="headerLogo" alt="NETFLIX" />
+        <img
+          src={headerLogo}
+          className="headerLogo"
+          alt="NETFLIX"
+          onClick={() => navigate("/")}
+        />
       </div>
       <div className="container">
         <div className="signinForm">
@@ -155,7 +162,7 @@ const Signin = () => {
           </div>
           <div className="signupLink">
             New to Netflix?
-            <Link to="signup" className="link1">
+            <Link to="/signup" className="link1">
               Sign up now
             </Link>
           </div>

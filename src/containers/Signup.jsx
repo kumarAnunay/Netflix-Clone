@@ -1,11 +1,12 @@
 import { useRef, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { TextField } from "@mui/material";
-import headerLogo from "../assets/images/headerLogo.png";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../firebase";
 import googleLogo from "../assets/images/googleLogo.png";
 import githubLogo from "../assets/images/githubLogo.png";
+import NavbarSign from "../components/NavbarSign";
+import FooterSign from "../components/FooterSign";
 
 const Signup = () => {
   const [signup, setSignup] = useState({
@@ -134,16 +135,14 @@ const Signup = () => {
   }, [registered]);
 
   return (
-    <div className="sign">
-      <div className="logo">
-        <img
-          src={headerLogo}
-          className="headerLogo"
-          alt="NETFLIX"
-          onClick={() => navigate("/")}
-        />
+    <div className="signupContainer">
+      <div className="signupLogoHeader">
+        <NavbarSign className="signupLogo" />
+        <button className="signinBtn Btn1" onClick={() => navigate("/signin")}>
+          Sign In
+        </button>
       </div>
-      <div className="container">
+      <div className="container colorForm">
         <div className="signupForm">
           <div className="success" ref={successRef}>
             Account successfully Registered!
@@ -252,6 +251,10 @@ const Signup = () => {
           </div>
         </div>
       </div>
+      <FooterSign
+        styleContainer="signupFooter"
+        styleDropdown="footerDropdown signupDropdown"
+      />
     </div>
   );
 };

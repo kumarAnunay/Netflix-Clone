@@ -2,7 +2,8 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { TextField } from "@mui/material";
-import headerLogo from "../assets/images/headerLogo.png";
+import NavbarSign from "../components/NavbarSign";
+import FooterSign from "../components/FooterSign";
 
 const Signin = () => {
   const [signin, setSignin] = useState({
@@ -73,14 +74,7 @@ const Signin = () => {
 
   return (
     <div className="sign">
-      <div className="logo">
-        <img
-          src={headerLogo}
-          className="headerLogo"
-          alt="NETFLIX"
-          onClick={() => navigate("/")}
-        />
-      </div>
+      <NavbarSign />
       <div className="container">
         <div className="signinForm">
           <h1 className="signinHeader">Sign In</h1>
@@ -186,6 +180,10 @@ const Signin = () => {
           </div>
         </div>
       </div>
+      <FooterSign
+        styleContainer="signinFooter"
+        styleDropdown="footerDropdown"
+      />
     </div>
   );
 };

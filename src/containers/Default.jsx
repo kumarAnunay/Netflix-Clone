@@ -62,7 +62,7 @@ const Home = () => {
 
         <div className="box">
           <div className="detail">
-            <h1>Enjoy on your TV.</h1>
+            <h1>enjoy on your TV.</h1>
             <p>
               Watch on smart TVs, PlayStation, Xbox,
               <br />
@@ -109,11 +109,13 @@ const Home = () => {
 
         <div className="box">
           <div className="detail">
-            <h1>Watch everywhere.</h1>
+            <h1>look everywhere.</h1>
             <p>
               Stream unlimited movies and TV shows on
               <br />
-              your phone, tablet, laptop, and TV.
+              your phone, tablet, laptop, and TV without
+              <br />
+              paying extra.
             </p>
           </div>
           <div className="detail">
@@ -138,12 +140,15 @@ const Home = () => {
               alt="Movie Poster"
             />
           </div>
-          <div className="detail">
-            <h1>Create profiles for children.</h1>
+          <div className="detail kidsection">
+            <h1>
+              create profile for <br />
+              kids
+            </h1>
             <p>
-              Send children on adventures with their
+              Let the kids go on an adventure with their
               <br />
-              favourite characters in a space made just for
+              favorite characters on an adventure just for
               <br />
               them—free with your membership.
             </p>

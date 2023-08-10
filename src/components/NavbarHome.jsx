@@ -1,6 +1,6 @@
 import netfilxLogo from "../assets/images/headerLogo.png";
 
-const Navbar = () => {
+const NavbarHome = () => {
   return (
     <nav className="navigationBar">
       <div id="leftNav">
@@ -20,4 +20,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavbarHome;

@@ -74,7 +74,9 @@ const Signin = () => {
 
   return (
     <div className="sign">
-      <NavbarSign />
+      <div className="logo">
+        <NavbarSign />
+      </div>
       <div className="container">
         <div className="signinForm">
           <h1 className="signinHeader">Sign In</h1>

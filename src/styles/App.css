@@ -21,9 +21,8 @@
 .headerLogo {
     height: 55px;
     width: 175px;
-    z-index: 1;
+    margin: 5px 0;
     margin-left: 30px;
-    margin-top: 20px;
     cursor: pointer;
 }
 
@@ -231,17 +230,11 @@
     align-items: center;
 }
 
-.colorForm {
-    background-color: black;
-}
-
 .signupLogoHeader {
-    width: 100%;
-    padding: 10px 0 20px;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid #e6e6e6;
     margin-bottom: 80px;
+    width: 100%;
 }
 
 .Btn1 {
@@ -279,17 +272,6 @@
 .logoImg {
     width: 30px;
     height: 30px;
-}
-
-.signupFooter {
-    width: 100%;
-    background-color: #f3f3f3;
-    padding: 30px 80px;
-    margin-top: 80px;
-}
-
-.signupDropdown {
-    background-color: white !important;
 }
 
 @media screen and (max-width:720px) {
@@ -478,11 +460,15 @@
 .question_Blocks {
     background-color: #303030;
     margin-bottom: 10px;
-    width: 600px;
-    padding: 20px;
+    width: 80%;
+    padding: 30px;
     font-size: 24px;
     display: flex;
     justify-content: space-between;
+}
+
+.question_Blocks:hover {
+    background-color: #454444;
 }
 
 .questionBlock {
@@ -656,4 +642,202 @@
         flex-direction: column;
         text-align: center;
     }
+}
+
+/* Subscription */
+
+.subscriptionFooter {
+    width: 100%;
+    background-color: #f3f3f3;
+    padding: 30px 80px;
+    margin-top: 80px;
+}
+
+.subscriptionDropdown {
+    background-color: white;
+}
+
+.signoutBtn {
+    all: unset;
+    padding-right: 10px;
+    width: 100px;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+}
+
+.borderBottom {
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.sub_pTag {
+    color: rgb(92, 91, 91);
+}
+
+.sub_tick {
+    color: #e50914;
+}
+
+.sub_Header {
+    color: rgb(92, 91, 91);
+}
+
+.terms {
+    color: #0071eb;
+}
+
+.sub_pFooterTag {
+    margin: 30px 0;
+    font-size: 14px;
+    color: #737373;
+    text-align: justify;
+}
+
+.nextBtn {
+    width: 25%;
+}
+
+.next {
+    display: flex;
+    justify-content: center;
+}
+
+.subscriptionContainer {
+    margin: 100px 10%;
+}
+
+.subscriptionSection {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 40px 0;
+}
+
+.priceCards {
+    border: 1px solid #a6a6a6;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.priceCards:hover {
+    transform: scale(1.1);
+    z-index: 1;
+}
+
+.price {
+    padding: 20px;
+    padding-left: 30px;
+    border-bottom: 1px solid #a6a6a6;
+}
+
+.price>p {
+    color: rgb(92, 91, 91);
+}
+
+.featuresList {
+    padding: 20px;
+    padding-left: 30px;
+}
+
+.featuresList {
+    color: rgb(92, 91, 91);
+}
+
+.priceCards:hover .price {
+    background: rgb(68, 54, 140);
+    background: linear-gradient(90deg,
+            rgba(68, 54, 140, 1) 0%,
+            rgba(122, 36, 104, 1) 35%,
+            rgba(201, 15, 46, 1) 100%);
+    color: white;
+}
+
+.priceCards:hover .price>p {
+    color: white;
+}
+
+.priceCards:hover .featuresList .listText {
+    color: black;
+}
+
+.priceCards:hover .featuresList {
+    color: #e50914;
+}
+
+.priceCards.selected .price {
+    background: rgb(68, 54, 140);
+    background: linear-gradient(90deg,
+            rgba(68, 54, 140, 1) 0%,
+            rgba(122, 36, 104, 1) 35%,
+            rgba(201, 15, 46, 1) 100%);
+    color: white;
+}
+
+.priceCards.selected .price>p {
+    color: white;
+}
+
+.priceCards.selected .featuresList .listText {
+    color: black;
+}
+
+.priceCards.selected .featuresList {
+    color: #e50914;
+}
+
+@media screen and (max-width:700px) {
+    .subscriptionFooter {
+        padding: 30px 20px;
+        font-size: 12px;
+    }
+
+    .sub_Header {
+        font-size: 14px;
+    }
+
+    .sub_Head {
+        font-size: 18px;
+    }
+
+    .sub_pTag {
+        font-size: 14px;
+    }
+
+    .nextBtn {
+        font-size: 14px;
+    }
+
+    .sub_pFooterTag {
+        font-size: 14px;
+    }
+
+    .featuresList {
+        font-size: 14px;
+    }
+
+    .subscriptionSection {
+        flex-wrap: wrap;
+    }
+
+}
+
+@media screen and (min-width: 701px) and (max-width: 950px) {
+    .featuresList {
+        font-size: 14px;
+    }
+}
+
+/* Payment */
+
+.launcingImgContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.launcingImgContainer>img {
+    width: 70%;
 }

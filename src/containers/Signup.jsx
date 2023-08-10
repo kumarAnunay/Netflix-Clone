@@ -135,14 +135,14 @@ const Signup = () => {
   }, [registered]);
 
   return (
-    <div className="signupContainer">
+    <div className="sign">
       <div className="signupLogoHeader">
-        <NavbarSign className="signupLogo" />
+        <NavbarSign />
         <button className="signinBtn Btn1" onClick={() => navigate("/signin")}>
           Sign In
         </button>
       </div>
-      <div className="container colorForm">
+      <div className="container">
         <div className="signupForm">
           <div className="success" ref={successRef}>
             Account successfully Registered!
@@ -252,8 +252,8 @@ const Signup = () => {
         </div>
       </div>
       <FooterSign
-        styleContainer="signupFooter"
-        styleDropdown="footerDropdown signupDropdown"
+        styleContainer="signinFooter"
+        styleDropdown="footerDropdown"
       />
     </div>
   );

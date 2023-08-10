@@ -3,6 +3,8 @@ import Default from "./containers/Default";
 import Signin from "./containers/Signin";
 import Signup from "./containers/Signup";
 import Home from "./containers/Home";
+import SubscriptionPage from "./components/SubscriptionPage";
+import Payment from "./components/Payment";
 import "./styles/App.css";
 
 function App() {
@@ -22,6 +24,14 @@ function App() {
     {
       path: `/home`,
       element: <Home />,
+    },
+    {
+      path: `/subscription`,
+      element: <SubscriptionPage />,
+    },
+    {
+      path: `/payment`,
+      element: <Payment />,
     },
   ]);
 

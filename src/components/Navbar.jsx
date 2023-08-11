@@ -110,13 +110,23 @@ const Navbar = () => {
             <StyledMenuItem className="accountItems">
               <div className="icon_text">
                 <ModeOutlinedIcon className="accountIcons" />
-                <p className="iconText">Manage Profiles</p>
+                <p
+                  className="iconText"
+                  onClick={() => navigate("/manage-profile")}
+                >
+                  Manage Profiles
+                </p>
               </div>
             </StyledMenuItem>
             <StyledMenuItem className="accountItems">
               <div className="icon_text">
                 <AdminPanelSettingsOutlinedIcon className="accountIcons" />
-                <p className="iconText">Transfer Profile</p>
+                <p
+                  className="iconText"
+                  onClick={() => navigate("/transfer-profile")}
+                >
+                  Transfer Profile
+                </p>
               </div>
             </StyledMenuItem>
             <StyledMenuItem className="accountItems">

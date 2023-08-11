@@ -7,6 +7,8 @@ import MyList from "./containers/MyList";
 import Movies from "./containers/Movies";
 import TvShows from "./containers/TvShows";
 import Notifications from "./components/Notifications";
+import ManageProfile from "./components/ManageProfile";
+import TransferProfile from "./components/TransferProfile";
 import SubscriptionStep1 from "./components/SubscriptionStep1";
 import SubscriptionStep2 from "./components/SubscriptionStep2";
 import Payment from "./components/Payment";
@@ -34,6 +36,14 @@ function App() {
     {
       path: `/notifications`,
       element: <Notifications />,
+    },
+    {
+      path: `/manage-profile`,
+      element: <ManageProfile />,
+    },
+    {
+      path: `/transfer-profile`,
+      element: <TransferProfile />,
     },
     {
       path: `/help-centre`,

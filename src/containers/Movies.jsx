@@ -1,9 +1,9 @@
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-const Home = () => {
+const Movies = () => {
   return (
-    <div className="homePage">
+    <div className="moviesPage">
       <Navbar />
       <br />
       <br />
@@ -55,5 +55,4 @@ const Home = () => {
   );
 };
 
-export default Home;
-//projectId: lb0fl09ncsvt
+export default Movies;

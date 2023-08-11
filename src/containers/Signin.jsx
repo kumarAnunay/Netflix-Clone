@@ -75,7 +75,7 @@ const Signin = () => {
   return (
     <div className="sign">
       <div className="logo">
-        <NavbarSign />
+        <NavbarSign onClick={() => navigate("/")} />
       </div>
       <div className="container">
         <div className="signinForm">

@@ -3,7 +3,7 @@ import NavbarSign from "./NavbarSign";
 import FooterSign from "./FooterSign";
 import { useNavigate } from "react-router";
 
-const SubscriptionPage = () => {
+const SubscriptionStep2 = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
 
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ const SubscriptionPage = () => {
   return (
     <>
       <div className="signupLogoHeader borderBottom">
-        <NavbarSign className="signupLogo" />
+        <NavbarSign className="signupLogo" onClick={() => navigate("/home")} />
         <button className="signoutBtn" onClick={() => navigate("/")}>
           Sign Out
         </button>
@@ -165,4 +165,4 @@ const SubscriptionPage = () => {
   );
 };
 
-export default SubscriptionPage;
+export default SubscriptionStep2;

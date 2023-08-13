@@ -1,7 +1,8 @@
-import NavbarSign from "./NavbarSign";
-import FooterSign from "./FooterSign";
+import NavbarSign from "../components/NavbarSign";
+import FooterSign from "../components/FooterSign";
 import { useNavigate } from "react-router";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
+import SignoutBtn from "../components/SignoutBtn";
 
 const SubscriptionStep1 = () => {
   const navigate = useNavigate();
@@ -10,9 +11,7 @@ const SubscriptionStep1 = () => {
     <>
       <div className="signupLogoHeader borderBottom">
         <NavbarSign className="signupLogo" onClick={() => navigate("/home")} />
-        <button className="signoutBtn" onClick={() => navigate("/")}>
-          Sign Out
-        </button>
+        <SignoutBtn />
       </div>
       <div className="step1Container">
         <div className="checkIcon">

@@ -316,7 +316,7 @@
     background-size: cover;
     border: 2px solid black;
     width: 100%;
-    box-shadow: inset 0px 0px 250px 130px black;
+    box-shadow: inset 0px 0px 250px 80px black;
 }
 
 .defaultPage {
@@ -397,20 +397,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 10%;
-    padding-bottom: 10%;
+    padding: 10% 0;
+
 }
 
 .descriptionBigger {
     color: white;
-    font-size: 50px;
+    font-size: 48px;
+    font-weight: 900;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
+    text-align: center;
 }
 
 .desscriptionSmall {
     color: white;
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: 400;
     padding: 8px;
     padding-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 1.5);
+    text-align: center;
 }
 
 #finish-btn {
@@ -562,11 +568,11 @@
     }
 
     .descriptionBigger {
-        font-size: 30px;
+        font-size: 25px;
     }
 
     .desscriptionSmall {
-        font-size: 16px;
+        font-size: 15px;
     }
 
     .fourthPoster {
@@ -586,6 +592,7 @@
     .question_Blocks {
         font-size: 14px;
         width: 100%;
+        padding: 15px;
     }
 }
 
@@ -940,8 +947,13 @@
 
 .listItem {
     color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
     cursor: pointer;
     font-weight: 500;
+}
+
+.listItem:hover {
+    color: #dfdfdf;
 }
 
 .navbarLogo {
@@ -963,6 +975,7 @@
     height: 30px;
     border-radius: 5px;
     cursor: pointer;
+    text-shadow: none;
 }
 
 .navbarDropdown {
@@ -972,6 +985,7 @@
 
 .icons {
     color: white !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5) !important;
     cursor: pointer;
     font-size: 30px !important;
 }
@@ -1364,6 +1378,250 @@
     }
 }
 
+/* movie-trailer */
+
+.movieTrailer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.movieTrailerContainer {
+    position: relative;
+    width: 100%;
+}
+
+.movieTrailerImage {
+    width: 100%;
+    min-height: 100vh;
+}
+
+.movieTrailerContent {
+    width: 30%;
+    left: 4%;
+    position: absolute;
+    top: 40%;
+    padding: 20px;
+    background: transparent;
+    color: white;
+
+}
+
+.movieTrailerTitle,
+.movieTrailerDescription {
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
+    text-align: justify;
+}
+
+.movieTrailerBtnContainer {
+    display: flex;
+    justify-content: left;
+    gap: 50px;
+
+}
+
+.movieTrailerPlayBtn {
+    all: unset;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #000;
+}
+
+.movieTrailerInformationBtn {
+    all: unset;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
+    font-weight: 700;
+    background-color: rgba(109, 109, 110, 0.7);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
+    width: fit-content;
+}
+
+.movieTrailerPlayBtn:hover {
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.movieTrailerInformationBtn:hover {
+    background-color: rgba(109, 109, 110, 0.4);
+}
+
+.playIcon,
+.informationIcon {
+    font-size: 16px !important;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 650px) {
+
+    .movieTrailerTitle,
+    .movieTrailerDescription,
+    .movieTrailerBtnContainer {
+        display: none;
+    }
+}
+
+/* movies */
+
+.moviesContainer {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    min-height: 100vh;
+    background: #141414;
+    padding: 30px;
+    padding-top: 80px;
+    overflow-x: hidden;
+}
+
+.movieCardContainer {
+    width: 220px;
+    height: 250px;
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+.movieCardContainer:hover {
+    transition: 0.5s;
+    transform: scale(1.4);
+    z-index: 1;
+}
+
+.movieImage {
+    width: 100%;
+    height: 100%;
+    margin-bottom: -10px;
+    border-radius: 4px;
+    box-shadow: 0px 0px 5px rgba(229, 9, 20, 0.3);
+    filter: contrast(1.1);
+}
+
+.movieCardContent {
+    width: 100%;
+    height: fit-content;
+    display: none;
+    background-color: #181818;
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
+    transition: opacity 0.3s;
+    padding: 10px;
+    padding-top: 20px;
+    border-radius: 4px;
+}
+
+.movieCardContainer:hover .movieCardContent {
+    display: block;
+}
+
+.movieCardContentTitle {
+    font-size: 10px;
+    margin: 5px 0;
+}
+
+.movieCardContentDescription {
+    text-align: center;
+    font-size: 8px;
+    text-align: inherit;
+    margin: 5px 0;
+}
+
+.movieCardContentBtn {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.playContentBtn {
+    background-color: white;
+    color: black;
+    border-radius: 2px;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    cursor: pointer;
+    padding: 3px 8px 3px 5px;
+}
+
+.playContentBtn:hover {
+    background-color: #e6e6e6 !important;
+    border-color: #fff;
+}
+
+.addContentBtn {
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid hsla(0, 0%, 100%, .5);
+    background-color: rgba(42, 42, 42, .6);
+    cursor: pointer;
+}
+
+.addContentBtn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+.playBtnIcon {
+    font-size: 14px !important;
+}
+
+.addBtnIcon {
+    font-size: 16px !important;
+    color: #fff !important;
+}
+
+.loaderContainer {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #141414;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: #e50914;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media screen and (max-width: 550px) {
+
+    .moviesContainer {
+        padding-top: 120px;
+    }
+}
+
 /* home */
 
 .homePage {
@@ -1375,19 +1633,5 @@
 
 .myListPage {
     background-color: skyblue;
-    min-height: 100vh;
-}
-
-/* movies */
-
-.moviesPage {
-    background-color: lightcoral;
-    min-height: 100vh;
-}
-
-/* tvshows */
-
-.tvShowsPage {
-    background-color: lightseagreen;
     min-height: 100vh;
 }

@@ -1,7 +1,8 @@
-import NavbarSign from "./NavbarSign";
-import FooterSign from "./FooterSign";
+import NavbarSign from "../components/NavbarSign";
+import FooterSign from "../components/FooterSign";
 import { useNavigate } from "react-router";
 import comingSoon from "../assets/images/comingSoon.png";
+import SignoutBtn from "../components/SignoutBtn";
 
 const TransferProfile = () => {
   const navigate = useNavigate();
@@ -9,9 +10,7 @@ const TransferProfile = () => {
     <>
       <div className="signupLogoHeader borderBottom">
         <NavbarSign className="signupLogo" onClick={() => navigate("/home")} />
-        <button className="signoutBtn" onClick={() => navigate("/")}>
-          Sign Out
-        </button>
+        <SignoutBtn />
       </div>
       <div className="launcingImgContainer">
         <img src={comingSoon} alt="Under Construction" />

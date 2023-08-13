@@ -1,20 +1,19 @@
-import NavbarSign from "../components/NavbarSign";
-import FooterSign from "./FooterSign";
-import launchingImage from "../assets/images/underConstruction.jpg";
 import { useNavigate } from "react-router";
+import NavbarSign from "../components/NavbarSign";
+import FooterSign from "../components/FooterSign";
+import launchingImage from "../assets/images/Launching.jpg";
+import SignoutBtn from "../components/SignoutBtn";
 
-const Notifications = () => {
+const Payment = () => {
   const navigate = useNavigate();
   return (
-    <div>
+    <div className="paymentPage">
       <div className="signupLogoHeader borderBottom">
         <NavbarSign className="signupLogo" onClick={() => navigate("/home")} />
-        <button className="signoutBtn" onClick={() => navigate("/")}>
-          Sign Out
-        </button>
+        <SignoutBtn />
       </div>
       <div className="launcingImgContainer">
-        <img src={launchingImage} alt="Under Construction" />
+        <img src={launchingImage} alt="Launching Soon" />
       </div>
       <FooterSign
         styleContainer="subscriptionFooter"
@@ -24,4 +23,4 @@ const Notifications = () => {
   );
 };
 
-export default Notifications;
+export default Payment;

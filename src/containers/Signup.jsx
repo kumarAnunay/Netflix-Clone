@@ -90,7 +90,6 @@ const Signup = () => {
     event.preventDefault();
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log("RESULT", result);
         const userName = result.user.displayName;
         const email = result.user.email;
         localStorage.setItem(
@@ -130,7 +129,7 @@ const Signup = () => {
     if (registered) {
       setTimeout(() => {
         navigate("/signin");
-      }, 1000);
+      }, 2000);
     }
   }, [registered]);
 

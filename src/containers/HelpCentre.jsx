@@ -1,9 +1,10 @@
 import { useState } from "react";
-import NavbarSign from "./NavbarSign";
+import NavbarSign from "../components/NavbarSign";
 import { useNavigate } from "react-router";
 import SearchIcon from "@mui/icons-material/Search";
 import WysiwygIcon from "@mui/icons-material/Wysiwyg";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import { signoutHandler } from "../utils/signoutHandler";
 
 const HelpCentre = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -18,7 +19,7 @@ const HelpCentre = () => {
           />
           <button
             className="signoutBtn helpCentreSignoutBtn"
-            onClick={() => navigate("/")}
+            onClick={() => signoutHandler(navigate)}
           >
             Sign Out
           </button>

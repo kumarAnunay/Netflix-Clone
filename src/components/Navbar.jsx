@@ -14,6 +14,7 @@ import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettin
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
+import { signoutHandler } from "../utils/signoutHandler";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -64,6 +65,9 @@ const Navbar = () => {
           </li>
           <li className="listItem" onClick={() => navigate("/tv-shows")}>
             TV Shows
+          </li>
+          <li className="listItem" onClick={() => navigate("/web-series")}>
+            Web Series
           </li>
         </ul>
       </div>
@@ -159,7 +163,10 @@ const Navbar = () => {
             </StyledMenuItem>
             <StyledMenuItem className="accountItems">
               <div className="lastIcon">
-                <p className="iconText" onClick={() => navigate("/")}>
+                <p
+                  className="iconText"
+                  onClick={() => signoutHandler(navigate)}
+                >
                   Sign out of Netflix
                 </p>
               </div>

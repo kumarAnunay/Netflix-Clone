@@ -1,7 +1,8 @@
 import { useState } from "react";
-import NavbarSign from "./NavbarSign";
-import FooterSign from "./FooterSign";
+import NavbarSign from "../components/NavbarSign";
+import FooterSign from "../components/FooterSign";
 import { useNavigate } from "react-router";
+import SignoutBtn from "../components/SignoutBtn";
 
 const SubscriptionStep2 = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
@@ -14,9 +15,7 @@ const SubscriptionStep2 = () => {
     <>
       <div className="signupLogoHeader borderBottom">
         <NavbarSign className="signupLogo" onClick={() => navigate("/home")} />
-        <button className="signoutBtn" onClick={() => navigate("/")}>
-          Sign Out
-        </button>
+        <SignoutBtn />
       </div>
       <div className="subscriptionContainer">
         <h5 className="sub_Header">STEP 2 OF 3</h5>

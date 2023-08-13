@@ -2,17 +2,19 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Default from "./containers/Default";
 import Signin from "./containers/Signin";
 import Signup from "./containers/Signup";
+import LoginCheck from "./components/LoginCheck";
 import Home from "./containers/Home";
 import MyList from "./containers/MyList";
 import Movies from "./containers/Movies";
 import TvShows from "./containers/TvShows";
-import Notifications from "./components/Notifications";
-import ManageProfile from "./components/ManageProfile";
-import TransferProfile from "./components/TransferProfile";
-import SubscriptionStep1 from "./components/SubscriptionStep1";
-import SubscriptionStep2 from "./components/SubscriptionStep2";
-import Payment from "./components/Payment";
-import HelpCentre from "./components/HelpCentre";
+import Webseries from "./containers/Webseries";
+import Notifications from "./containers/Notifications";
+import ManageProfile from "./containers/ManageProfile";
+import TransferProfile from "./containers/TransferProfile";
+import SubscriptionStep1 from "./containers/SubscriptionStep1";
+import SubscriptionStep2 from "./containers/SubscriptionStep2";
+import Payment from "./containers/Payment";
+import HelpCentre from "./containers/HelpCentre";
 import "./styles/App.css";
 
 function App() {
@@ -31,47 +33,99 @@ function App() {
     },
     {
       path: `/home`,
-      element: <Home />,
+      element: (
+        <LoginCheck>
+          <Home />
+        </LoginCheck>
+      ),
     },
     {
       path: `/notifications`,
-      element: <Notifications />,
+      element: (
+        <LoginCheck>
+          <Notifications />
+        </LoginCheck>
+      ),
     },
     {
       path: `/manage-profile`,
-      element: <ManageProfile />,
+      element: (
+        <LoginCheck>
+          <ManageProfile />
+        </LoginCheck>
+      ),
     },
     {
       path: `/transfer-profile`,
-      element: <TransferProfile />,
+      element: (
+        <LoginCheck>
+          <TransferProfile />
+        </LoginCheck>
+      ),
     },
     {
       path: `/help-centre`,
-      element: <HelpCentre />,
+      element: (
+        <LoginCheck>
+          <HelpCentre />
+        </LoginCheck>
+      ),
     },
     {
       path: `/subscription-step1`,
-      element: <SubscriptionStep1 />,
+      element: (
+        <LoginCheck>
+          <SubscriptionStep1 />
+        </LoginCheck>
+      ),
     },
     {
       path: `/subscription-step2`,
-      element: <SubscriptionStep2 />,
+      element: (
+        <LoginCheck>
+          <SubscriptionStep2 />
+        </LoginCheck>
+      ),
     },
     {
       path: `/payment`,
-      element: <Payment />,
+      element: (
+        <LoginCheck>
+          <Payment />
+        </LoginCheck>
+      ),
     },
     {
       path: `/my-list`,
-      element: <MyList />,
+      element: (
+        <LoginCheck>
+          <MyList />
+        </LoginCheck>
+      ),
     },
     {
       path: `/movies`,
-      element: <Movies />,
+      element: (
+        <LoginCheck>
+          <Movies />
+        </LoginCheck>
+      ),
     },
     {
       path: `/tv-shows`,
-      element: <TvShows />,
+      element: (
+        <LoginCheck>
+          <TvShows />
+        </LoginCheck>
+      ),
+    },
+    {
+      path: `/web-series`,
+      element: (
+        <LoginCheck>
+          <Webseries />
+        </LoginCheck>
+      ),
     },
   ]);
 

@@ -38,13 +38,16 @@ const Home = () => {
             </div>
           </div>
           <div id="description">
-            <h3 className="desscriptionSmall">Welcome back!</h3>
-            <h1 className="descriptionBigger">Unlimited movies, TV</h1>
-            <h1 className="descriptionBigger"> shows and more.</h1>
-            <h6 className="desscriptionSmall">
+            <h3 className="descriptionBigger">
+              Unlimited movies, TV shows and more
+            </h3>
+            <h1 className="desscriptionSmall">
               Watch anywhere. Cancel anytime.
-            </h6>
-
+            </h1>
+            <h1 className="desscriptionSmall">
+              Ready to watch? Enter your email to create or restart your
+              membership.
+            </h1>
             <button
               className="getStatedBtn"
               onClick={() => navigate("/signup")}

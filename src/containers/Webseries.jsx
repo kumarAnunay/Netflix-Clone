@@ -5,8 +5,8 @@ import Footer from "../components/Footer";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 
-const TvShows = () => {
-  const [tvShows, setTvShows] = useState([]);
+const Webseries = () => {
+  const [webseries, setWebseries] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -20,11 +20,11 @@ const TvShows = () => {
               projectId: "lb0fl09ncsvt",
             },
             params: {
-              filter: JSON.stringify({ type: "tv show" }),
+              filter: JSON.stringify({ type: "web series" }),
             },
           }
         );
-        setTvShows((prevTvShows) => [...prevTvShows, ...response.data.data]);
+        setWebseries((prevTvShows) => [...prevTvShows, ...response.data.data]);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data from the API:", error);
@@ -43,10 +43,10 @@ const TvShows = () => {
         </div>
       ) : (
         <div className="moviesContainer">
-          {tvShows.map((tvShow) => (
-            <div className="movieCardContainer" key={tvShow.id}>
+          {webseries.map((web) => (
+            <div className="movieCardContainer" key={web.id}>
               <img
-                src={tvShow.thumbnail}
+                src={web.thumbnail}
                 alt="Movie_Image"
                 className="movieImage"
               />
@@ -60,9 +60,9 @@ const TvShows = () => {
                     <AddIcon className="addBtnIcon" />
                   </button>
                 </div>
-                <h1 className="movieCardContentTitle">{tvShow.title}</h1>
+                <h1 className="movieCardContentTitle">{web.title}</h1>
                 <h2 className="movieCardContentDescription">
-                  {tvShow.description}
+                  {web.description}
                 </h2>
               </div>
             </div>
@@ -74,4 +74,4 @@ const TvShows = () => {
   );
 };
 
-export default TvShows;
+export default Webseries;

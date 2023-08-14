@@ -26,6 +26,9 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
+  // https://academics.newtonschool.co/api/v1/user/signup
+  // projectId: "lb0fl09ncsvt"
+
   const handleInput = (event) => {
     const field = event.target.id;
     const value = event.target.value;
@@ -92,14 +95,14 @@ const Signup = () => {
       .then((result) => {
         const userName = result.user.displayName;
         const email = result.user.email;
-        localStorage.setItem(
-          "user",
-          JSON.stringify({
-            username: userName,
-            email: email,
-            islogged: true,
-          })
-        );
+        // localStorage.setItem(
+        //   "user",
+        //   JSON.stringify({
+        //     username: userName,
+        //     email: email,
+        //     islogged: true,
+        //   })
+        // );
         navigate("/home");
       })
       .catch((error) => {

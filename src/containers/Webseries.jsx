@@ -2,15 +2,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import AddIcon from "@mui/icons-material/Add";
+import MovieCard from "../components/MovieCard";
 
 const Webseries = () => {
   const [webseries, setWebseries] = useState([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const fetchMovies = async () => {
+    const fetchWebseries = async () => {
       try {
         setLoading(true);
         const response = await axios.get(
@@ -24,18 +23,18 @@ const Webseries = () => {
             },
           }
         );
-        setWebseries((prevTvShows) => [...prevTvShows, ...response.data.data]);
+        setWebseries(response.data.data); // Update directly with the array
         setLoading(false);
       } catch (error) {
         console.error("Error fetching data from the API:", error);
         setLoading(false);
       }
     };
-    fetchMovies();
+    fetchWebseries();
   }, []);
 
   return (
-    <div className="tvShowsPage">
+    <div className="webseriesPage">
       <Navbar />
       {loading ? (
         <div className="loaderContainer">
@@ -44,28 +43,12 @@ const Webseries = () => {
       ) : (
         <div className="moviesContainer">
           {webseries.map((web) => (
-            <div className="movieCardContainer" key={web.id}>
-              <img
-                src={web.thumbnail}
-                alt="Movie_Image"
-                className="movieImage"
-              />
-              <div className="movieCardContent">
-                <div className="movieCardContentBtn">
-                  <button className="playContentBtn">
-                    <PlayArrowIcon className="playtBtnIcon" />
-                    Play
-                  </button>
-                  <button className="addContentBtn">
-                    <AddIcon className="addBtnIcon" />
-                  </button>
-                </div>
-                <h1 className="movieCardContentTitle">{web.title}</h1>
-                <h2 className="movieCardContentDescription">
-                  {web.description}
-                </h2>
-              </div>
-            </div>
+            <MovieCard
+              key={web.id}
+              thumbmail={web.thumbnail}
+              title={web.title}
+              description={web.description}
+            />
           ))}
         </div>
       )}

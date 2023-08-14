@@ -1492,7 +1492,7 @@
     }
 
     .movieTrailerImage {
-        height: 100vh;
+        height: 80vh;
     }
 }
 
@@ -1647,6 +1647,7 @@
 @media screen and (max-width: 550px) {
 
     .moviesContainer {
+        padding: 0;
         padding-top: 120px;
     }
 }
@@ -1747,7 +1748,7 @@
 }
 
 
-@media (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 768px) {
     .categoriesMovieList {
         overflow-x: auto;
         padding: 20px;
@@ -1760,14 +1761,13 @@
     }
 
     .paginationButtons {
-        top: 50%;
+        top: 40%;
         left: 0;
         transform: translateY(-50%);
         padding: 0;
     }
 
     .paginationButtons button {
-        font-size: 16px;
         margin: 0;
         padding: 2px;
     }
@@ -1783,12 +1783,32 @@
         height: 120px;
     }
 
-    .paginationButtons button {
-        font-size: 14px;
+    .arrowIcon {
+        font-size: 18px !important;
     }
+
+    .paginationButtons {
+        top: 40%
+    }
+
+    .categoriesMovieList {
+        overflow-x: auto;
+        padding: 10px;
+    }
+
 
     .categoryName {
         font-size: 16px;
+        padding-left: 10px;
+        margin-bottom: 0px;
+    }
+
+    .categoriesCard {
+        padding: 0;
+    }
+
+    .movieCategoriesContainer {
+        padding-top: 0;
     }
 }
 

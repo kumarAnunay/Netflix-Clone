@@ -1661,7 +1661,6 @@
 .movieCategoriesContainer {
     display: flex;
     flex-direction: column;
-    width: fit-content;
     position: relative;
     width: 100%;
     padding-top: 80px;
@@ -1690,15 +1689,40 @@
     text-shadow: rgba(0, 0, 0, 0.3) !important;
 }
 
+
+.categoriesMovieList {
+    display: flex;
+    flex-wrap: nowrap;
+    z-index: 1;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 20px 30px;
+    position: relative;
+    height: auto;
+}
+
+.categoriesCard {
+    width: 250px;
+    padding: 10px;
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+
+.categoriesCard:hover {
+    transform: scale(1.05);
+}
+
 .paginationButtons {
     position: absolute;
     top: 40%;
+    left: 0;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
     z-index: 2;
+    padding: 0 12px;
 }
 
 .paginationButtons button {
@@ -1710,7 +1734,6 @@
     align-items: center;
     color: white;
     padding: 3px;
-    margin: 0 5px;
     border-radius: 50%;
 }
 
@@ -1723,22 +1746,6 @@
     opacity: 1;
 }
 
-.categoriesMovieList {
-    display: flex;
-    flex-wrap: nowrap;
-    z-index: 1;
-    overflow-x: hidden;
-    padding: 20px 30px;
-    position: relative;
-    height: auto;
-}
-
-.categoriesCard {
-    width: 250px;
-    padding: 10px;
-    margin-right: 10px;
-    transition: transform 0.3s;
-}
 
 @media (max-width: 768px) {
     .categoriesMovieList {
@@ -1789,6 +1796,6 @@
 /* mylist */
 
 .myListPage {
-    background-color: skyblue;
+    background: #141414;
     min-height: 100vh;
 }

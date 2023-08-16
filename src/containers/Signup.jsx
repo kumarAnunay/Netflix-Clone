@@ -7,6 +7,9 @@ import googleLogo from "../assets/images/googleLogo.png";
 import githubLogo from "../assets/images/githubLogo.png";
 import NavbarSign from "../components/NavbarSign";
 import FooterSign from "../components/FooterSign";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
   const [signup, setSignup] = useState({
@@ -14,24 +17,25 @@ const Signup = () => {
     email: "",
     password: "",
   });
-  const [registered, setRegistered] = useState(false);
 
-  const nameRef = useRef(null);
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
+  const [signupStatus, setSignupStatus] = useState({
+    success: false,
+  });
+
   const nameErrorRef = useRef(null);
   const emailErrorRef = useRef(null);
   const passwordErrorRef = useRef(null);
-  const successRef = useRef(null);
 
   const navigate = useNavigate();
 
-  // https://academics.newtonschool.co/api/v1/user/signup
-  // projectId: "lb0fl09ncsvt"
-
   const handleInput = (event) => {
     const field = event.target.id;
-    const value = event.target.value;
+    let value = event.target.value;
+
+    if (field === "email") {
+      value = value.toLowerCase();
+    }
+    console.log(signup.email);
 
     setSignup({
       ...signup,
@@ -49,7 +53,7 @@ const Signup = () => {
 
   const { name, email, password } = signup;
 
-  const handlesignup = (event) => {
+  const handlesignup = async (event) => {
     event.preventDefault();
 
     const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
@@ -63,29 +67,71 @@ const Signup = () => {
     if (password.length < 4 || password.length > 60) {
       passwordErrorRef.current.style.display = "block";
     }
-    if (
-      name.length >= 3 &&
-      email.match(emailPattern) &&
-      password.length >= 4 &&
-      password.length <= 60
-    ) {
-      localStorage.setItem(
-        "user",
-        JSON.stringify({
-          username: name,
+    try {
+      console.log("Sending signup request...");
+      const response = await axios.post(
+        "https://academics.newtonschool.co/api/v1/user/signup",
+        {
+          name: name,
           email: email,
           password: password,
-        })
+        },
+        {
+          headers: {
+            projectId: "lb0fl09ncsvt",
+          },
+        }
       );
+      console.log("Signup successful:", response);
 
-      successRef.current.style.display = "block";
-      setSignup({
-        name: "",
-        email: "",
-        password: "",
+      setSignupStatus({
+        success: true,
       });
-
-      setRegistered(true);
+      toast.success("Account successfully Registered!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      console.log("Signup Error:", error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message === "User already exists"
+      ) {
+        setSignupStatus({
+          success: false,
+        });
+        toast.error("User with this email is already registered.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else {
+        setSignupStatus({
+          success: false,
+        });
+        toast.error("Error in signing up. Please try again.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
     }
   };
 
@@ -93,8 +139,8 @@ const Signup = () => {
     event.preventDefault();
     signInWithPopup(auth, provider)
       .then((result) => {
-        const userName = result.user.displayName;
-        const email = result.user.email;
+        // const userName = result.user.displayName;
+        // const email = result.user.email;
         // localStorage.setItem(
         //   "user",
         //   JSON.stringify({
@@ -129,12 +175,12 @@ const Signup = () => {
   };
 
   useEffect(() => {
-    if (registered) {
+    if (signupStatus.success) {
       setTimeout(() => {
         navigate("/signin");
-      }, 2000);
+      }, 3500);
     }
-  }, [registered]);
+  }, [signupStatus]);
 
   return (
     <div className="sign">
@@ -146,29 +192,22 @@ const Signup = () => {
       </div>
       <div className="container">
         <div className="signupForm">
-          <div className="success" ref={successRef}>
-            Account successfully Registered!
-          </div>
+          <ToastContainer />
           <h1 className="signinHeader">Register</h1>
-          <form
-            className="signup"
-            onChange={handleInput}
-            onSubmit={handlesignup}
-          >
+          <form className="signup" onChange={handleInput}>
             <TextField
-              type="name"
+              type="text"
               id="name"
               label="Username"
               variant="filled"
-              ref={nameRef}
               className="input"
+              value={name}
               sx={{
                 "& .MuiFilledInput-underline:after": {
                   borderBottom: "none",
                 },
-                "& .MuiFilledInput-root.Mui-focused": {
-                  color: "#000",
-                  backgroundColor: "#e5edfb",
+                "& .MuiFilledInput-root": {
+                  backgroundColor: name ? "#e5edfb" : "inherit",
                 },
                 "& .MuiFormLabel-root.Mui-focused": {
                   color: "#000",
@@ -186,15 +225,14 @@ const Signup = () => {
               id="email"
               label="Email or phone number"
               variant="filled"
-              ref={emailRef}
               className="input input2"
+              value={email}
               sx={{
                 "& .MuiFilledInput-underline:after": {
                   borderBottom: "none",
                 },
-                "& .MuiFilledInput-root.Mui-focused": {
-                  color: "#000",
-                  backgroundColor: "#e5edfb",
+                "& .MuiFilledInput-root": {
+                  backgroundColor: email ? "#e5edfb" : "inherit",
                 },
                 "& .MuiFormLabel-root.Mui-focused": {
                   color: "#000",
@@ -212,15 +250,14 @@ const Signup = () => {
               id="password"
               label="Password"
               variant="filled"
-              ref={passwordRef}
               className="input input2"
+              value={password}
               sx={{
                 "& .MuiFilledInput-underline:after": {
                   borderBottom: "none",
                 },
-                "& .MuiFilledInput-root.Mui-focused": {
-                  color: "#000",
-                  backgroundColor: "#e5edfb",
+                "& .MuiFilledInput-root": {
+                  backgroundColor: password ? "#e5edfb" : "inherit",
                 },
                 "& .MuiFormLabel-root.Mui-focused": {
                   color: "#000",
@@ -233,7 +270,7 @@ const Signup = () => {
             <div className="error" ref={passwordErrorRef}>
               Your password must contain between 4 and 60 characters.
             </div>
-            <button type="submit" className="signinBtn">
+            <button className="signinBtn" onClick={handlesignup}>
               Sign up
             </button>
           </form>

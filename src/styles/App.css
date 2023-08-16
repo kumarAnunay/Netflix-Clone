@@ -48,7 +48,6 @@
     padding: 16px 20px;
     width: 100%;
     border-bottom: 2px solid #e87c03 !important;
-    color: #8c8c8c !important;
 }
 
 .input::after {
@@ -242,18 +241,6 @@
     margin-right: 50px;
     width: 100px;
     font-weight: normal;
-}
-
-.success {
-    margin-top: 5px;
-    font-size: 18px;
-    color: green;
-    background-color: rgba(0, 255, 0, 0.1);
-    text-align: center;
-    padding: 10px 8px;
-    border: 1px solid #2f912f;
-    border-radius: 3px;
-    display: none;
 }
 
 .loginBttns {
@@ -1094,8 +1081,8 @@
     background-color: rgba(0, 0, 0, .75) !important;
     border: 1px solid hsla(0, 0%, 100%, .15) !important;
     padding: 10px !important;
+    z-index: 1000;
 }
-
 
 
 /* Footer */
@@ -1492,7 +1479,7 @@
     }
 
     .movieTrailerImage {
-        height: 80vh;
+        height: 100vh;
     }
 }
 
@@ -1522,10 +1509,12 @@
     z-index: 100;
     transition: transform 0.3s;
     transform: scale(1.1);
+    box-shadow: rgba(0, 0, 0, 0.3);
 }
 
 .movieCardContainer:hover .movieImage {
     height: 70%;
+    box-shadow: none;
 }
 
 .movieImage {
@@ -1533,8 +1522,7 @@
     height: 100%;
     margin-bottom: -10px;
     border-radius: 4px;
-    box-shadow: 0px 0px 5px rgba(229, 9, 20, 0.3);
-    filter: contrast(1.1);
+    box-shadow: 0px 0px 3px rgba(229, 9, 20, 0.7);
 }
 
 .movieCardContent {
@@ -1649,6 +1637,32 @@
     .moviesContainer {
         padding: 0;
         padding-top: 120px;
+    }
+
+    .movieCardContentTitle {
+        font-size: 10px;
+    }
+
+    .movieCardContentDescription {
+        font-size: 8px;
+    }
+
+    .movieCardContainer:hover .movieImage {
+        height: 60%;
+    }
+
+    .playContentBtn,
+    .addContentBtn {
+        font-size: 10px;
+    }
+
+    .playContentBtn {
+        padding: 2px 5px 2px 0px;
+    }
+
+    .playBtnIcon,
+    .addBtnIcon {
+        font-size: 10px !important;
     }
 }
 
@@ -1780,7 +1794,7 @@
 @media (max-width: 480px) {
     .movieCardContainer {
         width: 150px;
-        height: 120px;
+        height: 140px;
     }
 
     .arrowIcon {
@@ -1794,6 +1808,7 @@
     .categoriesMovieList {
         overflow-x: auto;
         padding: 10px;
+        padding-bottom: 65px;
     }
 
 
@@ -1808,14 +1823,14 @@
     }
 
     .movieCategoriesContainer {
-        padding-top: 0;
+        padding-top: 40px;
     }
 }
 
 
 /* mylist */
 
-.myListPage {
+.myListContainer {
     background: #141414;
     min-height: 100vh;
 }

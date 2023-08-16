@@ -2,7 +2,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Default from "./containers/Default";
 import Signin from "./containers/Signin";
 import Signup from "./containers/Signup";
-import LoginCheck from "./components/LoginCheck";
 import Home from "./containers/Home";
 import MyList from "./containers/MyList";
 import Movies from "./containers/Movies";
@@ -10,14 +9,27 @@ import TvShows from "./containers/TvShows";
 import Webseries from "./containers/Webseries";
 import Notifications from "./containers/Notifications";
 import ManageProfile from "./containers/ManageProfile";
+import Account from "./containers/Account";
 import TransferProfile from "./containers/TransferProfile";
 import SubscriptionStep1 from "./containers/SubscriptionStep1";
 import SubscriptionStep2 from "./containers/SubscriptionStep2";
 import Payment from "./containers/Payment";
 import HelpCentre from "./containers/HelpCentre";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { useAuth } from "./AuthContext";
 import "./styles/App.css";
+import { useEffect } from "react";
 
 function App() {
+  const { dispatch } = useAuth();
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("authToken");
+    if (storedToken) {
+      dispatch({ type: "LOGIN", payload: storedToken });
+    }
+  }, [dispatch]);
+
   const router = createBrowserRouter([
     {
       path: `/`,
@@ -33,99 +45,55 @@ function App() {
     },
     {
       path: `/home`,
-      element: (
-        <LoginCheck>
-          <Home />
-        </LoginCheck>
-      ),
+      element: <ProtectedRoute element={<Home />} />,
     },
     {
       path: `/notifications`,
-      element: (
-        <LoginCheck>
-          <Notifications />
-        </LoginCheck>
-      ),
+      element: <ProtectedRoute element={<Notifications />} />,
     },
     {
       path: `/manage-profile`,
-      element: (
-        <LoginCheck>
-          <ManageProfile />
-        </LoginCheck>
-      ),
+      element: <ProtectedRoute element={<ManageProfile />} />,
     },
     {
       path: `/transfer-profile`,
-      element: (
-        <LoginCheck>
-          <TransferProfile />
-        </LoginCheck>
-      ),
+      element: <ProtectedRoute element={<TransferProfile />} />,
+    },
+    {
+      path: `/account`,
+      element: <ProtectedRoute element={<Account />} />,
     },
     {
       path: `/help-centre`,
-      element: (
-        <LoginCheck>
-          <HelpCentre />
-        </LoginCheck>
-      ),
+      element: <ProtectedRoute element={<HelpCentre />} />,
     },
     {
       path: `/subscription-step1`,
-      element: (
-        <LoginCheck>
-          <SubscriptionStep1 />
-        </LoginCheck>
-      ),
+      element: <ProtectedRoute element={<SubscriptionStep1 />} />,
     },
     {
       path: `/subscription-step2`,
-      element: (
-        <LoginCheck>
-          <SubscriptionStep2 />
-        </LoginCheck>
-      ),
+      element: <ProtectedRoute element={<SubscriptionStep2 />} />,
     },
     {
       path: `/payment`,
-      element: (
-        <LoginCheck>
-          <Payment />
-        </LoginCheck>
-      ),
+      element: <ProtectedRoute element={<Payment />} />,
     },
     {
       path: `/my-list`,
-      element: (
-        <LoginCheck>
-          <MyList />
-        </LoginCheck>
-      ),
+      element: <ProtectedRoute element={<MyList />} />,
     },
     {
       path: `/movies`,
-      element: (
-        <LoginCheck>
-          <Movies />
-        </LoginCheck>
-      ),
+      element: <ProtectedRoute element={<Movies />} />,
     },
     {
       path: `/tv-shows`,
-      element: (
-        <LoginCheck>
-          <TvShows />
-        </LoginCheck>
-      ),
+      element: <ProtectedRoute element={<TvShows />} />,
     },
     {
       path: `/web-series`,
-      element: (
-        <LoginCheck>
-          <Webseries />
-        </LoginCheck>
-      ),
+      element: <ProtectedRoute element={<Webseries />} />,
     },
   ]);
 

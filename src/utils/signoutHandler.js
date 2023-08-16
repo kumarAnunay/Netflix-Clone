@@ -1,10 +1,10 @@
 import { auth } from "../firebase";
 
-export const signoutHandler = (navigate) => {
+export const signoutHandler = (dispatch, navigate) => {
   auth
     .signOut()
     .then(() => {
-      window.location.reload();
+      dispatch({ type: "LOGOUT" });
       navigate("/");
     })
     .catch((error) => {

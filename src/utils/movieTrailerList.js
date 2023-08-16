@@ -6,19 +6,13 @@ export const movieTrailerLsit = [
       "In the film, Pathaan (Khan), an exiled RAW agent, works with ISI agent Rubina Mohsin (Padukone) to take down Jim (Abraham), a former RAW agent, who plans to attack India with a deadly virus. Produced by Aditya Chopra of Yash Raj Films, the film began principal photography in November 2020 in Mumbai.",
   },
   {
-    src: "https://wallpapercave.com/wp/wp6626745.jpg",
-    title: "Kick",
-    description:
-      "The movie begins in Poland where psychiatrist Shaina Mehra (Jacquline Fernandez)meets her future husband Police man Himanshu (Randeep Hooda), and comes clean about an affair she had with a weirdo Devi lal Singh (Salman Khan) who she breaks up as he is not serious about life and does not do anything unless it gives him.",
-  },
-  {
     src: "https://i.ytimg.com/vi/2JnbBTg_vBE/maxresdefault.jpg",
     title: "Chennai Express",
     description:
       "It stars Deepika Padukone and Shah Rukh Khan with Nikitin Dheer, Sathyaraj, Kamini Kaushal and Lekh Tandon in supporting roles. The film revolves around Rahul Mithaiwala, a rich man who accidentally boards the eponymous train and journeys from Mumbai to Rameswaram with the daughter of an influential don.",
   },
   {
-    src: "https://wallpaperaccess.com/full/1494461.jpg",
+    src: "https://wallpaper-house.com/data/out/6/wallpaper2you_82097.jpg",
     title: "2 States",
     description:
       "Krish Malhotra, a fresh engineer from IIT Delhi, now a student pursuing his MBA at IIM Ahmedabad, Gujarat, comes from a troubled, rich family of Punjabi Hindu origin based in New Delhi. His mother, Kavita, is often shown having a troubled relationship with his alcoholic father, Vikram Malhotra.",
@@ -72,7 +66,7 @@ export const movieTrailerLsit = [
       "Narrated through two parallel dramas, one in the present and the other set ten years in the past, the story follows the friendship of three students at an Indian engineering college and is a satire about the social pressures under the Indian education system.",
   },
   {
-    src: "https://cpadmin.b4uaflam.com/uploads/wallpapers/2270_0_30588400_1651837905.jpg",
+    src: "https://i.ytimg.com/vi/0LZwSbiSIeY/maxresdefault.jpg",
     title: "Bhool Bhuliya 2",
     description:
       "When strangers Reet and Ruhan cross paths, their journey leads to an abandoned mansion and a dreaded spirit that has been trapped for 18 years. When strangers Reet and Ruhan cross paths, their journey leads to an abandoned mansion and a dreaded spirit that has been trapped for 18 years.",

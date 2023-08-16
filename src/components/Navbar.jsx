@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router";
 import netfilxLogo from "../assets/images/headerLogo.png";
 import SearchIcon from "@mui/icons-material/Search";
+import CloseIcon from "@mui/icons-material/Close";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import { Dropdown } from "@mui/base/Dropdown";
 import { Menu } from "@mui/base/Menu";
@@ -15,6 +16,7 @@ import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import { signoutHandler } from "../utils/signoutHandler";
+import { useAuth } from "../AuthContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -22,6 +24,15 @@ const Navbar = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchInputVisivle, setSearchInputVisible] = useState(false);
   const seachIconRef = useRef(null);
+  const { dispatch } = useAuth();
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(() => {
+    const storedUserInfo = localStorage.getItem("userInfo");
+    if (storedUserInfo) {
+      setUserInfo(JSON.parse(storedUserInfo));
+    }
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -74,13 +85,6 @@ const Navbar = () => {
       <div className="rightNav">
         {searchInputVisivle && (
           <div className="searchContainer">
-            <SearchIcon
-              className="searchIcon"
-              onClick={() => {
-                setSearchInputVisible(false);
-                seachIconRef.current.style.display = "block";
-              }}
-            />
             <input
               type="text"
               id="search"
@@ -88,6 +92,13 @@ const Navbar = () => {
               className="searchInput"
               onChange={inputValueHandler}
               placeholder="Search"
+            />
+            <CloseIcon
+              className="searchIcon closeSearchIcon"
+              onClick={() => {
+                setSearchInputVisible(false);
+                seachIconRef.current.style.display = "block";
+              }}
             />
           </div>
         )}
@@ -108,7 +119,7 @@ const Navbar = () => {
             <StyledMenuItem className="accountItems">
               <div className="icon_text">
                 <img src={accoutImg} alt="Account" className="useAccountImg" />
-                <p className="iconText">Username</p>
+                <p className="iconText">{userInfo?.userName}</p>
               </div>
             </StyledMenuItem>
             <StyledMenuItem className="accountItems">
@@ -118,7 +129,7 @@ const Navbar = () => {
                   className="iconText"
                   onClick={() => navigate("/manage-profile")}
                 >
-                  Manage Profiles
+                  Manage Profile
                 </p>
               </div>
             </StyledMenuItem>
@@ -136,7 +147,9 @@ const Navbar = () => {
             <StyledMenuItem className="accountItems">
               <div className="icon_text">
                 <PermIdentityOutlinedIcon className="accountIcons" />
-                <p className="iconText">Account</p>
+                <p className="iconText" onClick={() => navigate("/account")}>
+                  Account
+                </p>
               </div>
             </StyledMenuItem>
             <StyledMenuItem className="accountItems">
@@ -165,7 +178,7 @@ const Navbar = () => {
               <div className="lastIcon">
                 <p
                   className="iconText"
-                  onClick={() => signoutHandler(navigate)}
+                  onClick={() => signoutHandler(dispatch, navigate)}
                 >
                   Sign out of Netflix
                 </p>

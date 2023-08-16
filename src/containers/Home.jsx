@@ -175,12 +175,12 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {newReleases.map((movie) => (
+            {newReleases.map((movie, index) => (
               <MovieCard
-                key={movie.id}
-                thumbmail={movie.thumbnail}
+                thumbnail={movie.thumbnail}
                 title={movie.title}
                 description={movie.description}
+                showId={movie._id}
                 className="categoriesCard"
               />
             ))}
@@ -207,12 +207,12 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {trendingContent.map((movie) => (
+            {trendingContent.map((movie, index) => (
               <MovieCard
-                key={movie.id}
-                thumbmail={movie.thumbnail}
+                thumbnail={movie.thumbnail}
                 title={movie.title}
                 description={movie.description}
+                showId={movie._id}
                 className="categoriesCard"
               />
             ))}
@@ -239,12 +239,12 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {recommendedMovies.map((movie) => (
+            {recommendedMovies.map((movie, index) => (
               <MovieCard
-                key={movie.id}
-                thumbmail={movie.thumbnail}
+                thumbnail={movie.thumbnail}
                 title={movie.title}
                 description={movie.description}
+                showId={movie._id}
                 className="categoriesCard"
               />
             ))}
@@ -271,12 +271,12 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {adventureMovies.map((movie) => (
+            {adventureMovies.map((movie, index) => (
               <MovieCard
-                key={movie.id}
-                thumbmail={movie.thumbnail}
+                thumbnail={movie.thumbnail}
                 title={movie.title}
                 description={movie.description}
+                showId={movie._id}
                 className="categoriesCard"
               />
             ))}
@@ -303,12 +303,12 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {comedyMovies.map((movie) => (
+            {comedyMovies.map((movie, index) => (
               <MovieCard
-                key={movie.id}
-                thumbmail={movie.thumbnail}
+                thumbnail={movie.thumbnail}
                 title={movie.title}
                 description={movie.description}
+                showId={movie._id}
                 className="categoriesCard"
               />
             ))}
@@ -335,12 +335,12 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {horrorMovies.map((movie) => (
+            {horrorMovies.map((movie, index) => (
               <MovieCard
-                key={movie.id}
-                thumbmail={movie.thumbnail}
+                thumbnail={movie.thumbnail}
                 title={movie.title}
                 description={movie.description}
+                showId={movie._id}
                 className="categoriesCard"
               />
             ))}
@@ -367,12 +367,12 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {romanticMovies.map((movie) => (
+            {romanticMovies.map((movie, index) => (
               <MovieCard
-                key={movie.id}
-                thumbmail={movie.thumbnail}
+                thumbnail={movie.thumbnail}
                 title={movie.title}
                 description={movie.description}
+                showId={movie._id}
                 className="categoriesCard"
               />
             ))}

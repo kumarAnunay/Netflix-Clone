@@ -1,24 +1,32 @@
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { TextField } from "@mui/material";
 import NavbarSign from "../components/NavbarSign";
 import FooterSign from "../components/FooterSign";
+import axios from "axios";
+import { useAuth } from "../AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signin = () => {
   const [signin, setSignin] = useState({
     email: "",
     password: "",
   });
+
+  const [signinStatus, setSigninStatus] = useState({
+    success: false,
+  });
+
   const [rememberMe, setRememberMe] = useState(false);
 
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
   const emailErrorRef = useRef(null);
   const passwordErrorRef = useRef(null);
   const learnRef = useRef(null);
   const learnMoreRef = useRef(null);
   const navigate = useNavigate();
+  const { dispatch } = useAuth();
 
   const { email, password } = signin;
 
@@ -42,29 +50,115 @@ const Signin = () => {
     setRememberMe(!rememberMe);
   };
 
-  const handleSignin = (event) => {
+  const handleSignin = async (event) => {
     event.preventDefault();
-    // if (email !== userRef.current?.email) {
-    //   emailRef.current.style.outlineColor = "red";
-    //   emailRef.current.focus();
-    //   emailErrorRef.current.style.display = "block";
-    // }
-    // if (password !== userRef.current?.password) {
-    //   passwordRef.current.style.outlineColor = "red";
-    //   passwordRef.current.focus();
-    //   passwordErrorRef.current.style.display = "block";
-    // }
-    // if (
-    //   email === userRef.current?.email &&
-    //   password === userRef.current?.password
-    // ) {
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({ ...userRef.current, islogged: true })
-    //   );
-    //   navigate("/home");
-    //   window.location.reload();
-    // }
+
+    const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+    if (!email.match(emailPattern)) {
+      emailErrorRef.current.style.display = "block";
+    }
+    if (password.length < 4 || password.length > 60) {
+      passwordErrorRef.current.style.display = "block";
+    }
+    try {
+      const response = await axios.post(
+        "https://academics.newtonschool.co/api/v1/user/login",
+        {
+          email,
+          password,
+        },
+        {
+          headers: {
+            projectId: "lb0fl09ncsvt",
+          },
+        }
+      );
+
+      const token = response.data.token;
+
+      const userName = response.data.data.name;
+      const userEmail = response.data.data.email;
+      const userPassword = response.data.data.password;
+
+      const userDetails = {
+        userName: userName,
+        userEmail: userEmail,
+        userPassword: userPassword,
+      };
+      //Used for protected routes it prevents the token reset while refreshing the page
+      localStorage.setItem("authToken", token);
+
+      //Used to persist userinfo
+      localStorage.setItem("userInfo", JSON.stringify(userDetails));
+
+      dispatch({ type: "LOGIN", payload: token });
+      dispatch({ type: "USER_INFO", payload: userDetails });
+
+      // console.log("Token set:", token);
+
+      setSigninStatus({
+        success: true,
+      });
+
+      toast.success("Login Successfull.", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      console.error("Login Error:", error);
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message === "Email or password is incorrect"
+      ) {
+        toast.error("Email or password is incorrect.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message === "User not found"
+      ) {
+        toast.error("User with this email is not registered.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } else {
+        setSigninStatus({
+          success: false,
+        });
+        toast.error("Error in Signing in. Please try again.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+    }
   };
 
   const learnMore = () => {
@@ -72,12 +166,21 @@ const Signin = () => {
     learnMoreRef.current.style.display = "block";
   };
 
+  useEffect(() => {
+    if (signinStatus.success) {
+      setTimeout(() => {
+        navigate("/home");
+      }, 2000);
+    }
+  }, [signinStatus]);
+
   return (
     <div className="sign">
       <div className="logo">
         <NavbarSign onClick={() => navigate("/")} />
       </div>
       <div className="container">
+        <ToastContainer />
         <div className="signinForm">
           <h1 className="signinHeader">Sign In</h1>
           <form
@@ -90,15 +193,14 @@ const Signin = () => {
               id="email"
               label="Email or phone number"
               variant="filled"
-              ref={emailRef}
               className="input"
+              value={email}
               sx={{
                 "& .MuiFilledInput-underline:after": {
                   borderBottom: "none",
                 },
-                "& .MuiFilledInput-root.Mui-focused": {
-                  color: "#000",
-                  backgroundColor: "#e5edfb",
+                "& .MuiFilledInput-root": {
+                  backgroundColor: email ? "#e5edfb" : "inherit",
                 },
                 "& .MuiFormLabel-root.Mui-focused": {
                   color: "#000",
@@ -116,15 +218,14 @@ const Signin = () => {
               id="password"
               label="Password"
               variant="filled"
-              ref={passwordRef}
               className="input input2"
+              value={password}
               sx={{
                 "& .MuiFilledInput-underline:after": {
                   borderBottom: "none",
                 },
-                "& .MuiFilledInput-root.Mui-focused": {
-                  color: "#000",
-                  backgroundColor: "#e5edfb",
+                "& .MuiFilledInput-root": {
+                  backgroundColor: email ? "#e5edfb" : "inherit",
                 },
                 "& .MuiFormLabel-root.Mui-focused": {
                   color: "#000",
@@ -142,15 +243,15 @@ const Signin = () => {
             </button>
           </form>
           <div className="forgot">
-            <div class="inputLabel">
+            <div className="inputLabel">
               <input
                 type="checkbox"
                 id="checkbox"
-                class="checkbox-input"
+                className="checkbox-input"
                 checked={rememberMe}
                 onChange={handleRememberMeChange}
               />
-              <label for="checkbox" class="checkbox-label">
+              <label htmlFor="checkbox" className="checkbox-label">
                 Remember Me
               </label>
             </div>

@@ -1,10 +1,16 @@
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 
-const MovieCard = ({ key, thumbmail, title, description, className = "" }) => {
+const MovieCard = ({
+  thumbnail,
+  title,
+  description,
+  showId,
+  className = "",
+}) => {
   return (
-    <div className={`movieCardContainer ${className}`} key={key}>
-      <img src={thumbmail} alt="Movie_Image" className="movieImage" />
+    <div className={`movieCardContainer ${className}`}>
+      <img src={thumbnail} alt="Movie_Image" className="movieImage" />
       <div className="movieCardContent">
         <div className="movieCardContentBtn">
           <button className="playContentBtn">

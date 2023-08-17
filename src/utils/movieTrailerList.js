@@ -42,7 +42,7 @@ export const movieTrailerLsit = [
       "A sequel to the 2001 film Gadar: Ek Prem Katha, the film stars Sunny Deol, Ameesha Patel and Utkarsh Sharma reprising their roles from the first film. Set 17 years after the first film, Gadar 2 follows Tara Singh as he searches for his imprisoned son during the Indo-Pakistani War of 1971.",
   },
   {
-    src: "https://cpadmin.b4uaflam.com/uploads/wallpapers/2385_0_61143500_1689591708.jpg",
+    src: "https://assets-in.bmscdn.com/discovery-catalog/events/et00361712-nldzfskgwv-landscape.jpg",
     title: "OMG 2",
     description:
       "OMG 2 is the story of Kanti Sharan Mudgal, a staunch devotee of Lord Shiva; a simple man, a loving father and a caring husband. One day his son, Vivek, is blamed for immoral conduct and thrown out of school. Upon confrontation, Kanti realises that his son has been a victim of misinformation and misguidance.",
@@ -82,5 +82,29 @@ export const movieTrailerLsit = [
     title: "Bahubali",
     description:
       "A child from the Mahishmati kingdom is raised by tribal people and one day learns about his royal heritage, his father's bravery in battle and a mission to overthrow the incumbent ruler.",
+  },
+  {
+    src: "https://wallpapercave.com/wp/wp8807414.jpg",
+    title: "Ranjhana",
+    description:
+      "Ranjhana is the story of Kundan, his journey from a 13 year old boy in love who goes on to become a committed, spirited young man, who's experiences in life made him the person he is today. It's the STORY OF LOVE.",
+  },
+  {
+    src: "https://assets.thehansindia.com/h-upload/2022/03/24/1283372-rrr.webp",
+    title: "RRR",
+    description:
+      "RRR is an entirely fictitious story incorporating the lives of two real-life Indian revolutionaries, namely Alluri Sitarama Raju and Komaram Bheem, who fought against the British Raj and the Nizam of Hyderabad respectively. Charan plays Rama Raju while Rama Rao plays Komaram Bheem.",
+  },
+  {
+    src: "https://i.ytimg.com/vi/eU9wf5eZT84/maxresdefault.jpg",
+    title: "DDLJ",
+    description:
+      "The plot revolves around Raj and Simran, two young non-resident Indians, who fall in love during a vacation through Europe with their friends. Raj tries to win over Simran's family so the couple can marry, but Simran's father has long since promised her hand to his friend's son.",
+  },
+  {
+    src: "https://stat5.bollywoodhungama.in/wp-content/uploads/2016/03/50325001.jpg",
+    title: "DON",
+    description:
+      "Don is the reboot version of the 1978 film of the same title, and follows the titular criminal's look-alike who has been sent on a clandestine mission to impersonate Don after he is wounded in a chase, and to gather intelligence on the drug mafia. Adapted: Javed Akhtar.",
   },
 ];

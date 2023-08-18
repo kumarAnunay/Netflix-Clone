@@ -50,13 +50,3 @@ const MovieTrailer = () => {
 };
 
 export default MovieTrailer;
-
-{
-  /* <video controls className="movieTrailerImage">
-          <source
-            src={movieTrailer[currentIndex]?.video_url}
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video> */
-}

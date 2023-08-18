@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MovieCard from "../components/MovieCard";
 
-const FetchMovies = ({ type }) => {
+const FetchMovies = ({ type, match }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
 
@@ -45,8 +45,9 @@ const FetchMovies = ({ type }) => {
             <MovieCard
               thumbnail={movie.thumbnail}
               title={movie.title}
-              description={movie.description}
               showId={movie._id}
+              keywords={movie.keywords}
+              match={match}
             />
           ))}
         </div>

@@ -175,13 +175,14 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {newReleases.map((movie, index) => (
+            {newReleases.map((movie) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
-                description={movie.description}
+                keywords={movie.keywords}
                 showId={movie._id}
                 className="categoriesCard"
+                match="80% Match"
               />
             ))}
           </div>
@@ -207,13 +208,14 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {trendingContent.map((movie, index) => (
+            {trendingContent.map((movie) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
-                description={movie.description}
+                keywords={movie.keywords}
                 showId={movie._id}
                 className="categoriesCard"
+                match="90% Match"
               />
             ))}
           </div>
@@ -239,13 +241,14 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {recommendedMovies.map((movie, index) => (
+            {recommendedMovies.map((movie) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
-                description={movie.description}
+                keywords={movie.keywords}
                 showId={movie._id}
                 className="categoriesCard"
+                match="88% Match"
               />
             ))}
           </div>
@@ -271,13 +274,14 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {adventureMovies.map((movie, index) => (
+            {adventureMovies.map((movie) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
-                description={movie.description}
+                keywords={movie.keywords}
                 showId={movie._id}
                 className="categoriesCard"
+                match="60% Match"
               />
             ))}
           </div>
@@ -303,13 +307,14 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {comedyMovies.map((movie, index) => (
+            {comedyMovies.map((movie) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
-                description={movie.description}
+                keywords={movie.keywords}
                 showId={movie._id}
                 className="categoriesCard"
+                match="65% Match"
               />
             ))}
           </div>
@@ -335,13 +340,14 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {horrorMovies.map((movie, index) => (
+            {horrorMovies.map((movie) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
-                description={movie.description}
+                keywords={movie.keywords}
                 showId={movie._id}
                 className="categoriesCard"
+                match="73% Match"
               />
             ))}
           </div>
@@ -367,13 +373,14 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {romanticMovies.map((movie, index) => (
+            {romanticMovies.map((movie) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
-                description={movie.description}
+                keywords={movie.keywords}
                 showId={movie._id}
                 className="categoriesCard"
+                match="55% Match"
               />
             ))}
           </div>

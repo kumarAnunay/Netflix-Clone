@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import netfilxLogo from "../assets/images/headerLogo.png";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
@@ -20,12 +20,39 @@ import { useAuth } from "../AuthContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [navShow, setNavShow] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [searchInputVisivle, setSearchInputVisible] = useState(false);
   const seachIconRef = useRef(null);
   const { dispatch } = useAuth();
   const [userInfo, setUserInfo] = useState(null);
+  const [activeButton, setActiveButton] = useState("");
+
+  useEffect(() => {
+    const currentPath = location.pathname;
+
+    switch (currentPath) {
+      case "/home":
+        setActiveButton("home");
+        break;
+      case "/movies":
+        setActiveButton("movies");
+        break;
+      case "/my-list":
+        setActiveButton("my-list");
+        break;
+      case "/tv-shows":
+        setActiveButton("tv-shows");
+        break;
+      case "/web-series":
+        setActiveButton("web-series");
+        break;
+      default:
+        setActiveButton("");
+        break;
+    }
+  }, [location]);
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem("userInfo");
@@ -68,16 +95,44 @@ const Navbar = () => {
           onClick={() => navigate("/home")}
         />
         <ul className="navList">
-          <li className="listItem" onClick={() => navigate("/my-list")}>
+          <li
+            className={`listItem ${
+              activeButton === "home" ? "activeListItem" : ""
+            }`}
+            onClick={() => navigate("/home")}
+          >
+            Home
+          </li>
+          <li
+            className={`listItem ${
+              activeButton === "my-list" ? "activeListItem" : ""
+            }`}
+            onClick={() => navigate("/my-list")}
+          >
             My List
           </li>
-          <li className="listItem" onClick={() => navigate("/movies")}>
+          <li
+            className={`listItem ${
+              activeButton === "movies" ? "activeListItem" : ""
+            }`}
+            onClick={() => navigate("/movies")}
+          >
             Movies
           </li>
-          <li className="listItem" onClick={() => navigate("/tv-shows")}>
+          <li
+            className={`listItem ${
+              activeButton === "tv-shows" ? "activeListItem" : ""
+            }`}
+            onClick={() => navigate("/tv-shows")}
+          >
             TV Shows
           </li>
-          <li className="listItem" onClick={() => navigate("/web-series")}>
+          <li
+            className={`listItem ${
+              activeButton === "web-series" ? "activeListItem" : ""
+            }`}
+            onClick={() => navigate("/web-series")}
+          >
             Web Series
           </li>
         </ul>

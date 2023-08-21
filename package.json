@@ -9,6 +9,7 @@
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.3",
     "axios": "^1.4.0",
+    "bcryptjs": "^2.4.3",
     "firebase": "^10.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -101,7 +101,7 @@ const Signin = () => {
         success: true,
       });
 
-      toast.success("Login Successfull.", {
+      toast.success("Signin Successfull.", {
         position: "top-right",
         autoClose: 1500,
         hideProgressBar: false,
@@ -114,21 +114,6 @@ const Signin = () => {
     } catch (error) {
       console.error("Login Error:", error);
       if (
-        error.response &&
-        error.response.data &&
-        error.response.data.message === "Email or password is incorrect"
-      ) {
-        toast.error("Email or password is incorrect.", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-        });
-      } else if (
         error.response &&
         error.response.data &&
         error.response.data.message === "User not found"
@@ -147,7 +132,7 @@ const Signin = () => {
         setSigninStatus({
           success: false,
         });
-        toast.error("Error in Signing in. Please try again.", {
+        toast.error("Email or password is incorrect", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -225,7 +210,7 @@ const Signin = () => {
                   borderBottom: "none",
                 },
                 "& .MuiFilledInput-root": {
-                  backgroundColor: email ? "#e5edfb" : "inherit",
+                  backgroundColor: password ? "#e5edfb" : "inherit",
                 },
                 "& .MuiFormLabel-root.Mui-focused": {
                   color: "#000",

@@ -22,7 +22,7 @@
     height: 55px;
     width: 175px;
     margin: 5px 0;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 30px;
     cursor: pointer;
 }
@@ -264,6 +264,10 @@
 
 @media screen and (max-width:720px) {
 
+    .container {
+        margin-top: 80px;
+    }
+
     .signinFooter,
     .signupFooter {
         padding: 20px 10px;
@@ -276,7 +280,7 @@
     }
 
     .headerLogo {
-        height: 55px;
+        height: 40px;
         width: 140px;
         margin-left: 20px;
     }
@@ -542,8 +546,8 @@
 @media screen and (max-width:720px) {
 
     .logo_Default {
-        width: 150px;
-        height: 50px;
+        width: 140px;
+        height: 45px;
     }
 
     .detail>h1 {
@@ -934,14 +938,14 @@
 }
 
 .listItem {
-    color: white;
+    color: #e5e5e5;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
     cursor: pointer;
     font-weight: 500;
 }
 
 .listItem:hover {
-    color: #dfdfdf;
+    color: #fff;
 }
 
 .navbarLogo {
@@ -972,10 +976,15 @@
 }
 
 .icons {
-    color: white !important;
+    color: #fff !important;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5) !important;
     cursor: pointer;
     font-size: 30px !important;
+}
+
+.activeListItem {
+    color: #fff;
+    font-weight: 600;
 }
 
 @media screen and (max-width: 625px) {
@@ -1021,7 +1030,7 @@
     }
 
     .navbarLogo {
-        width: 70x;
+        width: 70px;
     }
 
     .leftNav {
@@ -1874,6 +1883,7 @@
     background: #141414;
     padding: 120px 30px 30px;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 @media screen and (max-width: 730px) {
@@ -1944,6 +1954,7 @@
 }
 
 .settings {
+    width: 50%;
     border: none;
 }
 
@@ -1982,7 +1993,7 @@
 .cancelMemebership {
     color: #737373;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 16px;
     margin-bottom: 5px;
 }
 
@@ -2014,6 +2025,11 @@
     font-weight: 700;
 }
 
+.userEmailAccount {
+    color: black;
+    font-weight: bolder;
+}
+
 .accountIcon {
     font-size: 25px !important;
     color: #e50914 !important;
@@ -2026,6 +2042,7 @@
     font-weight: normal;
     font-size: 16px;
     margin-bottom: 5px;
+    text-align: right;
 }
 
 .accountDetailsBtn:hover {
@@ -2083,6 +2100,151 @@
 
     .new {
         font-size: 10px;
+    }
+}
+
+/* update-password */
+
+.accountDropdown {
+    margin-right: 20px;
+}
+
+.updatePasswordPage {
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #c5c5c5;
+    padding: 60px 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px
+}
+
+.inputContainer {
+    width: 45%;
+}
+
+.inputAccount {
+    width: 100%;
+    padding: 14px;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #737373;
+}
+
+.inputAccount:focus {
+    outline: 2px solid #057dff;
+    border: none;
+}
+
+.forgotPassword {
+    color: #057dff;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+}
+
+.inputCheckboxAccount {
+    margin-right: 8px;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.accountpasswordError {
+    color: #b92d2b;
+    font-size: 13px;
+    margin-top: 5px;
+    display: none;
+}
+
+.updatePasswordInput {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.accountBtns {
+    display: flex;
+    gap: 10px;
+}
+
+.saveAccountBtn {
+    padding: 12px 35px;
+    background-color: #057dff;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.cancelAccountBtn {
+    padding: 12px 35px;
+    background-color: #b3b3b3;
+    color: #333;
+    font-weight: 600;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.saveAccountBtn:hover {
+    background-color: #1b83f3;
+}
+
+.cancelAccountBtn:hover {
+    background-color: #c7c7c7;
+}
+
+@media screen and (max-width: 500px) {
+    .updatePasswordPage {
+        padding: 40px 50px;
+    }
+
+    .inputContainer {
+        width: 100%;
+    }
+
+    .inputAccount {
+        font-size: 12px;
+    }
+
+    .changeHeading {
+        font-size: 20px;
+    }
+
+    .changeText {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 501px) and (max-width: 750px) {
+    .updatePasswordPage {
+        padding: 50px 70px;
+    }
+
+    .inputContainer {
+        width: 80%;
+    }
+
+    .inputAccount {
+        font-size: 14px;
+    }
+
+    .changeHeading {
+        font-size: 22px;
+    }
+
+    .changeText {
+        font-size: 16px;
     }
 }
 

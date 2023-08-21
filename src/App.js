@@ -10,6 +10,7 @@ import Webseries from "./containers/Webseries";
 import Notifications from "./containers/Notifications";
 import ManageProfile from "./containers/ManageProfile";
 import Account from "./containers/Account";
+import UpdatePassword from "./containers/UpdatePassword";
 import TransferProfile from "./containers/TransferProfile";
 import SubscriptionStep1 from "./containers/SubscriptionStep1";
 import SubscriptionStep2 from "./containers/SubscriptionStep2";
@@ -62,6 +63,10 @@ function App() {
     {
       path: `/account`,
       element: <ProtectedRoute element={<Account />} />,
+    },
+    {
+      path: `/update-password`,
+      element: <ProtectedRoute element={<UpdatePassword />} />,
     },
     {
       path: `/help-centre`,

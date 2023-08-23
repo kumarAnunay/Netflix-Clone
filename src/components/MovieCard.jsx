@@ -84,11 +84,6 @@ const MovieCard = ({
               <ExpandMoreIcon className="moreInfoIcon" />
             </button>
           </Tooltip>
-          {/* <ContentDetailsModal
-            isOpen={open}
-            onClose={handleClose}
-            showId={showId}
-          /> */}
         </div>
         <p className="matchContent">
           {match}

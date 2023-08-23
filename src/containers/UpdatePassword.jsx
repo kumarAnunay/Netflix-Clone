@@ -14,7 +14,6 @@ import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import { useEffect, useState, useRef } from "react";
-import { useAuth } from "../AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import bcrypt from "bcryptjs";
@@ -25,7 +24,6 @@ const storedToken = localStorage.getItem("authToken");
 const UpdatePassword = () => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({});
-  const { dispatch } = useAuth();
   const [inputValue, setInputValue] = useState({
     oldPassword: "",
     newPassword: "",
@@ -154,7 +152,6 @@ const UpdatePassword = () => {
         );
 
         if (signOutAllDevices) {
-          dispatch({ type: "LOGOUT" });
           localStorage.removeItem("authToken");
           localStorage.removeItem("userInfo");
           navigate("/signin");
@@ -201,14 +198,17 @@ const UpdatePassword = () => {
   };
 
   useEffect(() => {
+    let timeoutId;
     if (isUpdate) {
-      setTimeout(() => {
-        dispatch({ type: "LOGOUT" });
+      timeoutId = setTimeout(() => {
         localStorage.removeItem("authToken");
         localStorage.removeItem("userInfo");
         navigate("/signin");
       }, 2000);
     }
+    return () => {
+      clearTimeout(timeoutId);
+    };
   }, [isUpdate]);
 
   return (
@@ -286,7 +286,7 @@ const UpdatePassword = () => {
               <div className="lastIcon">
                 <p
                   className="iconText"
-                  onClick={() => signoutHandler(dispatch, navigate)}
+                  onClick={() => signoutHandler(navigate)}
                 >
                   Sign out of Netflix
                 </p>

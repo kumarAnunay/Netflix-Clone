@@ -14,13 +14,11 @@ import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import { useEffect, useState } from "react";
-import { useAuth } from "../AuthContext";
 import { signoutHandler } from "../utils/signoutHandler";
 
 const Account = () => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState(null);
-  const { dispatch } = useAuth();
   const [updatedImage, setUpdatedImage] = useState(null);
 
   useEffect(() => {
@@ -113,7 +111,7 @@ const Account = () => {
               <div className="lastIcon">
                 <p
                   className="iconText"
-                  onClick={() => signoutHandler(dispatch, navigate)}
+                  onClick={() => signoutHandler(navigate)}
                 >
                   Sign out of Netflix
                 </p>
@@ -185,7 +183,7 @@ const Account = () => {
           </div>
           <p
             className="accountDetailsBtn accountSignOutBtn cursorBtn"
-            onClick={() => signoutHandler(dispatch, navigate)}
+            onClick={() => signoutHandler(navigate)}
           >
             Sign out of all devices
           </p>

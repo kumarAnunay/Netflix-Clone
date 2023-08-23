@@ -891,8 +891,11 @@
 
 .searchSuggestionsContainer {
     display: none;
+    background: #141414;
+    padding: 40px 30px;
+    overflow-x: hidden;
     min-height: 100vh;
-    background-color: #141414;
+    border-bottom: 1px solid #737373;
 }
 
 .navigationBar {
@@ -947,6 +950,10 @@
 
 .searchIcon {
     margin-left: 5px;
+}
+
+.closeSearchIcon {
+    cursor: pointer;
 }
 
 .searchInput {
@@ -1740,6 +1747,16 @@
     }
 }
 
+@media screen and (max-width: 770px) {
+    .movieImage {
+        height: 90%;
+    }
+
+    .searchSuggestionsContainer {
+        padding: 15px 0;
+    }
+}
+
 @media screen and (max-width: 550px) {
 
     .moviesContainer {
@@ -1749,10 +1766,6 @@
 
     .movieCardContentTitle {
         font-size: 10px;
-    }
-
-    .movieImage {
-        height: 100%;
     }
 
     .movieCardContainer:hover .movieImage {

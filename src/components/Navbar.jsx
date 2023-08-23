@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate, useLocation } from "react-router";
 import netfilxLogo from "../assets/images/headerLogo.png";
@@ -16,8 +17,8 @@ import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import { signoutHandler } from "../utils/signoutHandler";
-import { useAuth } from "../AuthContext";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import MovieCard from "./MovieCard";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -26,11 +27,31 @@ const Navbar = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchInputVisivle, setSearchInputVisible] = useState(false);
   const seachIconRef = useRef(null);
-  const { dispatch } = useAuth();
   const [userInfo, setUserInfo] = useState(null);
   const [activeButton, setActiveButton] = useState("");
   const [updatedImage, setUpdatedImage] = useState(null);
   const searchContainerRef = useRef(null);
+  const [searchMovies, setSearchMovies] = useState([]);
+  const [searchedMovies, setSearchedMovies] = useState([]);
+
+  const fetchSeachMovies = async () => {
+    try {
+      const response = await axios.get(
+        "https://academics.newtonschool.co/api/v1/ott/show",
+        {
+          headers: {
+            projectId: "lb0fl09ncsvt",
+          },
+          params: {
+            filter: JSON.stringify({ type: "movie" }),
+          },
+        }
+      );
+      setSearchMovies(response.data.data);
+    } catch (error) {
+      console.error("Error fetching data from search:", error);
+    }
+  };
 
   useEffect(() => {
     const currentPath = location.pathname;
@@ -73,16 +94,18 @@ const Navbar = () => {
   }, [updatedImage]);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
+    const handleScroll = () => {
       if (window.scrollY > 80) {
         setNavShow("navShow");
       } else {
         setNavShow("");
       }
-    });
+    };
+
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", this);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
@@ -94,6 +117,21 @@ const Navbar = () => {
   const inputValueHandler = (event) => {
     setSearchInput(event.target.value);
   };
+
+  useEffect(() => {
+    if (searchInput) {
+      fetchSeachMovies();
+      searchContainerRef.current.style.display = "block";
+    } else {
+      searchContainerRef.current.style.display = "none";
+      setSearchMovies([]);
+    }
+
+    const searchResult = searchMovies.filter((movie) =>
+      movie.title.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    setSearchedMovies(searchResult);
+  }, [searchInput]);
 
   return (
     <div className="navigationBarContainer">
@@ -227,6 +265,8 @@ const Navbar = () => {
                 onClick={() => {
                   setSearchInputVisible(false);
                   seachIconRef.current.style.display = "block";
+                  searchContainerRef.current.style.display = "none";
+                  setSearchInput("");
                 }}
               />
             </div>
@@ -311,7 +351,7 @@ const Navbar = () => {
                 <div className="lastIcon">
                   <p
                     className="iconText"
-                    onClick={() => signoutHandler(dispatch, navigate)}
+                    onClick={() => signoutHandler(navigate)}
                   >
                     Sign out of Netflix
                   </p>
@@ -321,10 +361,21 @@ const Navbar = () => {
           </Dropdown>
         </div>
       </nav>
-      <div
-        className="searchSuggestionsContainer"
-        ref={searchContainerRef}
-      ></div>
+      <div className="searchSuggestionsContainer" ref={searchContainerRef}>
+        <div className="moviesContainer">
+          {searchedMovies.map((movie, index) => (
+            <MovieCard
+              thumbnail={movie.thumbnail}
+              title={movie.title}
+              showId={movie._id}
+              keywords={movie.keywords}
+              match="77%"
+              key={index}
+              videoUrl={movie.video_url}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

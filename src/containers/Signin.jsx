@@ -5,7 +5,6 @@ import { TextField } from "@mui/material";
 import NavbarSign from "../components/NavbarSign";
 import FooterSign from "../components/FooterSign";
 import axios from "axios";
-import { useAuth } from "../AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -26,7 +25,6 @@ const Signin = () => {
   const learnRef = useRef(null);
   const learnMoreRef = useRef(null);
   const navigate = useNavigate();
-  const { dispatch } = useAuth();
 
   const { email, password } = signin;
 
@@ -95,13 +93,9 @@ const Signin = () => {
       localStorage.setItem("userInfo", JSON.stringify(userDetails));
 
       //Used to persist Profile Image
-      localStorage.setItem("userInfo", JSON.stringify(userDetails));
-
-      dispatch({ type: "LOGIN", payload: token });
-      dispatch({ type: "USER_INFO", payload: userDetails });
+      localStorage.setItem("updateImage", JSON.stringify(profileImage));
 
       // console.log("Token set:", token);
-
       setSigninStatus({
         success: true,
       });

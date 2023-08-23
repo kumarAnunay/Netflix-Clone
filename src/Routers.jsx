@@ -1,22 +1,22 @@
 import { createBrowserRouter } from "react-router-dom";
-import Default from "../containers/Default";
-import Signin from "../containers/Signin";
-import Signup from "../containers/Signup";
-import Home from "../containers/Home";
-import MyList from "../containers/MyList";
-import Movies from "../containers/Movies";
-import TvShows from "../containers/TvShows";
-import Webseries from "../containers/Webseries";
-import Notifications from "../containers/Notifications";
-import ManageProfile from "../containers/ManageProfile";
-import Account from "../containers/Account";
-import UpdatePassword from "../containers/UpdatePassword";
-import TransferProfile from "../containers/TransferProfile";
-import SubscriptionStep1 from "../containers/SubscriptionStep1";
-import SubscriptionStep2 from "../containers/SubscriptionStep2";
-import Payment from "../containers/Payment";
-import HelpCentre from "../containers/HelpCentre";
-import ProtectedRoute from "../components/ProtectedRoute";
+import Default from "./containers/Default";
+import Signin from "./containers/Signin";
+import Signup from "./containers/Signup";
+import Home from "./containers/Home";
+import MyList from "./containers/MyList";
+import Movies from "./containers/Movies";
+import TvShows from "./containers/TvShows";
+import Webseries from "./containers/Webseries";
+import Notifications from "./containers/Notifications";
+import ManageProfile from "./containers/ManageProfile";
+import Account from "./containers/Account";
+import UpdatePassword from "./containers/UpdatePassword";
+import TransferProfile from "./containers/TransferProfile";
+import SubscriptionStep1 from "./containers/SubscriptionStep1";
+import SubscriptionStep2 from "./containers/SubscriptionStep2";
+import Payment from "./containers/Payment";
+import HelpCentre from "./containers/HelpCentre";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 export const router = createBrowserRouter([
   {

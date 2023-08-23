@@ -8,6 +8,7 @@ export const signoutHandler = (dispatch, navigate) => {
         dispatch({ type: "LOGOUT" });
         localStorage.removeItem("authToken");
         localStorage.removeItem("userInfo");
+        localStorage.removeItem("updateImage");
         navigate("/");
       })
       .catch((error) => {

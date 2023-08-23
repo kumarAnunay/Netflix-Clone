@@ -41,13 +41,15 @@ const FetchMovies = ({ type, match }) => {
         </div>
       ) : (
         <div className="moviesContainer">
-          {movies.map((movie) => (
+          {movies.map((movie, index) => (
             <MovieCard
               thumbnail={movie.thumbnail}
               title={movie.title}
               showId={movie._id}
               keywords={movie.keywords}
               match={match}
+              key={index}
+              videoUrl={movie.video_url}
             />
           ))}
         </div>

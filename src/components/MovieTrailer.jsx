@@ -7,17 +7,20 @@ const MovieTrailer = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
+    let timeoutId;
+
     const changeMovieRandomly = () => {
       const randomIndex = Math.floor(Math.random() * movieTrailerLsit.length);
       setCurrentIndex(randomIndex);
-      setTimeout(changeMovieRandomly, 120000);
+      timeoutId = setTimeout(changeMovieRandomly, 120000);
     };
 
     changeMovieRandomly();
+
     return () => {
-      clearTimeout(changeMovieRandomly);
+      clearTimeout(timeoutId);
     };
-  }, [currentIndex]);
+  }, []);
 
   return (
     <div className="movieTrailer">

@@ -175,7 +175,7 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {newReleases.map((movie) => (
+            {newReleases.map((movie, index) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
@@ -183,6 +183,8 @@ const Home = () => {
                 showId={movie._id}
                 className="categoriesCard"
                 match="80% Match"
+                key={index}
+                videoUrl={movie.video_url}
               />
             ))}
           </div>
@@ -208,7 +210,7 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {trendingContent.map((movie) => (
+            {trendingContent.map((movie, index) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
@@ -216,6 +218,8 @@ const Home = () => {
                 showId={movie._id}
                 className="categoriesCard"
                 match="90% Match"
+                key={index}
+                videoUrl={movie.video_url}
               />
             ))}
           </div>
@@ -241,7 +245,7 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {recommendedMovies.map((movie) => (
+            {recommendedMovies.map((movie, index) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
@@ -249,6 +253,8 @@ const Home = () => {
                 showId={movie._id}
                 className="categoriesCard"
                 match="88% Match"
+                key={index}
+                videoUrl={movie.video_url}
               />
             ))}
           </div>
@@ -274,7 +280,7 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {adventureMovies.map((movie) => (
+            {adventureMovies.map((movie, index) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
@@ -282,6 +288,8 @@ const Home = () => {
                 showId={movie._id}
                 className="categoriesCard"
                 match="60% Match"
+                key={index}
+                videoUrl={movie.video_url}
               />
             ))}
           </div>
@@ -307,7 +315,7 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {comedyMovies.map((movie) => (
+            {comedyMovies.map((movie, index) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
@@ -315,6 +323,8 @@ const Home = () => {
                 showId={movie._id}
                 className="categoriesCard"
                 match="65% Match"
+                key={index}
+                videoUrl={movie.video_url}
               />
             ))}
           </div>
@@ -340,7 +350,7 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {horrorMovies.map((movie) => (
+            {horrorMovies.map((movie, index) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
@@ -348,6 +358,8 @@ const Home = () => {
                 showId={movie._id}
                 className="categoriesCard"
                 match="73% Match"
+                key={index}
+                videoUrl={movie.video_url}
               />
             ))}
           </div>
@@ -373,7 +385,7 @@ const Home = () => {
                 <ArrowForwardIosIcon className="arrowIcon" />
               </button>
             </div>
-            {romanticMovies.map((movie) => (
+            {romanticMovies.map((movie, index) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
@@ -381,6 +393,8 @@ const Home = () => {
                 showId={movie._id}
                 className="categoriesCard"
                 match="55% Match"
+                key={index}
+                videoUrl={movie.video_url}
               />
             ))}
           </div>

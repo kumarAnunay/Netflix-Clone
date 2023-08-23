@@ -75,6 +75,7 @@ const Signup = () => {
           name: name,
           email: email,
           password: password,
+          appType: "ott",
         },
         {
           headers: {

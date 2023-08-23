@@ -67,6 +67,7 @@ const Signin = () => {
         {
           email,
           password,
+          appType: "ott",
         },
         {
           headers: {
@@ -80,6 +81,7 @@ const Signin = () => {
       const userName = response.data.data.name;
       const userEmail = response.data.data.email;
       const userPassword = response.data.data.password;
+      const profileImage = response.data.data.profileImage;
 
       const userDetails = {
         userName: userName,
@@ -90,6 +92,9 @@ const Signin = () => {
       localStorage.setItem("authToken", token);
 
       //Used to persist userinfo
+      localStorage.setItem("userInfo", JSON.stringify(userDetails));
+
+      //Used to persist Profile Image
       localStorage.setItem("userInfo", JSON.stringify(userDetails));
 
       dispatch({ type: "LOGIN", payload: token });

@@ -40,13 +40,22 @@ const UpdatePassword = () => {
   const newPasswordRef = useRef(null);
   const rePasswordRef = useRef(null);
 
+  const [updatedImage, setUpdatedImage] = useState(null);
+
   useEffect(() => {
     const storedUserInfo = localStorage.getItem("userInfo");
+    const storedUpdatedImage = localStorage.getItem("updatedImage");
+
     if (storedUserInfo) {
       setUserInfo(JSON.parse(storedUserInfo));
     }
-    console.log(userInfo.userPassword);
-  }, []);
+
+    if (storedUpdatedImage) {
+      setUpdatedImage(storedUpdatedImage);
+    } else {
+      setUpdatedImage(accoutImg);
+    }
+  }, [updatedImage]);
 
   const checkboxChangeHandler = () => {
     setSignOutAllDevices(!signOutAllDevices);
@@ -71,7 +80,6 @@ const UpdatePassword = () => {
   };
 
   const saveInputHandler = async () => {
-    // // Comparing old password with the stored hash userPassword
     // Comparing old password with the stored hash userPassword
     const isPasswordValid = await bcrypt.compare(
       oldPassword,
@@ -135,6 +143,7 @@ const UpdatePassword = () => {
             email: userInfo?.userEmail,
             passwordCurrent: oldPassword,
             password: newPassword,
+            appType: "ott",
           },
           {
             headers: {
@@ -213,7 +222,11 @@ const UpdatePassword = () => {
           <Menu slots={{ listbox: StyledListbox }} className="menuList">
             <StyledMenuItem className="accountItems">
               <div className="icon_text">
-                <img src={accoutImg} alt="Account" className="useAccountImg" />
+                <img
+                  src={updatedImage}
+                  alt="Account"
+                  className="useAccountImg"
+                />
                 <p className="iconText">{userInfo?.userName}</p>
               </div>
             </StyledMenuItem>

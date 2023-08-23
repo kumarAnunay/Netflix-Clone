@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -6,6 +6,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
+// import ContentDetailsModal from "./ContentDetailsModal";
 
 const storedToken = localStorage.getItem("authToken");
 
@@ -17,10 +18,14 @@ const MovieCard = ({
   showId,
   isMyList = false,
   onWatchlistChange,
+  videoUrl,
   className = "",
 }) => {
   const [isInMyList, setIsInMyList] = useState(isMyList);
   const [likeColor, setLikeColor] = useState(false);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const toggleWatchlist = async () => {
     try {
@@ -75,10 +80,15 @@ const MovieCard = ({
             </button>
           </div>
           <Tooltip title="More Info" placement="top">
-            <button className="moreInfoBtn">
+            <button className="moreInfoBtn" onClick={handleOpen}>
               <ExpandMoreIcon className="moreInfoIcon" />
             </button>
           </Tooltip>
+          {/* <ContentDetailsModal
+            isOpen={open}
+            onClose={handleClose}
+            showId={showId}
+          /> */}
         </div>
         <p className="matchContent">
           {match}
@@ -97,3 +107,9 @@ const MovieCard = ({
 };
 
 export default MovieCard;
+
+{
+  /* <video autoPlay className="movieVideo">
+<source src={videoUrl} type="video/mp4" />
+</video> */
+}

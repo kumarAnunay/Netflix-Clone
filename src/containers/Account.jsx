@@ -21,13 +21,22 @@ const Account = () => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState(null);
   const { dispatch } = useAuth();
+  const [updatedImage, setUpdatedImage] = useState(null);
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem("userInfo");
+    const storedUpdatedImage = localStorage.getItem("updatedImage");
+
     if (storedUserInfo) {
       setUserInfo(JSON.parse(storedUserInfo));
     }
-  }, []);
+
+    if (storedUpdatedImage) {
+      setUpdatedImage(storedUpdatedImage);
+    } else {
+      setUpdatedImage(accoutImg);
+    }
+  }, [updatedImage]);
 
   return (
     <>
@@ -40,7 +49,11 @@ const Account = () => {
           <Menu slots={{ listbox: StyledListbox }} className="menuList">
             <StyledMenuItem className="accountItems">
               <div className="icon_text">
-                <img src={accoutImg} alt="Account" className="useAccountImg" />
+                <img
+                  src={updatedImage}
+                  alt="Account"
+                  className="useAccountImg"
+                />
                 <p className="iconText">{userInfo?.userName}</p>
               </div>
             </StyledMenuItem>

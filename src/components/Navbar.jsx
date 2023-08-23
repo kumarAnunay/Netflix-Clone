@@ -17,6 +17,7 @@ import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import { signoutHandler } from "../utils/signoutHandler";
 import { useAuth } from "../AuthContext";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -28,6 +29,8 @@ const Navbar = () => {
   const { dispatch } = useAuth();
   const [userInfo, setUserInfo] = useState(null);
   const [activeButton, setActiveButton] = useState("");
+  const [updatedImage, setUpdatedImage] = useState(null);
+  const searchContainerRef = useRef(null);
 
   useEffect(() => {
     const currentPath = location.pathname;
@@ -56,10 +59,18 @@ const Navbar = () => {
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem("userInfo");
+    const storedUpdatedImage = localStorage.getItem("updatedImage");
+
     if (storedUserInfo) {
       setUserInfo(JSON.parse(storedUserInfo));
     }
-  }, []);
+
+    if (storedUpdatedImage) {
+      setUpdatedImage(storedUpdatedImage);
+    } else {
+      setUpdatedImage(accoutImg);
+    }
+  }, [updatedImage]);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -85,164 +96,236 @@ const Navbar = () => {
   };
 
   return (
-    <nav className={`navigationBar ${navShow}`}>
-      <div className="leftNav">
-        <img
-          id="navLogo"
-          src={netfilxLogo}
-          alt="Netflix"
-          className="navbarLogo"
-          onClick={() => navigate("/home")}
-        />
-        <ul className="navList">
-          <li
-            className={`listItem ${
-              activeButton === "home" ? "activeListItem" : ""
-            }`}
+    <div className="navigationBarContainer">
+      <nav className={`navigationBar ${navShow}`}>
+        <div className="leftNav">
+          <img
+            id="navLogo"
+            src={netfilxLogo}
+            alt="Netflix"
+            className="navbarLogo"
             onClick={() => navigate("/home")}
-          >
-            Home
-          </li>
-          <li
-            className={`listItem ${
-              activeButton === "my-list" ? "activeListItem" : ""
-            }`}
-            onClick={() => navigate("/my-list")}
-          >
-            My List
-          </li>
-          <li
-            className={`listItem ${
-              activeButton === "movies" ? "activeListItem" : ""
-            }`}
-            onClick={() => navigate("/movies")}
-          >
-            Movies
-          </li>
-          <li
-            className={`listItem ${
-              activeButton === "tv-shows" ? "activeListItem" : ""
-            }`}
-            onClick={() => navigate("/tv-shows")}
-          >
-            TV Shows
-          </li>
-          <li
-            className={`listItem ${
-              activeButton === "web-series" ? "activeListItem" : ""
-            }`}
-            onClick={() => navigate("/web-series")}
-          >
-            Web Series
-          </li>
-        </ul>
-      </div>
-      <div className="rightNav">
-        {searchInputVisivle && (
-          <div className="searchContainer">
-            <input
-              type="text"
-              id="search"
-              value={searchInput}
-              className="searchInput"
-              onChange={inputValueHandler}
-              placeholder="Search"
-            />
-            <CloseIcon
-              className="searchIcon closeSearchIcon"
-              onClick={() => {
-                setSearchInputVisible(false);
-                seachIconRef.current.style.display = "block";
-              }}
-            />
-          </div>
-        )}
-        <SearchIcon
-          className="icons"
-          onClick={searchInputVisibleHandler}
-          ref={seachIconRef}
-        />
-        <NotificationsNoneIcon
-          className="icons"
-          onClick={() => navigate("/notifications")}
-        />
-        <Dropdown>
-          <TriggerButton className="navbarDropdown">
-            <img src={accoutImg} alt="Account" className="accountImg" />
-          </TriggerButton>
-          <Menu slots={{ listbox: StyledListbox }} className="menuList">
-            <StyledMenuItem className="accountItems">
-              <div className="icon_text">
-                <img src={accoutImg} alt="Account" className="useAccountImg" />
-                <p className="iconText">{userInfo?.userName}</p>
-              </div>
-            </StyledMenuItem>
-            <StyledMenuItem className="accountItems">
-              <div className="icon_text">
-                <ModeOutlinedIcon className="accountIcons" />
+          />
+          <ul className="navList">
+            <li
+              className={`listItem ${
+                activeButton === "home" ? "activeListItem" : ""
+              }`}
+              onClick={() => navigate("/home")}
+            >
+              Home
+            </li>
+            <li
+              className={`listItem ${
+                activeButton === "my-list" ? "activeListItem" : ""
+              }`}
+              onClick={() => navigate("/my-list")}
+            >
+              My List
+            </li>
+            <li
+              className={`listItem ${
+                activeButton === "movies" ? "activeListItem" : ""
+              }`}
+              onClick={() => navigate("/movies")}
+            >
+              Movies
+            </li>
+            <li
+              className={`listItem ${
+                activeButton === "tv-shows" ? "activeListItem" : ""
+              }`}
+              onClick={() => navigate("/tv-shows")}
+            >
+              TV Shows
+            </li>
+            <li
+              className={`listItem ${
+                activeButton === "web-series" ? "activeListItem" : ""
+              }`}
+              onClick={() => navigate("/web-series")}
+            >
+              Web Series
+            </li>
+          </ul>
+          <Dropdown>
+            <TriggerButton className="navbarDropdown browseMenu">
+              <span className="smallDevicesNavbar">
+                Browse <ArrowDropDownIcon className="downArrowIcon" />
+              </span>
+            </TriggerButton>
+            <Menu
+              slots={{ listbox: StyledListbox }}
+              className="menuList browseList"
+            >
+              <StyledMenuItem className="accountItems">
                 <p
-                  className="iconText"
-                  onClick={() => navigate("/manage-profile")}
+                  className={`listItem ${
+                    activeButton === "home" ? "activeListItem" : ""
+                  }`}
+                  onClick={() => navigate("/home")}
                 >
-                  Manage Profile
+                  Home
                 </p>
-              </div>
-            </StyledMenuItem>
-            <StyledMenuItem className="accountItems">
-              <div className="icon_text">
-                <AdminPanelSettingsOutlinedIcon className="accountIcons" />
+              </StyledMenuItem>
+              <StyledMenuItem className="accountItems">
                 <p
-                  className="iconText"
-                  onClick={() => navigate("/transfer-profile")}
+                  className={`listItem ${
+                    activeButton === "my-list" ? "activeListItem" : ""
+                  }`}
+                  onClick={() => navigate("/my-list")}
                 >
-                  Transfer Profile
+                  My List
                 </p>
-              </div>
-            </StyledMenuItem>
-            <StyledMenuItem className="accountItems">
-              <div className="icon_text">
-                <PermIdentityOutlinedIcon className="accountIcons" />
-                <p className="iconText" onClick={() => navigate("/account")}>
-                  Account
-                </p>
-              </div>
-            </StyledMenuItem>
-            <StyledMenuItem className="accountItems">
-              <div className="icon_text">
-                <HelpOutlineOutlinedIcon className="accountIcons" />
+              </StyledMenuItem>
+              <StyledMenuItem className="accountItems">
                 <p
-                  className="iconText"
-                  onClick={() => navigate("/help-centre")}
+                  className={`listItem ${
+                    activeButton === "movies" ? "activeListItem" : ""
+                  }`}
+                  onClick={() => navigate("/movies")}
                 >
-                  Help Center
+                  Movies
                 </p>
-              </div>
-            </StyledMenuItem>
-            <StyledMenuItem className="accountItems">
-              <div className="icon_text">
-                <SubscriptionsOutlinedIcon className="accountIcons" />
+              </StyledMenuItem>
+              <StyledMenuItem className="accountItems">
                 <p
-                  className="iconText"
-                  onClick={() => navigate("/subscription-step1")}
+                  className={`listItem ${
+                    activeButton === "tv-shows" ? "activeListItem" : ""
+                  }`}
+                  onClick={() => navigate("/tv-shows")}
                 >
-                  My Subscription
+                  TV Shows
                 </p>
-              </div>
-            </StyledMenuItem>
-            <StyledMenuItem className="accountItems">
-              <div className="lastIcon">
+              </StyledMenuItem>
+              <StyledMenuItem className="accountItems">
                 <p
-                  className="iconText"
-                  onClick={() => signoutHandler(dispatch, navigate)}
+                  className={`listItem ${
+                    activeButton === "web-series" ? "activeListItem" : ""
+                  }`}
+                  onClick={() => navigate("/web-series")}
                 >
-                  Sign out of Netflix
+                  Web Series
                 </p>
-              </div>
-            </StyledMenuItem>
-          </Menu>
-        </Dropdown>
-      </div>
-    </nav>
+              </StyledMenuItem>
+            </Menu>
+          </Dropdown>
+        </div>
+        <div className="rightNav">
+          {searchInputVisivle && (
+            <div className="searchContainer">
+              <input
+                type="text"
+                id="search"
+                value={searchInput}
+                className="searchInput"
+                onChange={inputValueHandler}
+                placeholder="Search"
+              />
+              <CloseIcon
+                className="searchIcon closeSearchIcon"
+                onClick={() => {
+                  setSearchInputVisible(false);
+                  seachIconRef.current.style.display = "block";
+                }}
+              />
+            </div>
+          )}
+          <SearchIcon
+            className="icons"
+            onClick={searchInputVisibleHandler}
+            ref={seachIconRef}
+          />
+          <NotificationsNoneIcon
+            className="icons"
+            onClick={() => navigate("/notifications")}
+          />
+          <Dropdown>
+            <TriggerButton className="navbarDropdown">
+              <img src={accoutImg} alt="Account" className="accountImg" />
+            </TriggerButton>
+            <Menu slots={{ listbox: StyledListbox }} className="menuList">
+              <StyledMenuItem className="accountItems">
+                <div className="icon_text">
+                  <img
+                    src={updatedImage}
+                    alt="Account"
+                    className="useAccountImg"
+                  />
+                  <p className="iconText">{userInfo?.userName}</p>
+                </div>
+              </StyledMenuItem>
+              <StyledMenuItem className="accountItems">
+                <div className="icon_text">
+                  <ModeOutlinedIcon className="accountIcons" />
+                  <p
+                    className="iconText"
+                    onClick={() => navigate("/manage-profile")}
+                  >
+                    Manage Profile
+                  </p>
+                </div>
+              </StyledMenuItem>
+              <StyledMenuItem className="accountItems">
+                <div className="icon_text">
+                  <AdminPanelSettingsOutlinedIcon className="accountIcons" />
+                  <p
+                    className="iconText"
+                    onClick={() => navigate("/transfer-profile")}
+                  >
+                    Transfer Profile
+                  </p>
+                </div>
+              </StyledMenuItem>
+              <StyledMenuItem className="accountItems">
+                <div className="icon_text">
+                  <PermIdentityOutlinedIcon className="accountIcons" />
+                  <p className="iconText" onClick={() => navigate("/account")}>
+                    Account
+                  </p>
+                </div>
+              </StyledMenuItem>
+              <StyledMenuItem className="accountItems">
+                <div className="icon_text">
+                  <HelpOutlineOutlinedIcon className="accountIcons" />
+                  <p
+                    className="iconText"
+                    onClick={() => navigate("/help-centre")}
+                  >
+                    Help Center
+                  </p>
+                </div>
+              </StyledMenuItem>
+              <StyledMenuItem className="accountItems">
+                <div className="icon_text">
+                  <SubscriptionsOutlinedIcon className="accountIcons" />
+                  <p
+                    className="iconText"
+                    onClick={() => navigate("/subscription-step1")}
+                  >
+                    My Subscription
+                  </p>
+                </div>
+              </StyledMenuItem>
+              <StyledMenuItem className="accountItems">
+                <div className="lastIcon">
+                  <p
+                    className="iconText"
+                    onClick={() => signoutHandler(dispatch, navigate)}
+                  >
+                    Sign out of Netflix
+                  </p>
+                </div>
+              </StyledMenuItem>
+            </Menu>
+          </Dropdown>
+        </div>
+      </nav>
+      <div
+        className="searchSuggestionsContainer"
+        ref={searchContainerRef}
+      ></div>
+    </div>
   );
 };
 

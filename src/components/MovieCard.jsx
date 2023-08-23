@@ -30,7 +30,7 @@ const MovieCard = ({
   const toggleWatchlist = async () => {
     try {
       const response = await axios.patch(
-        "https://academics.newtonschool.co/api/v1/social_media/watchlist",
+        "https://academics.newtonschool.co/api/v1/ott/watchlist/like",
         { showId: showId },
         {
           headers: {

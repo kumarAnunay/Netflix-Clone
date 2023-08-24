@@ -31,8 +31,10 @@ const Navbar = () => {
   const [activeButton, setActiveButton] = useState("");
   const [updatedImage, setUpdatedImage] = useState(null);
   const searchContainerRef = useRef(null);
-  const [searchMovies, setSearchMovies] = useState([]);
+  // const [searchMovies, setSearchMovies] = useState([]);
   const [searchedMovies, setSearchedMovies] = useState([]);
+
+  const searchMoviesRef = useRef([]);
 
   const fetchSeachMovies = async () => {
     try {
@@ -42,12 +44,21 @@ const Navbar = () => {
           headers: {
             projectId: "lb0fl09ncsvt",
           },
-          params: {
-            filter: JSON.stringify({ type: "movie" }),
-          },
+          // params: {
+          //   filter: JSON.stringify({ type: "movie" }),
+          // },
         }
       );
-      setSearchMovies(response.data.data);
+      // setSearchMovies(response.data.data);
+      searchMoviesRef.current = response.data.data;
+      console.log("setting", searchMoviesRef.current);
+      console.log("searchMovies", searchMoviesRef.current);
+      const searchResult = searchMoviesRef.current.filter((movie) =>
+        movie.title.toLowerCase().includes(searchInput.toLowerCase())
+      );
+      setSearchedMovies(searchResult);
+      console.log(searchResult);
+      // console.log("response", response.data.data);
     } catch (error) {
       console.error("Error fetching data from search:", error);
     }
@@ -116,22 +127,16 @@ const Navbar = () => {
 
   const inputValueHandler = (event) => {
     setSearchInput(event.target.value);
-  };
-
-  useEffect(() => {
-    if (searchInput) {
+    console.log("search value:", event.target.value);
+    if (event.target.value) {
       fetchSeachMovies();
       searchContainerRef.current.style.display = "block";
     } else {
       searchContainerRef.current.style.display = "none";
-      setSearchMovies([]);
+      // setSearchMovies([]);
+      searchMoviesRef.current = [];
     }
-
-    const searchResult = searchMovies.filter((movie) =>
-      movie.title.toLowerCase().includes(searchInput.toLowerCase())
-    );
-    setSearchedMovies(searchResult);
-  }, [searchInput]);
+  };
 
   return (
     <div className="navigationBarContainer">

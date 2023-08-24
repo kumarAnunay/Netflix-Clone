@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MovieTrailer from "../components/MovieTrailer";
@@ -35,7 +35,7 @@ const Home = () => {
           params: {
             filter: JSON.stringify(filter),
             page: page,
-            limit: 5,
+            limit: 6,
           },
         }
       );

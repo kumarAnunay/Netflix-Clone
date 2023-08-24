@@ -86,7 +86,7 @@ const Signin = () => {
         userEmail: userEmail,
         userPassword: userPassword,
       };
-      //Used for protected routes it prevents the token reset while refreshing the page
+      //Used to persist token
       localStorage.setItem("authToken", token);
 
       //Used to persist userinfo

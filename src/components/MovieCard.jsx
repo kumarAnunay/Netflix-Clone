@@ -6,7 +6,7 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
-// import ContentDetailsModal from "./ContentDetailsModal";
+import ContentDetailsModal from "./ContentDetailsModal";
 
 const storedToken = localStorage.getItem("authToken");
 
@@ -84,6 +84,15 @@ const MovieCard = ({
               <ExpandMoreIcon className="moreInfoIcon" />
             </button>
           </Tooltip>
+          {open && (
+            <ContentDetailsModal
+              isOpen={open}
+              onClose={handleClose}
+              isInMyList={isInMyList}
+              showId={showId}
+              match={match}
+            />
+          )}
         </div>
         <p className="matchContent">
           {match}

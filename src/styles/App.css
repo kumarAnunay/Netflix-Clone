@@ -1,3 +1,16 @@
+body {
+    font-family: sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* signin */
 .sign {
     min-height: 100vh;
@@ -1503,7 +1516,7 @@
 .movieTrailerBtnContainer {
     display: flex;
     justify-content: left;
-    gap: 50px;
+    gap: 15px;
 }
 
 .movieTrailerPlayBtn {
@@ -1515,6 +1528,7 @@
     border-radius: 4px;
     background-color: #fff;
     color: #000;
+    font-weight: 600;
 }
 
 .movieTrailerInformationBtn {
@@ -1543,16 +1557,30 @@
 
 .playIcon,
 .informationIcon {
-    font-size: 16px !important;
-    margin-right: 10px;
+    font-size: 22px !important;
+    margin-right: 8px;
 }
 
 @media screen and (max-width: 650px) {
 
-    .movieTrailerTitle,
-    .movieTrailerDescription,
-    .movieTrailerBtnContainer {
-        display: none;
+    .movieTrailerPlayBtn,
+    .movieTrailerInformationBtn {
+        font-size: 12px;
+        padding: 6px;
+    }
+
+    .movieTrailerTitle {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .movieTrailerDescription {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
+
+    .movieTrailerContent {
+        width: 70%;
     }
 
     .movieTrailerImage {
@@ -1580,7 +1608,7 @@
 /* movie-card */
 
 .movieCardContainer {
-    width: 220px;
+    width: 235px;
     height: 240px;
     cursor: pointer;
     padding: 5px;
@@ -1666,7 +1694,8 @@
 .addContentBtn,
 .playContentBtn,
 .likeBtn,
-.moreInfoBtn {
+.moreInfoBtn,
+.volumeIcon {
     padding: 3px;
     display: flex;
     justify-content: center;
@@ -1679,7 +1708,8 @@
 
 .addContentBtn:hover,
 .likeBtn:hover,
-.moreInfoBtn:hover {
+.moreInfoBtn:hover,
+.volumeIcon:hover {
     background-color: rgba(255, 255, 255, 0.1);
     border-color: #fff;
 }
@@ -1810,7 +1840,7 @@
 .subCategoriesContainer {
     display: flex;
     flex-direction: column;
-    overflow-x: auto;
+    overflow-x: visible;
     z-index: 1;
     width: 100%;
     position: relative;
@@ -1820,7 +1850,7 @@
     color: #fff;
     text-shadow: rgba(0, 0, 0, 0.3);
     font-size: 20px;
-    padding-left: 35px;
+    padding-left: 15px;
     margin-bottom: -10px;
 }
 
@@ -1835,22 +1865,22 @@
     display: flex;
     flex-wrap: nowrap;
     z-index: 1;
-    overflow-x: hidden;
     overflow-y: hidden;
-    padding: 20px 30px;
+    padding: 20px 0px;
+    padding-bottom: 40px;
     position: relative;
     height: auto;
+    width: fit-content;
+    overflow-x: visible;
 }
 
 .categoriesCard {
     width: 250px;
-    padding: 10px;
-    margin-right: 10px;
     transition: transform 0.3s;
 }
 
 .categoriesCard:hover {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .paginationButtons {
@@ -1861,9 +1891,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    z-index: 2;
-    padding: 0 12px;
+    width: 100vw;
+    z-index: 1000;
+    padding: 0 16px 0 18px;
 }
 
 .paginationButtons button {
@@ -1873,18 +1903,19 @@
     font-size: 18px;
     display: flex;
     align-items: center;
-    color: white;
     padding: 3px;
     border-radius: 50%;
 }
 
-.paginationButtons button:hover {
-    background-color: rgba(11, 11, 11, 0.5);
+.arrowIcon {
+    color: #fff !important;
+    opacity: 0.7;
+    text-shadow: rgba(0, 0, 0, 0.3) !important;
 }
 
 .arrowIcon:hover {
-    color: #fff !important;
     opacity: 1;
+    transform: scale(1.4);
 }
 
 
@@ -1892,16 +1923,17 @@
     .categoriesMovieList {
         overflow-x: auto;
         padding: 20px;
+        padding-bottom: 80px;
     }
 
     .movieCardContainer {
         width: 200px;
         height: 130px;
-        padding: 0;
+        padding: 0 5px;
     }
 
     .paginationButtons {
-        top: 35%;
+        top: 30%;
         left: 0;
         transform: translateY(-50%);
         padding: 8px;
@@ -1914,6 +1946,7 @@
 
     .categoryName {
         font-size: 18px;
+        padding-left: 23px;
     }
 }
 
@@ -1929,20 +1962,20 @@
     }
 
     .paginationButtons {
-        top: 30%;
+        top: 25%;
         padding: 0 6px 0 0;
     }
 
     .categoriesMovieList {
         overflow-x: auto;
         padding: 10px;
-        padding-bottom: 60px;
+        padding-bottom: 80px;
     }
 
 
     .categoryName {
         font-size: 16px;
-        padding-left: 10px;
+        padding-left: 15px;
         margin-bottom: 0px;
     }
 
@@ -1953,6 +1986,10 @@
     .movieCategoriesContainer {
         padding-top: 40px;
     }
+
+    .movieCardContainer {
+        padding: 0 5px;
+    }
 }
 
 
@@ -1960,7 +1997,6 @@
 
 .myListContainer {
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
     background: #141414;
     padding: 120px 30px 30px;
@@ -2561,4 +2597,100 @@
     .profileSettingsHeader {
         font-size: 14px;
     }
+}
+
+/* content-details */
+
+.contentVideo {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.contentDetailsContainer {
+    width: 100%;
+    padding: 20px;
+}
+
+.contentMovietitle {
+    color: #fff;
+    text-shadow: rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.ContentDetailsBtnContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.volumeIcon {
+    color: #f3f3f3;
+}
+
+.contentCardBttn {
+    gap: 20px
+}
+
+.contentBtnIcon {
+    font-size: 20px !important;
+    background-color: transparent !important;
+}
+
+.volumeIcon {
+    font-size: 34px !important;
+    padding: 5px;
+    background-color: transparent !important;
+}
+
+.contentMatch {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.contentMatchAge {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.movieContentDetails {
+    width: 100%;
+    display: flex;
+    color: #fff;
+    text-shadow: rgba(0, 0, 0, 0.3);
+}
+
+.contentMovieDescription {
+    font-size: 14px;
+    font-weight: 400;
+    width: 60%;
+    padding-right: 20px;
+}
+
+.keywordsCastDirector {
+    width: 40%;
+    font-weight: 400;
+    font-size: 13px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.moreLikethisContainer {
+    width: 100%;
+    padding: 20px;
+}
+
+.moreLikethisTitle {
+    font-weight: 400;
+    font-size: 16px;
+    color: #fff;
+}
+
+.moreLikethisMovies {
+    background-color: transparent;
+    padding: 0;
+    overflow-y: hidden
 }

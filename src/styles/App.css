@@ -848,6 +848,7 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
+    min-height: 100vh;
     margin-bottom: 50px;
 }
 
@@ -1589,9 +1590,6 @@ body {
         height: 100vh;
     }
 
-    .movieTrailerImage {
-        object-fit: fill;
-    }
 }
 
 /* movies */
@@ -2000,7 +1998,8 @@ body {
     display: flex;
     flex-wrap: wrap;
     background: #141414;
-    padding: 120px 30px 30px;
+    padding: 120px 4% 30px 4%;
+    justify-content: space-evenly;
     overflow-x: hidden;
     min-height: 100vh;
 }
@@ -2010,7 +2009,7 @@ body {
     .myListContainer {
         padding: 0 20px;
         padding-top: 130px;
-        justify-content: center;
+        justify-content: space-evenly;
     }
 
 }

@@ -1,5 +1,5 @@
 export const signoutHandler = (navigate) => {
-  if (window.confirm("Leaving so Soon?")) {
+  if (window.confirm("Leaving So Soon?")) {
     // auth
     //   .signOut()
     //   .then(() => {

@@ -6,20 +6,20 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import AddIcon from "@mui/icons-material/Add";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Tooltip from "@mui/material/Tooltip";
 import MovieCard from "./MovieCard";
 
 const style = {
   position: "absolute",
-  top: "50%",
   left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "60%",
-  minHeight: "100vh",
+  transform: "translate(-50%)",
+  width: "65%",
   bgcolor: "#181818",
   boxShadow: 24,
-  mt: 45,
+  border: "2px solid #000",
+  mt: 5,
 };
 
 const ContentDetailsModal = ({
@@ -33,10 +33,10 @@ const ContentDetailsModal = ({
   const [loading, setLoading] = useState(false);
   const [likeColor, setLikeColor] = useState(false);
   const [movies, setMovies] = useState([]);
+  const [isMute, setIsMute] = useState(false);
 
   const fetchMovieContent = async () => {
     try {
-      setLoading(true);
       const response = await axios.get(
         `https://academics.newtonschool.co/api/v1/ott/show/${showId}`,
 
@@ -49,10 +49,8 @@ const ContentDetailsModal = ({
 
       setContentDetails(response.data.data);
       console.log("content: ", contentDetails);
-      setLoading(false);
     } catch (error) {
       console.error("Error in Movie Content API:", error);
-      setLoading(false);
     }
   };
 
@@ -82,115 +80,361 @@ const ContentDetailsModal = ({
     }
   }, [isOpen, showId]);
 
-  return (
-    <div>
-      {loading ? (
-        <div className="loaderContainer">
-          <div className="loader"></div>
-        </div>
-      ) : (
-        <Modal
-          open={isOpen}
-          onClose={onClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-          style={{ overflowY: "scroll" }}
-        >
-          <Box sx={style} className="modal">
-            <video
-              src={contentDetails.video_url}
-              type="video/mp4"
-              autoPlay
-              loop
-              className="contentVideo"
-            />
-            <div className="contentDetailsContainer">
-              <h3 className="contentMovietitle">{contentDetails.title}</h3>
-              <div className="ContentDetailsBtnContainer">
-                <div className="movieCardContentBtn contentCardBttn">
-                  <button className="movieTrailerPlayBtn">
-                    <PlayArrowIcon className="playIcon" />
-                    Play Now
-                  </button>
-                  <Tooltip
-                    title={isInMyList ? "Remove from MyList" : "Add to MyList"}
-                    placement="top"
-                  >
-                    <button className="addContentBtn">
-                      {isInMyList ? (
-                        <RemoveIcon className="addBtnIcon contentBtnIcon" />
-                      ) : (
-                        <AddIcon className="addBtnIcon contentBtnIcon" />
-                      )}
-                    </button>
-                  </Tooltip>
+  const volumeOnHandler = () => {
+    setIsMute(true);
+  };
 
-                  <button
-                    className={`likeBtn ${likeColor && "likeColor"}`}
-                    onClick={() => setLikeColor(!likeColor)}
-                  >
-                    <ThumbUpIcon
-                      className={`likeBtnIcon contentBtnIcon ${
-                        likeColor && "likeColor"
-                      }`}
-                    />
+  const volumeOffHandler = () => {
+    setIsMute(false);
+  };
+
+  return (
+    <div className="modalContainer">
+      <Modal
+        open={isOpen}
+        onClose={onClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+        style={{ overflowY: "scroll" }}
+      >
+        <Box sx={style} className="modal">
+          <video
+            src={contentDetails.video_url}
+            type="video/mp4"
+            autoPlay
+            loop
+            muted={isMute}
+            className="contentVideo"
+          />
+          <div className="contentDetailsContainer">
+            <h3 className="contentMovietitle">{contentDetails.title}</h3>
+            <div className="ContentDetailsBtnContainer">
+              <div className="movieCardContentBtn contentCardBttn">
+                <button className="movieTrailerPlayBtn">
+                  <PlayArrowIcon className="playIcon" />
+                  Play Now
+                </button>
+                <Tooltip
+                  title={isInMyList ? "Remove from MyList" : "Add to MyList"}
+                  placement="top"
+                >
+                  <button className="addContentBtn">
+                    {isInMyList ? (
+                      <RemoveIcon className="addBtnIcon contentBtnIcon" />
+                    ) : (
+                      <AddIcon className="addBtnIcon contentBtnIcon" />
+                    )}
                   </button>
-                </div>
-                <Tooltip title="Volume" placement="top">
-                  <VolumeUpIcon className="volumeIcon" />
                 </Tooltip>
+
+                <button
+                  className={`likeBtn ${likeColor && "likeColor"}`}
+                  onClick={() => setLikeColor(!likeColor)}
+                >
+                  <ThumbUpIcon
+                    className={`likeBtnIcon contentBtnIcon ${
+                      likeColor && "likeColor"
+                    }`}
+                  />
+                </button>
               </div>
-              <div className="contentDetailsContent">
-                <div className="matchContent contentMatch">
-                  {match}
-                  <span className="matchContentAge contentMatchAge">
-                    U/A 16+
-                  </span>
+              {isMute ? (
+                <Tooltip title="Unmute" placement="top">
+                  <VolumeOffIcon
+                    className="volumeIcon volumeOff"
+                    onClick={volumeOffHandler}
+                  />
+                </Tooltip>
+              ) : (
+                <Tooltip title="mute" placement="top">
+                  <VolumeUpIcon
+                    className="volumeIcon"
+                    onClick={volumeOnHandler}
+                  />
+                </Tooltip>
+              )}
+            </div>
+            <div className="contentDetailsContent">
+              <div className="matchContent contentMatch">
+                {match}
+                <span className="matchContentAge contentMatchAge">U/A 16+</span>
+              </div>
+              <div className="movieContentDetails">
+                <div className="contentMovieDescription">
+                  {contentDetails.description}
                 </div>
-                <div className="movieContentDetails">
-                  <div className="contentMovieDescription">
-                    {contentDetails.description}
+                <div className="keywordsCastDirector">
+                  <div>Genres : {contentDetails.keywords} </div>
+                  <div>
+                    Cast : <span>{contentDetails.cast}</span>
                   </div>
-                  <div className="keywordsCastDirector">
-                    <div>Genres : {contentDetails.keywords} </div>
-                    <div>
-                      Cast : <span>{contentDetails.cast}</span>
-                    </div>
-                    <div>Director : {contentDetails.director} </div>
-                  </div>
+                  <div>Director : {contentDetails.director} </div>
                 </div>
               </div>
             </div>
-            <div className="moreLikethisContainer">
-              <p className="moreLikethisTitle">More Like This</p>
-              <br />
-              <div className="moreMoviesContainer">
-                {loading ? (
-                  <div className="loaderContainer">
-                    <div className="loader"></div>
-                  </div>
-                ) : (
-                  <div className="moviesContainer moreLikethisMovies">
-                    {movies.slice(50, 56).map((movie, index) => (
-                      <MovieCard
-                        thumbnail={movie.thumbnail}
-                        title={movie.title}
-                        showId={movie._id}
-                        keywords={movie.keywords}
-                        match={match}
-                        key={index}
-                        videoUrl={movie.video_url}
-                      />
-                    ))}
-                  </div>
-                )}
-              </div>
+          </div>
+          <div className="moreLikethisContainer">
+            <p className="moreLikethisTitle">More Like This</p>
+            <br />
+            <div className="moreMoviesContainer">
+              {loading ? (
+                <div className="loaderContainer">
+                  <div className="loader"></div>
+                </div>
+              ) : (
+                <div className="moviesContainer moreLikethisMovies">
+                  {movies.slice(50, 59).map((movie, index) => (
+                    <MovieCard
+                      thumbnail={movie.thumbnail}
+                      title={movie.title}
+                      showId={movie._id}
+                      keywords={movie.keywords}
+                      match={match}
+                      key={index}
+                      videoUrl={movie.video_url}
+                      className="categoriesCard"
+                    />
+                  ))}
+                </div>
+              )}
             </div>
-          </Box>
-        </Modal>
-      )}
+          </div>
+        </Box>
+      </Modal>
     </div>
   );
 };
 
 export default ContentDetailsModal;
+
+// import Box from "@mui/material/Box";
+// import { useState, useEffect } from "react";
+// import Modal from "react-modal";
+// import axios from "axios";
+// import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+// import AddIcon from "@mui/icons-material/Add";
+// import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+// import VolumeUpIcon from "@mui/icons-material/VolumeUp";
+// import VolumeOffIcon from "@mui/icons-material/VolumeOff";
+// import RemoveIcon from "@mui/icons-material/Remove";
+// import Tooltip from "@mui/material/Tooltip";
+// import MovieCard from "./MovieCard";
+// import { useNavigate } from "react-router";
+
+// Modal.setAppElement("#root");
+
+// const customStyles = {
+//   content: {
+//     left: "50%",
+//     width: "65%",
+//     border: "none",
+//     transform: "translate(-50%)",
+//     backgroundColor: "#181818",
+//     padding: 0,
+//     minHeight: "100vh",
+//     overflowY: "scroll",
+//   },
+//   overlay: {
+//     backgroundColor: "rgba(0,0,0, 0.7)",
+//     zIndex: 1300,
+//   },
+// };
+
+// const ContentDetailsModal = ({
+//   isOpen,
+//   onClose,
+//   isInMyList,
+//   showId,
+//   match,
+// }) => {
+//   const [contentDetails, setContentDetails] = useState({});
+//   const [loading, setLoading] = useState(false);
+//   const [likeColor, setLikeColor] = useState(false);
+//   const [movies, setMovies] = useState([]);
+//   const [isMute, setIsMute] = useState(false);
+//   const navigate = useNavigate();
+
+//   const fetchMovieContent = async () => {
+//     try {
+//       const response = await axios.get(
+//         `https://academics.newtonschool.co/api/v1/ott/show/${showId}`,
+
+//         {
+//           headers: {
+//             projectId: "lb0fl09ncsvt",
+//           },
+//         }
+//       );
+
+//       setContentDetails(response.data.data);
+//       // console.log("content: ", contentDetails);
+//     } catch (error) {
+//       console.error("Error in Movie Content API:", error);
+//     }
+//   };
+
+//   const fetchMovies = async () => {
+//     try {
+//       setLoading(true);
+//       const response = await axios.get(
+//         "https://academics.newtonschool.co/api/v1/ott/show",
+//         {
+//           headers: {
+//             projectId: "lb0fl09ncsvt",
+//           },
+//         }
+//       );
+//       setMovies(response.data.data);
+//       setLoading(false);
+//     } catch (error) {
+//       console.error("Error fetching more like this:", error);
+//       setLoading(false);
+//     }
+//   };
+
+//   useEffect(() => {
+//     if (isOpen) {
+//       fetchMovieContent();
+//       fetchMovies();
+//     }
+//   }, [isOpen, showId]);
+
+//   const volumeOnHandler = () => {
+//     setIsMute(true);
+//   };
+
+//   const volumeOffHandler = () => {
+//     setIsMute(false);
+//   };
+
+//   const playMovieHandler = () => {
+//     navigate("/playMovie", {
+//       state: { videoUrl: contentDetails.video_url },
+//     });
+//   };
+
+//   useEffect(() => {
+//     if (isOpen) {
+//       setModalContentClass("hide-scrollbar");
+//     } else {
+//       setModalContentClass("");
+//     }
+//   }, [isOpen]);
+
+//   return (
+//     <Modal
+//       isOpen={isOpen}
+//       onRequestClose={onClose}
+//       contentLabel="Video Modal"
+//       style={customStyles}
+//     >
+//       <div>
+//         <video
+//           src={contentDetails.video_url}
+//           type="video/mp4"
+//           autoPlay
+//           loop
+//           muted={isMute}
+//           className="contentVideo"
+//         />
+//         <div className="contentDetailsContainer">
+//           <h3 className="contentMovietitle">{contentDetails.title}</h3>
+//           <div className="ContentDetailsBtnContainer">
+//             <div className="movieCardContentBtn contentCardBttn">
+//               <button
+//                 className="movieTrailerPlayBtn"
+//                 onClick={playMovieHandler}
+//               >
+//                 <PlayArrowIcon className="playIcon" />
+//                 Play Now
+//               </button>
+//               <Tooltip
+//                 title={isInMyList ? "Remove from MyList" : "Add to MyList"}
+//                 placement="top"
+//               >
+//                 <button className="addContentBtn">
+//                   {isInMyList ? (
+//                     <RemoveIcon className="addBtnIcon contentBtnIcon" />
+//                   ) : (
+//                     <AddIcon className="addBtnIcon contentBtnIcon" />
+//                   )}
+//                 </button>
+//               </Tooltip>
+
+//               <button
+//                 className={`likeBtn ${likeColor && "likeColor"}`}
+//                 onClick={() => setLikeColor(!likeColor)}
+//               >
+//                 <ThumbUpIcon
+//                   className={`likeBtnIcon contentBtnIcon ${
+//                     likeColor && "likeColor"
+//                   }`}
+//                 />
+//               </button>
+//             </div>
+//             {isMute ? (
+//               <Tooltip title="Unmute" placement="top">
+//                 <VolumeOffIcon
+//                   className="volumeIcon volumeOff"
+//                   onClick={volumeOffHandler}
+//                 />
+//               </Tooltip>
+//             ) : (
+//               <Tooltip title="mute" placement="top">
+//                 <VolumeUpIcon
+//                   className="volumeIcon"
+//                   onClick={volumeOnHandler}
+//                 />
+//               </Tooltip>
+//             )}
+//           </div>
+//           <div className="contentDetailsContent">
+//             <div className="matchContent contentMatch">
+//               {match}
+//               <span className="matchContentAge contentMatchAge">U/A 16+</span>
+//             </div>
+//             <div className="movieContentDetails">
+//               <div className="contentMovieDescription">
+//                 {contentDetails.description}
+//               </div>
+//               <div className="keywordsCastDirector">
+//                 <div>Genres : {contentDetails.keywords} </div>
+//                 <div>
+//                   Cast : <span>{contentDetails.cast}</span>
+//                 </div>
+//                 <div>Director : {contentDetails.director} </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="moreLikethisContainer">
+//           <p className="moreLikethisTitle">More Like This</p>
+//           <br />
+//           <div className="moreMoviesContainer">
+//             {loading ? (
+//               <div className="loaderContainer">
+//                 <div className="loader"></div>
+//               </div>
+//             ) : (
+//               <div className="moviesContainer moreLikethisMovies">
+//                 {movies.slice(50, 59).map((movie, index) => (
+//                   <MovieCard
+//                     thumbnail={movie.thumbnail}
+//                     title={movie.title}
+//                     showId={movie._id}
+//                     keywords={movie.keywords}
+//                     match={match}
+//                     key={index}
+//                     videoUrl={movie.video_url}
+//                   />
+//                 ))}
+//               </div>
+//             )}
+//           </div>
+//         </div>
+//       </div>
+//     </Modal>
+//   );
+// };
+
+// export default ContentDetailsModal;

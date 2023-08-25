@@ -18,7 +18,7 @@ const Signin = () => {
     success: false,
   });
 
-  const [rememberMe, setRememberMe] = useState(false);
+  const [rememberMe, setRememberMe] = useState(true);
 
   const emailErrorRef = useRef(null);
   const passwordErrorRef = useRef(null);
@@ -95,7 +95,6 @@ const Signin = () => {
       //Used to persist Profile Image
       localStorage.setItem("updateImage", JSON.stringify(profileImage));
 
-      // console.log("Token set:", token);
       setSigninStatus({
         success: true,
       });

@@ -17,74 +17,79 @@ import SubscriptionStep2 from "./containers/SubscriptionStep2";
 import Payment from "./containers/Payment";
 import HelpCentre from "./containers/HelpCentre";
 import ProtectedRoute from "./components/ProtectedRoute";
+import MoviePlay from "./containers/MoviePlay";
 
 export const router = createBrowserRouter([
   {
-    path: `/`,
+    path: "/",
     element: <Default />,
   },
   {
-    path: `/signin`,
+    path: "/signin",
     element: <Signin />,
   },
   {
-    path: `/signup`,
+    path: "/signup",
     element: <Signup />,
   },
   {
-    path: `/home`,
+    path: "/home",
     element: <ProtectedRoute element={<Home />} />,
   },
   {
-    path: `/notifications`,
+    path: "/notifications",
     element: <ProtectedRoute element={<Notifications />} />,
   },
   {
-    path: `/manage-profile`,
+    path: "/manage-profile",
     element: <ProtectedRoute element={<ManageProfile />} />,
   },
   {
-    path: `/transfer-profile`,
+    path: "/transfer-profile",
     element: <ProtectedRoute element={<TransferProfile />} />,
   },
   {
-    path: `/account`,
+    path: "/account",
     element: <ProtectedRoute element={<Account />} />,
   },
   {
-    path: `/update-password`,
+    path: "/update-password",
     element: <ProtectedRoute element={<UpdatePassword />} />,
   },
   {
-    path: `/help-centre`,
+    path: "/help-centre",
     element: <ProtectedRoute element={<HelpCentre />} />,
   },
   {
-    path: `/subscription-step1`,
+    path: "/subscription-step1",
     element: <ProtectedRoute element={<SubscriptionStep1 />} />,
   },
   {
-    path: `/subscription-step2`,
+    path: "/subscription-step2",
     element: <ProtectedRoute element={<SubscriptionStep2 />} />,
   },
   {
-    path: `/payment`,
+    path: "/payment",
     element: <ProtectedRoute element={<Payment />} />,
   },
   {
-    path: `/my-list`,
+    path: "/my-list",
     element: <ProtectedRoute element={<MyList />} />,
   },
   {
-    path: `/movies`,
+    path: "/movies",
     element: <ProtectedRoute element={<Movies />} />,
   },
   {
-    path: `/tv-shows`,
+    path: "/tv-shows",
     element: <ProtectedRoute element={<TvShows />} />,
   },
   {
-    path: `/web-series`,
+    path: "/web-series",
     element: <ProtectedRoute element={<Webseries />} />,
+  },
+  {
+    path: "/playMovie",
+    element: <ProtectedRoute element={<MoviePlay />} />,
   },
 ]);

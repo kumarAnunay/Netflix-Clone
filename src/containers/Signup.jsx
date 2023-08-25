@@ -1,10 +1,10 @@
 import { useRef, useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { TextField } from "@mui/material";
-import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../firebase";
-import googleLogo from "../assets/images/googleLogo.png";
-import githubLogo from "../assets/images/githubLogo.png";
+// import { signInWithPopup } from "firebase/auth";
+// import { auth, provider } from "../firebase";
+// import googleLogo from "../assets/images/googleLogo.png";
+// import githubLogo from "../assets/images/githubLogo.png";
 import NavbarSign from "../components/NavbarSign";
 import FooterSign from "../components/FooterSign";
 import axios from "axios";
@@ -136,44 +136,44 @@ const Signup = () => {
     }
   };
 
-  const loginWithGoogle = (event) => {
-    event.preventDefault();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // const userName = result.user.displayName;
-        // const email = result.user.email;
-        // localStorage.setItem(
-        //   "user",
-        //   JSON.stringify({
-        //     username: userName,
-        //     email: email,
-        //     islogged: true,
-        //   })
-        // );
-        navigate("/home");
-      })
-      .catch((error) => {
-        console.log("Google Authentication Error:", error);
-      });
-  };
+  // const loginWithGoogle = (event) => {
+  //   event.preventDefault();
+  //   signInWithPopup(auth, provider)
+  //     .then((result) => {
+  //       // const userName = result.user.displayName;
+  //       // const email = result.user.email;
+  //       // localStorage.setItem(
+  //       //   "user",
+  //       //   JSON.stringify({
+  //       //     username: userName,
+  //       //     email: email,
+  //       //     islogged: true,
+  //       //   })
+  //       // );
+  //       navigate("/home");
+  //     })
+  //     .catch((error) => {
+  //       console.log("Google Authentication Error:", error);
+  //     });
+  // };
 
-  const loginWithGitHub = async () => {
-    // try {
-    //   const result = await signInWithPopup(auth, githubProvider);
-    //   const { displayName, email } = result.user;
-    //   localStorage.setItem(
-    //     "user",
-    //     JSON.stringify({
-    //       username: displayName,
-    //       email: email,
-    //       islogged: true,
-    //     })
-    //   );
-    //   navigate("/home");
-    // } catch (error) {
-    //   console.error("GitHub Authentication Error:", error);
-    // }
-  };
+  // const loginWithGitHub = async () => {
+  //   // try {
+  //   //   const result = await signInWithPopup(auth, githubProvider);
+  //   //   const { displayName, email } = result.user;
+  //   //   localStorage.setItem(
+  //   //     "user",
+  //   //     JSON.stringify({
+  //   //       username: displayName,
+  //   //       email: email,
+  //   //       islogged: true,
+  //   //     })
+  //   //   );
+  //   //   navigate("/home");
+  //   // } catch (error) {
+  //   //   console.error("GitHub Authentication Error:", error);
+  //   // }
+  // };
 
   useEffect(() => {
     if (signupStatus.success) {
@@ -275,14 +275,14 @@ const Signup = () => {
               Sign up
             </button>
           </form>
-          <div className="loginBttns">
+          {/* <div className="loginBttns">
             <button type="submit" className="logoBtn" onClick={loginWithGoogle}>
               <img src={googleLogo} alt="Google" className="logoImg" />
             </button>
             <button type="submit" className="logoBtn" onClick={loginWithGitHub}>
               <img src={githubLogo} alt="Github" className="logoImg" />
             </button>
-          </div>
+          </div> */}
           <div className="bottomText">
             Already have an account?
             <Link to="/signin" className="link1">

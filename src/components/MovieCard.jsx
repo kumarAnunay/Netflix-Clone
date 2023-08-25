@@ -7,6 +7,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import Tooltip from "@mui/material/Tooltip";
 import axios from "axios";
 import ContentDetailsModal from "./ContentDetailsModal";
+import { useNavigate } from "react-router";
 
 const storedToken = localStorage.getItem("authToken");
 
@@ -26,6 +27,7 @@ const MovieCard = ({
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const navigate = useNavigate();
 
   const toggleWatchlist = async () => {
     try {
@@ -47,6 +49,12 @@ const MovieCard = ({
     }
   };
 
+  const playMovieHandler = () => {
+    navigate("/playMovie", {
+      state: { videoUrl },
+    });
+  };
+
   return (
     <div className={`movieCardContainer ${className}`}>
       <img src={thumbnail} alt="Movie_Image" className="movieImage" />
@@ -54,7 +62,7 @@ const MovieCard = ({
         <h1 className="movieCardContentTitle">{title}</h1>
         <div className="movieCardBtnContainer">
           <div className="movieCardContentBtn">
-            <button className="playContentBtn">
+            <button className="playContentBtn" onClick={playMovieHandler}>
               <PlayArrowIcon className="playBtnIcon" />
             </button>
             <Tooltip
@@ -111,9 +119,3 @@ const MovieCard = ({
 };
 
 export default MovieCard;
-
-{
-  /* <video autoPlay className="movieVideo">
-<source src={videoUrl} type="video/mp4" />
-</video> */
-}

@@ -30,7 +30,7 @@ const UpdatePassword = () => {
     rePassword: "",
   });
 
-  const [signOutAllDevices, setSignOutAllDevices] = useState(false);
+  const [signOutAllDevices, setSignOutAllDevices] = useState(true);
   const [isUpdate, setIsUpdate] = useState(false);
   const { oldPassword, newPassword, rePassword } = inputValue;
 
@@ -154,7 +154,7 @@ const UpdatePassword = () => {
         if (signOutAllDevices) {
           localStorage.removeItem("authToken");
           localStorage.removeItem("userInfo");
-          navigate("/signin");
+          setIsUpdate(true);
         }
 
         localStorage.setItem(

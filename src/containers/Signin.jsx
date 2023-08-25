@@ -93,7 +93,7 @@ const Signin = () => {
       localStorage.setItem("userInfo", JSON.stringify(userDetails));
 
       //Used to persist Profile Image
-      localStorage.setItem("updateImage", JSON.stringify(profileImage));
+      localStorage.setItem("updatedImage", profileImage);
 
       setSigninStatus({
         success: true,

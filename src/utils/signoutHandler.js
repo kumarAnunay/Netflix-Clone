@@ -5,7 +5,7 @@ export const signoutHandler = (navigate) => {
     //   .then(() => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("userInfo");
-    localStorage.removeItem("updateImage");
+    localStorage.removeItem("updatedImage");
     navigate("/");
     // })
     // .catch((error) => {

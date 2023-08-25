@@ -4,11 +4,11 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MovieCard from "../components/MovieCard";
 
-const storedToken = localStorage.getItem("authToken");
-
 const MyList = () => {
   const [myList, setMyList] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const storedToken = localStorage.getItem("authToken");
 
   useEffect(() => {
     fetchMyList();

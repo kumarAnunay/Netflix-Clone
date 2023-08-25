@@ -6,17 +6,19 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-const storedToken = localStorage.getItem("authToken");
-
 const ManageProfile = () => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
   const [updatedImage, setUpdatedImage] = useState(null);
+  const [profileCheck, setProfileCheck] = useState(true);
+
+  const storedToken = localStorage.getItem("authToken");
 
   useEffect(() => {
     const storedUserInfo = localStorage.getItem("userInfo");
     const storedUpdatedImage = localStorage.getItem("updatedImage");
+    console.log("token", storedToken);
 
     if (storedUserInfo) {
       setUserInfo(JSON.parse(storedUserInfo));
@@ -54,6 +56,8 @@ const ManageProfile = () => {
         }
       );
 
+      console.log("token", storedToken);
+
       const updatedImageUrl = response.data.data.user.profileImage;
       // console.log(updatedImageUrl);
       setUpdatedImage(updatedImageUrl);
@@ -82,6 +86,10 @@ const ManageProfile = () => {
         theme: "light",
       });
     }
+  };
+
+  const profileCheckboxHandler = () => {
+    setProfileCheck(!profileCheck);
   };
 
   return (
@@ -143,7 +151,8 @@ const ManageProfile = () => {
                 <input
                   type="checkbox"
                   className="profileCheckbox"
-                  checked={true}
+                  checked={profileCheck}
+                  onChange={profileCheckboxHandler}
                 />
                 Autoplay next episode in a series on all devices.
               </div>
@@ -151,7 +160,8 @@ const ManageProfile = () => {
                 <input
                   type="checkbox"
                   className="profileCheckbox"
-                  checked={true}
+                  checked={profileCheck}
+                  onChange={profileCheckboxHandler}
                 />
                 Autoplay previews while browsing on all devices.
               </div>

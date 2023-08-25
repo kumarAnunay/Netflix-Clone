@@ -9,8 +9,6 @@ import axios from "axios";
 import ContentDetailsModal from "./ContentDetailsModal";
 import { useNavigate } from "react-router";
 
-const storedToken = localStorage.getItem("authToken");
-
 const MovieCard = ({
   thumbnail,
   title,
@@ -28,6 +26,8 @@ const MovieCard = ({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const navigate = useNavigate();
+
+  const storedToken = localStorage.getItem("authToken");
 
   const toggleWatchlist = async () => {
     try {

@@ -10,6 +10,7 @@ import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Tooltip from "@mui/material/Tooltip";
 import MovieCard from "./MovieCard";
+import { useNavigate } from "react-router";
 
 const style = {
   position: "absolute",
@@ -34,6 +35,7 @@ const ContentDetailsModal = ({
   const [likeColor, setLikeColor] = useState(false);
   const [movies, setMovies] = useState([]);
   const [isMute, setIsMute] = useState(false);
+  const navigate = useNavigate();
 
   const fetchMovieContent = async () => {
     try {
@@ -88,6 +90,12 @@ const ContentDetailsModal = ({
     setIsMute(false);
   };
 
+  const playMovieHandler = () => {
+    navigate("/playMovie", {
+      state: { videoUrl: contentDetails.video_url },
+    });
+  };
+
   return (
     <div className="modalContainer">
       <Modal
@@ -110,7 +118,10 @@ const ContentDetailsModal = ({
             <h3 className="contentMovietitle">{contentDetails.title}</h3>
             <div className="ContentDetailsBtnContainer">
               <div className="movieCardContentBtn contentCardBttn">
-                <button className="movieTrailerPlayBtn">
+                <button
+                  className="movieTrailerPlayBtn"
+                  onClick={playMovieHandler}
+                >
                   <PlayArrowIcon className="playIcon" />
                   Play Now
                 </button>

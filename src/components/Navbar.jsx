@@ -29,9 +29,8 @@ const Navbar = () => {
   const seachIconRef = useRef(null);
   const [userInfo, setUserInfo] = useState(null);
   const [activeButton, setActiveButton] = useState("");
-  const [updatedImage, setUpdatedImage] = useState(null);
+  const [updatedImage, setUpdatedImage] = useState("");
   const searchContainerRef = useRef(null);
-  // const [searchMovies, setSearchMovies] = useState([]);
   const [searchedMovies, setSearchedMovies] = useState([]);
 
   const searchMoviesRef = useRef([]);
@@ -44,12 +43,8 @@ const Navbar = () => {
           headers: {
             projectId: "lb0fl09ncsvt",
           },
-          // params: {
-          //   filter: JSON.stringify({ type: "movie" }),
-          // },
         }
       );
-      // setSearchMovies(response.data.data);
       searchMoviesRef.current = response.data.data;
       console.log("setting", searchMoviesRef.current);
       console.log("searchMovies", searchMoviesRef.current);
@@ -92,11 +87,11 @@ const Navbar = () => {
   useEffect(() => {
     const storedUserInfo = localStorage.getItem("userInfo");
     const storedUpdatedImage = localStorage.getItem("updatedImage");
+    console.log("image", storedUpdatedImage);
 
     if (storedUserInfo) {
       setUserInfo(JSON.parse(storedUserInfo));
     }
-
     if (storedUpdatedImage) {
       setUpdatedImage(storedUpdatedImage);
     } else {
@@ -133,7 +128,6 @@ const Navbar = () => {
       searchContainerRef.current.style.display = "block";
     } else {
       searchContainerRef.current.style.display = "none";
-      // setSearchMovies([]);
       searchMoviesRef.current = [];
     }
   };

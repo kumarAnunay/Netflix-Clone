@@ -847,8 +847,9 @@ body {
 .launcingImgContainer {
     display: flex;
     justify-content: center;
+    object-fit: fill;
     width: 100%;
-    min-height: 100vh;
+    min-height: 80vh;
     margin-bottom: 50px;
 }
 
@@ -938,10 +939,12 @@ body {
 .smallDevicesNavbar {
     display: flex;
     align-items: center;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
 }
 
 .downArrowIcon {
-    color: #e5e5e5 !important;
+    color: #fff !important;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
     margin-left: 5px;
 }
@@ -1037,7 +1040,7 @@ body {
 
 .icons {
     color: #fff !important;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5) !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1) !important;
     cursor: pointer;
     font-size: 28px !important;
 }
@@ -1080,6 +1083,7 @@ body {
     .rightNav {
         width: 100%;
         justify-content: right;
+        gap: 11px;
     }
 
     .icons {
@@ -1421,6 +1425,10 @@ body {
 @media screen and (max-width: 550px) {
     .helpText {
         font-size: 18px;
+    }
+
+    .helpCentreLists {
+        width: 70%;
     }
 
     .helpTextBtn {
@@ -2007,9 +2015,8 @@ body {
 @media screen and (max-width: 730px) {
 
     .myListContainer {
-        padding: 0 20px;
+        padding: 0 5px;
         padding-top: 130px;
-        justify-content: space-evenly;
     }
 
 }
@@ -2538,7 +2545,7 @@ body {
 
 .profileCheckbox {
     height: 20px;
-    width: 20px;
+    width: 25px;
     cursor: pointer;
 }
 
@@ -2592,6 +2599,10 @@ body {
 @media screen and (max-width: 500px) {
     .manageProfilePage {
         padding: 50px 5%;
+    }
+
+    ..manageProfileHeading {
+        font-size: 6vw;
     }
 
     .managePofileUserName {

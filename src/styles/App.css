@@ -568,6 +568,10 @@ body {
         height: 100vh;
     }
 
+    #description {
+        padding: 20% 0;
+    }
+
     .logo_Default {
         width: 140px;
         height: 45px;

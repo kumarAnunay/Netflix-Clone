@@ -290,6 +290,7 @@ body {
 
     .signupLogoHeader {
         margin-bottom: 0;
+        align-items: center;
     }
 
     .Btn1 {
@@ -572,7 +573,7 @@ body {
         position: relative;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, -55%);
     }
 
     .logo_Default {
@@ -633,7 +634,7 @@ body {
     }
 
     .btn_Default {
-        padding-right: 10px;
+        padding-right: 0;
     }
 
     .logo_Default {

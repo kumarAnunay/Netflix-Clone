@@ -224,7 +224,7 @@ const Signup = () => {
             <TextField
               type="email"
               id="email"
-              label="Email or phone number"
+              label="Email"
               variant="filled"
               className="input input2"
               value={email}

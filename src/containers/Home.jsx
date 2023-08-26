@@ -15,6 +15,8 @@ const Home = () => {
   const [comedyMovies, setComedyMovies] = useState([]);
   const [horrorMovies, setHorrorMovies] = useState([]);
   const [romanticMovies, setRomanticMovies] = useState([]);
+  const [onlyonNetflixMovies, setOnlyonNetflixMovies] = useState([]);
+  const [popularOnNetflix, setPopularOnNetflix] = useState([]);
 
   const [newReleasesPage, setNewRealeasesPage] = useState(1);
   const [trendingContentPage, setTrendingContentPages] = useState(1);
@@ -23,6 +25,8 @@ const Home = () => {
   const [comedyMoviesPage, setComedyMoviesPage] = useState(1);
   const [horrorMoviesPage, setHorrorMoviesPage] = useState(1);
   const [romanticMoviesPage, setRomanticMoviesPage] = useState(1);
+  const [onlyonNetflixMoviesPage, setOnlyonNetflixMoviesPage] = useState(1);
+  const [popularOnNetflixPage, setPopularOnNetflixPage] = useState(1);
 
   const fetchMovies = async (filter, page) => {
     try {
@@ -122,6 +126,28 @@ const Home = () => {
     fetchRomanticMovies();
   }, [romanticMoviesPage]);
 
+  useEffect(() => {
+    const fetchOnlyonNetflix = async () => {
+      const onlyonNetflixData = await fetchMovies(
+        { type: "movie" },
+        onlyonNetflixMoviesPage
+      );
+      setOnlyonNetflixMovies(onlyonNetflixData);
+    };
+    fetchOnlyonNetflix();
+  }, [onlyonNetflixMoviesPage]);
+
+  useEffect(() => {
+    const fetchPopularOnNetflix = async () => {
+      const popularOnNetflixData = await fetchMovies(
+        { type: "trailer" },
+        popularOnNetflixPage
+      );
+      setPopularOnNetflix(popularOnNetflixData);
+    };
+    fetchPopularOnNetflix();
+  }, [popularOnNetflixPage]);
+
   const handlePageChange = (category, increment) => {
     switch (category) {
       case "newReleases":
@@ -144,6 +170,12 @@ const Home = () => {
         break;
       case "romantic":
         setRomanticMoviesPage((prevPage) => prevPage + increment);
+        break;
+      case "onlyonNetflix":
+        setOnlyonNetflixMoviesPage((prevPage) => prevPage + increment);
+        break;
+      case "popularonNetflix":
+        setOnlyonNetflixMoviesPage((prevPage) => prevPage + increment);
         break;
       default:
         break;
@@ -211,6 +243,40 @@ const Home = () => {
               </button>
             </div>
             {trendingContent.map((movie, index) => (
+              <MovieCard
+                thumbnail={movie.thumbnail}
+                title={movie.title}
+                keywords={movie.keywords}
+                showId={movie._id}
+                className="categoriesCard"
+                match="90% Match"
+                key={index}
+                videoUrl={movie.video_url}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="subCategoriesContainer">
+          <h1 className="categoryName">Popular on Netflix</h1>
+          <div className="categoriesMovieList">
+            <div className="paginationButtons">
+              <button
+                onClick={() => {
+                  handlePageChange("popularonNetflix", -1);
+                }}
+                disabled={popularOnNetflixPage === 1}
+              >
+                <ArrowBackIosIcon className="arrowIcon" />
+              </button>
+              <button
+                onClick={() => {
+                  handlePageChange("popularonNetflix", 1);
+                }}
+              >
+                <ArrowForwardIosIcon className="arrowIcon" />
+              </button>
+            </div>
+            {popularOnNetflix.map((movie, index) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}
@@ -386,6 +452,40 @@ const Home = () => {
               </button>
             </div>
             {romanticMovies.map((movie, index) => (
+              <MovieCard
+                thumbnail={movie.thumbnail}
+                title={movie.title}
+                keywords={movie.keywords}
+                showId={movie._id}
+                className="categoriesCard"
+                match="55% Match"
+                key={index}
+                videoUrl={movie.video_url}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="subCategoriesContainer">
+          <h1 className="categoryName">Only on Netflix</h1>
+          <div className="categoriesMovieList">
+            <div className="paginationButtons">
+              <button
+                onClick={() => {
+                  handlePageChange("onlyonNetflix", -1);
+                }}
+                disabled={onlyonNetflixMoviesPage === 1}
+              >
+                <ArrowBackIosIcon className="arrowIcon" />
+              </button>
+              <button
+                onClick={() => {
+                  handlePageChange("onlyonNetflix", 1);
+                }}
+              >
+                <ArrowForwardIosIcon className="arrowIcon" />
+              </button>
+            </div>
+            {onlyonNetflixMovies.map((movie, index) => (
               <MovieCard
                 thumbnail={movie.thumbnail}
                 title={movie.title}

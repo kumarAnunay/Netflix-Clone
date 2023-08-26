@@ -43,18 +43,22 @@ const MyList = () => {
         </div>
       ) : (
         <div className="myListContainer">
-          {myList.map((show) => (
-            <MovieCard
-              key={show._id}
-              thumbnail={show.thumbnail}
-              title={show.title}
-              showId={show._id}
-              keywords={show.keywords}
-              match="67%"
-              isMyList={true}
-              onWatchlistChange={fetchMyList}
-            />
-          ))}
+          {myList ? (
+            myList.map((show) => (
+              <MovieCard
+                key={show._id}
+                thumbnail={show.thumbnail}
+                title={show.title}
+                showId={show._id}
+                keywords={show.keywords}
+                match="67%"
+                isMyList={true}
+                onWatchlistChange={fetchMyList}
+              />
+            ))
+          ) : (
+            <div className="noMovies">No movies added !!</div>
+          )}
         </div>
       )}
       <Footer />

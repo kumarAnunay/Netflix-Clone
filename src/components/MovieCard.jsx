@@ -99,6 +99,7 @@ const MovieCard = ({
               isInMyList={isInMyList}
               showId={showId}
               match={match}
+              onClick={toggleWatchlist}
             />
           )}
         </div>

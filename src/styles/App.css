@@ -278,12 +278,18 @@ body {
 @media screen and (max-width:720px) {
 
     .container {
-        margin-top: 80px;
+        margin-top: 30px;
+        margin-bottom: 0;
     }
 
     .signinFooter,
     .signupFooter {
         padding: 20px 10px;
+        margin-top: 30px;
+    }
+
+    .signupLogoHeader {
+        margin-bottom: 0;
     }
 
     .Btn1 {
@@ -293,14 +299,14 @@ body {
     }
 
     .headerLogo {
-        height: 40px;
-        width: 140px;
+        height: 35px;
+        width: 125px;
         margin-left: 20px;
     }
 
     .footer_Item,
     .footerDropdown {
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .footerText {
@@ -558,6 +564,10 @@ body {
 
 @media screen and (max-width:720px) {
 
+    #container {
+        height: 100vh;
+    }
+
     .logo_Default {
         width: 140px;
         height: 45px;
@@ -597,6 +607,11 @@ body {
         font-size: 14px;
         width: 100%;
         padding: 15px;
+    }
+
+    .footerDropdown {
+        font-size: 12px;
+        padding: 8px 12px;
     }
 }
 
@@ -834,6 +849,11 @@ body {
         flex-wrap: wrap;
     }
 
+    .signoutBtn {
+        width: fit-content;
+        padding-right: 14px;
+    }
+
 }
 
 @media screen and (min-width: 701px) and (max-width: 950px) {
@@ -847,14 +867,26 @@ body {
 .launcingImgContainer {
     display: flex;
     justify-content: center;
-    object-fit: fill;
     width: 100%;
-    min-height: 80vh;
+    padding: 30px 0;
     margin-bottom: 50px;
 }
 
 .launcingImgContainer>img {
     width: 70%;
+}
+
+@media screen and (max-width: 700px) {
+    .launcingImgContainer>img {
+        width: 90%;
+        height: 70vh;
+        margin-top: 50px
+    }
+
+    .step1Container {
+        margin-top: 50px;
+    }
+
 }
 
 /* subscription step1 */
@@ -1083,7 +1115,7 @@ body {
     .rightNav {
         width: 100%;
         justify-content: right;
-        gap: 11px;
+        gap: 14px;
     }
 
     .icons {
@@ -1101,6 +1133,11 @@ body {
 
     .icons {
         font-size: 22px !important;
+    }
+
+    .css-umr02u {
+        padding: 0;
+        line-height: normal;
     }
 }
 
@@ -1595,7 +1632,8 @@ body {
     }
 
     .movieTrailerImage {
-        height: 100vh;
+        height: 60vh;
+        object-fit: cover;
     }
 
 }
@@ -1616,18 +1654,22 @@ body {
 /* movie-card */
 
 .movieCardContainer {
+    position: relative;
     width: 235px;
     height: 240px;
     cursor: pointer;
     padding: 5px;
     margin-bottom: 50px;
+    transition: transform 0.3s;
+    box-shadow: rgba(0, 0, 0, 0.3);
 }
 
 .movieCardContainer:hover {
+    position: relative;
     z-index: 100;
     transition: ease-in 0.3s;
-    transform: scale(1.1);
-    box-shadow: rgba(0, 0, 0, 0.3);
+    transform: scale(1.1) translate(0, -20%);
+    box-shadow: none;
 }
 
 .movieCardContainer:hover .movieImage {
@@ -1827,6 +1869,15 @@ body {
     .matchContent {
         font-size: 12px;
     }
+
+    .movieKeyword {
+        font-size: 10px;
+        margin-right: 3px;
+    }
+
+    .matchContentAge {
+        font-size: 12px;
+    }
 }
 
 /* home */
@@ -1839,7 +1890,6 @@ body {
 .movieCategoriesContainer {
     display: flex;
     flex-direction: column;
-    position: relative;
     width: 100%;
     padding-top: 80px;
 }
@@ -1850,7 +1900,6 @@ body {
     overflow-x: visible;
     z-index: 1;
     width: 100%;
-    position: relative;
 }
 
 .categoryName {
@@ -1867,13 +1916,11 @@ body {
     text-shadow: rgba(0, 0, 0, 0.3) !important;
 }
 
-
 .categoriesMovieList {
     display: flex;
     flex-wrap: nowrap;
     z-index: 1;
-    overflow-y: hidden;
-    padding: 20px 0px;
+    padding: 20px 0 0 5px;
     padding-bottom: 40px;
     position: relative;
     height: auto;
@@ -1887,7 +1934,7 @@ body {
 }
 
 .categoriesCard:hover {
-    transform: scale(1.1);
+    transform: scale(1.1) translate(0, -20%);
 }
 
 .paginationButtons {
@@ -1928,9 +1975,11 @@ body {
 
 @media (min-width: 481px) and (max-width: 768px) {
     .categoriesMovieList {
-        overflow-x: auto;
         padding: 20px;
-        padding-bottom: 80px;
+    }
+
+    .categoriesCard:hover {
+        transform: scale(1.1) translate(0, -35%);
     }
 
     .movieCardContainer {
@@ -1964,6 +2013,10 @@ body {
         padding: 0;
     }
 
+    .categoriesCard:hover {
+        transform: scale(1.1) translate(0, -35%);
+    }
+
     .arrowIcon {
         font-size: 18px !important;
     }
@@ -1974,16 +2027,14 @@ body {
     }
 
     .categoriesMovieList {
-        overflow-x: auto;
         padding: 10px;
-        padding-bottom: 80px;
+        padding-bottom: 25px;
     }
-
 
     .categoryName {
         font-size: 16px;
         padding-left: 15px;
-        margin-bottom: 0px;
+        margin-bottom: 8px;
     }
 
     .categoriesCard {
@@ -2225,6 +2276,28 @@ body {
 
     .new {
         font-size: 10px;
+    }
+
+    .settings {
+        width: 70%;
+    }
+
+    .settingsBtns>p {
+        text-align: right;
+    }
+
+    .changeBtns>p {
+        text-align: right;
+    }
+
+    .manageBtns>p {
+        text-align: right;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .settings {
+        width: 85%;
     }
 }
 
@@ -2601,7 +2674,7 @@ body {
         padding: 50px 5%;
     }
 
-    ..manageProfileHeading {
+    .manageProfileHeading {
         font-size: 6vw;
     }
 

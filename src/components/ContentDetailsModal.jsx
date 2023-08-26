@@ -29,6 +29,7 @@ const ContentDetailsModal = ({
   isInMyList,
   showId,
   match,
+  onClick,
 }) => {
   const [contentDetails, setContentDetails] = useState({});
   const [loading, setLoading] = useState(false);
@@ -129,7 +130,7 @@ const ContentDetailsModal = ({
                   title={isInMyList ? "Remove from MyList" : "Add to MyList"}
                   placement="top"
                 >
-                  <button className="addContentBtn">
+                  <button className="addContentBtn" onClick={onClick}>
                     {isInMyList ? (
                       <RemoveIcon className="addBtnIcon contentBtnIcon" />
                     ) : (

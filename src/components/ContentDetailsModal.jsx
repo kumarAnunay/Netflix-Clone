@@ -51,7 +51,7 @@ const ContentDetailsModal = ({
       );
 
       setContentDetails(response.data.data);
-      console.log("content: ", contentDetails);
+      // console.log("content: ", contentDetails);
     } catch (error) {
       console.error("Error in Movie Content API:", error);
     }

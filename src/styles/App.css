@@ -1905,9 +1905,13 @@ body {
 .subCategoriesContainer {
     display: flex;
     flex-direction: column;
-    overflow-x: visible;
+    overflow-x: scroll;
     z-index: 1;
     width: 100%;
+}
+
+.subCategoriesContainer::-webkit-scrollbar {
+    display: none;
 }
 
 .categoryName {
@@ -1916,12 +1920,6 @@ body {
     font-size: 20px;
     padding-left: 10px;
     margin-bottom: -10px;
-}
-
-.arrowIcon {
-    font-size: 20px !important;
-    color: grey;
-    text-shadow: rgba(0, 0, 0, 0.3) !important;
 }
 
 .categoriesMovieList {
@@ -1942,7 +1940,7 @@ body {
 }
 
 .categoriesCard:hover {
-    transform: scale(1.1) translate(0, -20%);
+    transform: scale(1.1) translate(0, -10%);
 }
 
 .paginationButtons {
@@ -1953,9 +1951,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100vw;
-    z-index: 1000;
-    padding: 0 16px 0 18px;
+    width: 100%;
+    z-index: 500;
+    padding: 0 16px;
 }
 
 .paginationButtons button {
@@ -1973,6 +1971,7 @@ body {
     color: #fff !important;
     opacity: 0.7;
     text-shadow: rgba(0, 0, 0, 0.3) !important;
+    font-size: 24px !important;
 }
 
 .arrowIcon:hover {
@@ -1984,10 +1983,11 @@ body {
 @media (min-width: 481px) and (max-width: 768px) {
     .categoriesMovieList {
         padding: 20px;
+        padding-bottom: 50px;
     }
 
     .categoriesCard:hover {
-        transform: scale(1.1) translate(0, -35%);
+        transform: scale(1.1) translate(0, -20%);
     }
 
     .movieCardContainer {
@@ -1997,7 +1997,7 @@ body {
     }
 
     .paginationButtons {
-        top: 30%;
+        top: 35%;
         left: 0;
         transform: translateY(-50%);
         padding: 8px;
@@ -2022,7 +2022,7 @@ body {
     }
 
     .categoriesCard:hover {
-        transform: scale(1.1) translate(0, -35%);
+        transform: scale(1.1) translate(0, -25%);
     }
 
     .arrowIcon {
@@ -2030,13 +2030,13 @@ body {
     }
 
     .paginationButtons {
-        top: 25%;
+        top: 31%;
         padding: 0 6px 0 0;
     }
 
     .categoriesMovieList {
         padding: 10px;
-        padding-bottom: 25px;
+        padding-bottom: 30px;
     }
 
     .categoryName {

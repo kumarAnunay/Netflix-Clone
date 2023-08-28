@@ -39,7 +39,7 @@ const Home = () => {
           params: {
             filter: JSON.stringify(filter),
             page: page,
-            limit: 6,
+            limit: 10,
           },
         }
       );
@@ -175,7 +175,7 @@ const Home = () => {
         setOnlyonNetflixMoviesPage((prevPage) => prevPage + increment);
         break;
       case "popularonNetflix":
-        setOnlyonNetflixMoviesPage((prevPage) => prevPage + increment);
+        setPopularOnNetflixPage((prevPage) => prevPage + increment);
         break;
       default:
         break;

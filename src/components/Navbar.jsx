@@ -19,6 +19,8 @@ import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import { signoutHandler } from "../utils/signoutHandler";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import MovieCard from "./MovieCard";
+import SearchContext from "./SearchContextProvider";
+import { useContext } from "react";
 
 const Navbar = () => {
   const navigate = useNavigate();
@@ -32,6 +34,8 @@ const Navbar = () => {
   const [updatedImage, setUpdatedImage] = useState("");
   const searchContainerRef = useRef(null);
   const [searchedMovies, setSearchedMovies] = useState([]);
+
+  const { setSearching } = useContext(SearchContext);
 
   const searchMoviesRef = useRef([]);
 
@@ -126,9 +130,11 @@ const Navbar = () => {
     if (event.target.value) {
       fetchSeachMovies();
       searchContainerRef.current.style.display = "block";
+      setSearching(false);
     } else {
       searchContainerRef.current.style.display = "none";
       searchMoviesRef.current = [];
+      setSearching(true);
     }
   };
 
@@ -266,6 +272,7 @@ const Navbar = () => {
                   seachIconRef.current.style.display = "block";
                   searchContainerRef.current.style.display = "none";
                   setSearchInput("");
+                  setSearching(true);
                 }}
               />
             </div>

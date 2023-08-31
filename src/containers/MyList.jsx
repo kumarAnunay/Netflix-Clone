@@ -3,10 +3,14 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MovieCard from "../components/MovieCard";
+import { useContext } from "react";
+import SearchContext from "../components/SearchContextProvider";
 
 const MyList = () => {
   const [myList, setMyList] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const { searching } = useContext(SearchContext);
 
   const storedToken = localStorage.getItem("authToken");
 
@@ -37,29 +41,33 @@ const MyList = () => {
   return (
     <div className="myListPage">
       <Navbar />
-      {loading ? (
-        <div className="loaderContainer">
-          <div className="loader"></div>
-        </div>
-      ) : (
-        <div className="myListContainer">
-          {myList ? (
-            myList.map((show) => (
-              <MovieCard
-                key={show._id}
-                thumbnail={show.thumbnail}
-                title={show.title}
-                showId={show._id}
-                keywords={show.keywords}
-                match="67%"
-                isMyList={true}
-                onWatchlistChange={fetchMyList}
-              />
-            ))
+      {searching && (
+        <>
+          {loading ? (
+            <div className="loaderContainer">
+              <div className="loader"></div>
+            </div>
           ) : (
-            <div className="noMovies">No movies added !!</div>
+            <div className="myListContainer">
+              {myList ? (
+                myList.map((show) => (
+                  <MovieCard
+                    key={show._id}
+                    thumbnail={show.thumbnail}
+                    title={show.title}
+                    showId={show._id}
+                    keywords={show.keywords}
+                    match="67%"
+                    isMyList={true}
+                    onWatchlistChange={fetchMyList}
+                  />
+                ))
+              ) : (
+                <div className="noMovies">No movies added !!</div>
+              )}
+            </div>
           )}
-        </div>
+        </>
       )}
       <Footer />
     </div>

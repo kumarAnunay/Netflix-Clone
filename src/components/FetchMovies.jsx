@@ -3,10 +3,14 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import MovieCard from "../components/MovieCard";
+import { useContext } from "react";
+import SearchContext from "../components/SearchContextProvider";
 
 const FetchMovies = ({ type, match }) => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
+
+  const { searching } = useContext(SearchContext);
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -35,24 +39,29 @@ const FetchMovies = ({ type, match }) => {
   return (
     <div className="webseriesPage">
       <Navbar />
-      {loading ? (
-        <div className="loaderContainer">
-          <div className="loader"></div>
-        </div>
-      ) : (
-        <div className="moviesContainer">
-          {movies.map((movie, index) => (
-            <MovieCard
-              thumbnail={movie.thumbnail}
-              title={movie.title}
-              showId={movie._id}
-              keywords={movie.keywords}
-              match={match}
-              key={index}
-              videoUrl={movie.video_url}
-            />
-          ))}
-        </div>
+
+      {searching && (
+        <>
+          {loading ? (
+            <div className="loaderContainer">
+              <div className="loader"></div>
+            </div>
+          ) : (
+            <div className="moviesContainer">
+              {movies.map((movie, index) => (
+                <MovieCard
+                  thumbnail={movie.thumbnail}
+                  title={movie.title}
+                  showId={movie._id}
+                  keywords={movie.keywords}
+                  match={match}
+                  key={index}
+                  videoUrl={movie.video_url}
+                />
+              ))}
+            </div>
+          )}
+        </>
       )}
       <Footer />
     </div>

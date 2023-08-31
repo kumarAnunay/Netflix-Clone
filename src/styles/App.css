@@ -1836,7 +1836,7 @@ body {
 
 @media screen and (max-width: 770px) {
     .movieImage {
-        height: 90%;
+        height: 100%;
     }
 
     .searchSuggestionsContainer {
@@ -1946,7 +1946,7 @@ body {
 
 .paginationButtons {
     position: absolute;
-    top: 35%;
+    top: 34%;
     left: 0;
     transform: translateY(-50%);
     display: flex;
@@ -2031,7 +2031,6 @@ body {
     }
 
     .paginationButtons {
-        top: 31%;
         padding: 0 6px 0 0;
     }
 
@@ -2070,6 +2069,15 @@ body {
     justify-content: space-evenly;
     overflow-x: hidden;
     min-height: 100vh;
+}
+
+.noMovies {
+    width: 100%;
+    text-align: center;
+    padding-top: 150px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 30px;
 }
 
 @media screen and (max-width: 740px) {

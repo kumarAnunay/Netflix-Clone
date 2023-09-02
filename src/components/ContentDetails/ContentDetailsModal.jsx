@@ -9,7 +9,7 @@ import VolumeUpIcon from "@mui/icons-material/VolumeUp";
 import VolumeOffIcon from "@mui/icons-material/VolumeOff";
 import RemoveIcon from "@mui/icons-material/Remove";
 import Tooltip from "@mui/material/Tooltip";
-import MovieCard from "../MovieCard";
+import MovieCard from "../MovieCard/MovieCard";
 import { useNavigate } from "react-router";
 import CloseIcon from "@mui/icons-material/Close";
 import "../MovieCard/MovieCard.css";

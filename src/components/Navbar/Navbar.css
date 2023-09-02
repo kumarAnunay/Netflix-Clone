@@ -1,0 +1,230 @@
+.navigationBarContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.searchSuggestionsContainer {
+    display: none;
+    background: #141414;
+    padding: 40px 30px;
+    overflow-x: hidden;
+    min-height: 100vh;
+    border-bottom: 1px solid #737373;
+}
+
+.navigationBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3px 10px;
+    transition-timing-function: ease-in;
+    transition: all 0.5s;
+    background: transparent;
+    position: fixed;
+    width: 100%;
+    min-height: 80px;
+    z-index: 1000;
+}
+
+.browseMenu {
+    color: #e5e5e5 !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+    display: none;
+}
+
+.smallDevicesNavbar {
+    display: flex;
+    align-items: center;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
+}
+
+.downArrowIcon {
+    color: #fff !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
+    margin-left: 5px;
+}
+
+.browseList {
+    width: 100px !important;
+}
+
+.searchContainer {
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, .75);
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 3px 2px;
+    width: auto;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.searchIcon {
+    margin-left: 5px;
+}
+
+.closeSearchIcon {
+    cursor: pointer;
+}
+
+.searchInput {
+    min-width: 320px;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: transparent;
+}
+
+.navShow {
+    background: rgb(20, 20, 20) !important;
+}
+
+.leftNav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navList {
+    display: flex;
+    gap: 20px;
+    list-style-type: none;
+}
+
+.listItem {
+    color: #e5e5e5;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1.5);
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.listItem:hover {
+    color: #fff;
+}
+
+.navbarLogo {
+    width: 110px;
+    height: 32px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.rightNav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.accountImg {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-shadow: none;
+}
+
+.navbarDropdown {
+    border: none !important;
+    background: transparent !important;
+}
+
+.icons {
+    color: #fff !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 1) !important;
+    cursor: pointer;
+    font-size: 28px !important;
+}
+
+.activeListItem {
+    color: #fff;
+    font-weight: 600;
+}
+
+
+@media screen and (max-width: 370px) {
+    .searchInput {
+        min-width: 100px;
+        height: 30px;
+    }
+
+    .searchContainer {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .navigationBar {
+        flex-direction: column;
+    }
+
+    .navList {
+        display: none;
+    }
+
+    .browseMenu {
+        display: block;
+    }
+
+    .leftNav {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    .rightNav {
+        width: 100%;
+        justify-content: right;
+        gap: 14px;
+    }
+
+    .icons {
+        font-size: 24px !important;
+    }
+
+    .accountImg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .navbarLogo {
+        width: 85px;
+    }
+
+    .icons {
+        font-size: 22px !important;
+    }
+
+    .css-umr02u {
+        padding: 0;
+        line-height: normal;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .searchInput {
+        min-width: 150px;
+    }
+
+    .navbarLogo {
+        margin: 0;
+    }
+
+}
+
+@media screen and (min-width: 751px) and (max-width: 850px) {
+    .listItem {
+        font-size: 12px;
+    }
+
+    .navList {
+        gap: 8px;
+    }
+}

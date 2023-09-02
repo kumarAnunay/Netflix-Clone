@@ -1,0 +1,25 @@
+.footer_Item,
+.footerDropdown {
+    color: #737373;
+    font-size: 16px;
+}
+
+.footerDropdown {
+    font-size: 15px;
+    padding: 10px 17px;
+    background-color: black;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width:720px) {
+
+    .footer_Item,
+    .footerDropdown {
+        font-size: 12px;
+    }
+
+    .footerDropdown {
+        padding: 8px 12px;
+    }
+}

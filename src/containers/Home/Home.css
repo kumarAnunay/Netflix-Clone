@@ -1,0 +1,166 @@
+.homePage {
+    background: #141414;
+    overflow-x: hidden;
+}
+
+.movieCategoriesContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: 80px;
+}
+
+.subCategoriesContainer {
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
+    z-index: 1;
+    width: 100%;
+}
+
+.subCategoriesContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.categoryName {
+    color: #fff;
+    text-shadow: rgba(0, 0, 0, 0.3);
+    font-size: 20px;
+    padding-left: 10px;
+    margin-bottom: -10px;
+}
+
+.categoriesMovieList {
+    display: flex;
+    flex-wrap: nowrap;
+    z-index: 1;
+    padding: 20px 0 0 5px;
+    padding-bottom: 40px;
+    position: relative;
+    height: auto;
+    width: fit-content;
+    overflow-x: visible;
+}
+
+.categoriesCard {
+    width: 250px;
+    transition: transform 0.3s;
+}
+
+.categoriesCard:hover {
+    transform: scale(1.1) translate(0, -10%);
+}
+
+.paginationButtons {
+    position: absolute;
+    top: 34%;
+    left: 0;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    z-index: 500;
+    padding: 0 16px;
+}
+
+.paginationButtons button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    border-radius: 50%;
+}
+
+.arrowIcon {
+    color: #fff !important;
+    opacity: 0.7;
+    text-shadow: rgba(0, 0, 0, 0.3) !important;
+    font-size: 24px !important;
+}
+
+.arrowIcon:hover {
+    opacity: 1;
+    transform: scale(1.4);
+}
+
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .categoriesMovieList {
+        padding: 20px;
+        padding-bottom: 50px;
+    }
+
+    .categoriesCard:hover {
+        transform: scale(1.1) translate(0, -20%);
+    }
+
+    .movieCardContainer {
+        width: 200px;
+        height: 130px;
+        padding: 0 5px;
+    }
+
+    .paginationButtons {
+        top: 35%;
+        left: 0;
+        transform: translateY(-50%);
+        padding: 8px;
+    }
+
+    .paginationButtons button {
+        margin: 0;
+        padding: 2px;
+    }
+
+    .categoryName {
+        font-size: 18px;
+        padding-left: 23px;
+    }
+}
+
+@media (max-width: 480px) {
+    .movieCardContainer {
+        width: 150px;
+        height: 110px;
+        padding: 0;
+    }
+
+    .categoriesCard:hover {
+        transform: scale(1.1) translate(0, -25%);
+    }
+
+    .arrowIcon {
+        font-size: 18px !important;
+    }
+
+    .paginationButtons {
+        padding: 0 6px 0 0;
+    }
+
+    .categoriesMovieList {
+        padding: 10px;
+        padding-bottom: 30px;
+    }
+
+    .categoryName {
+        font-size: 16px;
+        padding-left: 15px;
+        margin-bottom: 8px;
+    }
+
+    .categoriesCard {
+        padding: 0;
+    }
+
+    .movieCategoriesContainer {
+        padding-top: 40px;
+    }
+
+    .movieCardContainer {
+        padding: 0 5px;
+    }
+}

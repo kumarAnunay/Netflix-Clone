@@ -1,4 +1,4 @@
-import FetchMovies from "../components/FetchMovies";
+import FetchMovies from "../components/FetchMovies/FetchMovies";
 
 const Movies = () => {
   return (

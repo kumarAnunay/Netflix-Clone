@@ -1,0 +1,306 @@
+.sign {
+    min-height: 100vh;
+    width: 100%;
+    background: url("../../assets/images/login-bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0px 0px 180px 100px black;
+}
+
+.logo {
+    display: flex;
+    justify-content: left;
+    width: 100%;
+}
+
+.headerLogo {
+    height: 55px;
+    width: 175px;
+    margin: 5px 0;
+    margin-top: 10px;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-radius: 4px;
+    box-sizing: border-box;
+    padding: 70px 60px;
+    color: #737373;
+    min-height: 515px;
+    max-width: 450px;
+    margin: 20px 0;
+}
+
+.signinForm {
+    width: 100%;
+}
+
+.input {
+    border-radius: 4px;
+    background-color: #333 !important;
+    padding: 16px 20px;
+    width: 100%;
+    border-bottom: 2px solid #e87c03 !important;
+}
+
+.input::after {
+    outline: none !important;
+}
+
+.input2 {
+    margin-top: 20px !important;
+}
+
+.signinHeader {
+    color: #fff;
+    font-size: 32px;
+    font-weight: bolder;
+    margin-bottom: 28px;
+}
+
+.error {
+    color: #e87c03;
+    padding: 6px 3px;
+    font-size: 13px;
+    display: none;
+}
+
+.signinBtn {
+    background-color: #e50914;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bolder;
+    border: none;
+    width: 100%;
+    color: #fff;
+    padding: 12px;
+    margin-top: 20px;
+    margin-bottom: 14px;
+    cursor: pointer;
+}
+
+.signinBtn:hover {
+    background-color: #87050b;
+}
+
+.forgot {
+    color: #b3b3b3;
+    font-size: 13px;
+    font-weight: 400;
+    margin-bottom: 80px;
+}
+
+.signupLink {
+    color: #737373;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 16px;
+}
+
+.link1 {
+    color: #fff;
+    margin-left: 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.bottomText {
+    color: #8c8c8c;
+    font-size: 13px;
+    margin-top: 11px;
+}
+
+.clickable {
+    color: #0071eb;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.learnMore {
+    display: none;
+}
+
+.checkbox-input {
+    display: none;
+}
+
+.checkbox-label {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 14px;
+    margin-right: 8px;
+    border-radius: 2px;
+}
+
+.checkbox-label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.checkbox-input:checked+.checkbox-label::before {
+    background-color: #333 !important;
+}
+
+.checkbox-label::after {
+    content: "\2714";
+    position: absolute;
+    left: 3px;
+    top: -2px;
+    font-size: 15px;
+    color: #000;
+    font-weight: bolder;
+    display: none;
+}
+
+.checkbox-input:checked+.checkbox-label::after {
+    display: block;
+}
+
+.checkbox-label:hover::before {
+    border-color: #666;
+}
+
+.inputLabel {
+    display: flex;
+    align-items: center;
+}
+
+.forgot {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.signinFooter {
+    width: 100%;
+    background: rgba(0, 0, 0, .75);
+    padding: 30px 80px;
+    margin-top: 80px;
+}
+
+.signinFooterList {
+    display: flex !important;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.signin_Footer {
+    display: flex;
+    flex-direction: column
+}
+
+.footer_Item,
+.footerDropdown {
+    color: #737373;
+    font-size: 16px;
+}
+
+.footerText {
+    color: #737373;
+    margin-bottom: 30px;
+    font-size: 18px;
+}
+
+/* signup */
+
+.signupContainer {
+    min-height: 100vh;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signupLogoHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 80px;
+    width: 100%;
+}
+
+.Btn1 {
+    margin-right: 50px;
+    width: 100px;
+    font-weight: normal;
+}
+
+.loginBttns {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.logoBtn {
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.logoImg {
+    width: 30px;
+    height: 30px;
+}
+
+@media screen and (max-width:720px) {
+
+    .container {
+        margin-top: 10px;
+        margin-bottom: 0;
+    }
+
+    .signinFooter,
+    .signupFooter {
+        padding: 20px 10px;
+        margin-top: 30px;
+    }
+
+    .signupLogoHeader {
+        margin-bottom: 0;
+        align-items: center;
+    }
+
+    .Btn1 {
+        margin-right: 15px;
+        font-weight: normal;
+        padding: 8px;
+    }
+
+    .headerLogo {
+        height: 35px;
+        width: 125px;
+        margin-left: 20px;
+    }
+
+    .footer_Item,
+    .footerDropdown {
+        font-size: 12px;
+    }
+
+    .footerText {
+        font-size: 14px;
+    }
+
+    .signinFooterList {
+        gap: 12px;
+    }
+}

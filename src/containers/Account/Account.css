@@ -1,0 +1,278 @@
+.icon_text {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.useAccountImg {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.accountItems {
+    cursor: pointer !important;
+}
+
+.accountItemsIcons {
+    color: white !important;
+    padding: 0 13px 0 5px !important;
+}
+
+.iconText {
+    color: #fff;
+}
+
+.iconText:hover {
+    text-decoration: underline;
+}
+
+.lastIcon {
+    text-align: center;
+    border-top: 1px solid white;
+    padding: 5px;
+    padding-top: 10px;
+}
+
+.accountIcons {
+    color: #b3b3b3 !important;
+}
+
+.menuList {
+    background-color: rgba(0, 0, 0, .75) !important;
+    border: 1px solid hsla(0, 0%, 100%, .15) !important;
+    padding: 10px !important;
+    z-index: 1000;
+}
+
+.accountHeader {
+    background-color: rgba(0, 0, 0, .97);
+    margin-bottom: 0 !important;
+}
+
+.accountFooter {
+    margin-top: 0 !important;
+    background-color: #f2f2f2;
+}
+
+.accountPage {
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #c5c5c5;
+    padding: 40px 100px;
+}
+
+.accountDetailsContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.redeemGift {
+    display: flex;
+    justify-content: right;
+}
+
+.cancelMembershipBtn {
+    padding: 10px 30px;
+    border: none;
+    background: #eaeaea;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .2);
+}
+
+.upiImage {
+    width: 50px;
+    height: 40px;
+}
+
+.settings,
+.planDetails,
+.detailsAndBtns,
+.upiContainer,
+.updateAccountContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 10px;
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.redeemGift {
+    padding: 25px 10px;
+}
+
+.settings {
+    width: 50%;
+    border: none;
+}
+
+.accountSignOutBtn {
+    display: flex;
+    justify-content: right;
+    cursor: pointer;
+}
+
+.securityPrivacy {
+    display: flex;
+    flex-direction: column;
+    padding: 25px 10px;
+}
+
+.securityManage {
+    display: flex;
+    justify-content: space-between;
+}
+
+.new {
+    padding: 3px 5px;
+    background-color: #0073e6;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    margin: 0 5px;
+}
+
+.detailsAndBtns,
+.upiContainer {
+    border-bottom: 1px solid #e1e0e0;
+}
+
+.accountDetailsHeader,
+.cancelMemebership {
+    color: #737373;
+    font-weight: 400;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.accountHeading {
+    display: flex;
+    align-items: center;
+    color: #333;
+    font-weight: 400;
+    padding: 25px 10px;
+}
+
+.securityPrivacy {
+    border-bottom: 1px solid #d3d3d3;
+}
+
+.cursorBtn {
+    cursor: pointer;
+}
+
+.cancelMemebership {
+    font-size: 20px;
+    width: 250px;
+    margin-bottom: 15px;
+}
+
+.accountSubHeading {
+    color: #555 !important;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.userEmailAccount {
+    color: black;
+    font-weight: bolder;
+}
+
+.accountIcon {
+    font-size: 25px !important;
+    color: #e50914 !important;
+    margin-left: 20px;
+    margin-right: 5px;
+}
+
+.accountDetailsBtn {
+    color: #0073e6;
+    font-weight: normal;
+    font-size: 16px;
+    margin-bottom: 5px;
+    text-align: right;
+}
+
+.accountDetailsBtn:hover {
+    text-decoration: underline;
+}
+
+.css-19ktlgi {
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width: 850px) {
+    .accountPage {
+        padding: 20px;
+    }
+
+    .membershipAndBiling {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #d3d3d3;
+        padding-bottom: 20px;
+    }
+
+    .accountHeading {
+        font-size: 18px;
+    }
+
+    .accountSubHeading {
+        font-size: 12px;
+    }
+
+    .updateAccountContainer {
+        flex-direction: column;
+    }
+
+    .cancelMembershipBtn {
+        font-size: 12px;
+        padding: 8px 20px;
+    }
+
+    .upiImage {
+        width: 40px;
+        height: 30px;
+    }
+
+    .cancelMemebership {
+        font-size: 16px;
+        width: auto;
+        margin-bottom: 0;
+    }
+
+    .accountDetailsHeader {
+        font-size: 12px;
+    }
+
+    .accountDetailsBtn {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .new {
+        font-size: 10px;
+    }
+
+    .settings {
+        width: 70%;
+    }
+
+    .settingsBtns>p {
+        text-align: right;
+    }
+
+    .changeBtns>p {
+        text-align: right;
+    }
+
+    .manageBtns>p {
+        text-align: right;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .settings {
+        width: 85%;
+    }
+}

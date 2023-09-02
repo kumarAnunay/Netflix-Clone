@@ -1,0 +1,28 @@
+.myListContainer {
+    display: flex;
+    flex-wrap: wrap;
+    background: #141414;
+    padding: 120px 4% 30px 4%;
+    justify-content: space-evenly;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.noMovies {
+    width: 100%;
+    text-align: center;
+    padding-top: 150px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+@media screen and (max-width: 740px) {
+
+    .myListContainer {
+        padding: 0 5px;
+        padding-bottom: 20px;
+        padding-top: 130px;
+    }
+
+}

@@ -1,0 +1,196 @@
+.contentVideo {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+}
+
+.contentDetailsContainer {
+    width: 100%;
+    padding: 20px;
+}
+
+.contentMovietitle {
+    color: #fff;
+    text-shadow: rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.closeModalIcon {
+    color: #fff !important;
+    position: absolute;
+    z-index: 1;
+    right: 5px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.ContentDetailsBtnContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.volumeIcon {
+    color: #f3f3f3;
+}
+
+.contentCardBttn {
+    gap: 20px
+}
+
+.volumeIcon {
+    font-size: 34px !important;
+    padding: 3px;
+    background-color: transparent !important;
+}
+
+.contentBtnIcon {
+    font-size: 22px !important;
+    padding: 2px;
+}
+
+.contentMatch {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.contentMatchAge {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+.movieContentDetails {
+    width: 100%;
+    display: flex;
+    color: #fff;
+    text-shadow: rgba(0, 0, 0, 0.3);
+}
+
+.contentMovieDescription {
+    font-size: 14px;
+    font-weight: 400;
+    width: 60%;
+    padding-right: 20px;
+}
+
+.keywordsCastDirector {
+    width: 40%;
+    font-weight: 400;
+    font-size: 13px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.moreLikethisContainer {
+    width: 100%;
+}
+
+.moreLikethisTitle {
+    font-weight: 500;
+    font-size: 16px;
+    color: #fff;
+    padding-left: 15px;
+}
+
+.moreLikethisMovies {
+    background-color: transparent;
+    padding: 0 !important;
+    padding-top: 25px !important;
+    overflow-y: hidden;
+    background-color: transparent !important;
+}
+
+
+@media screen and (max-width: 500px) {
+    .css-1b5yzz0 {
+        width: 90% !important;
+    }
+
+    .contentVideo {
+        height: 195px;
+    }
+
+    .contentDetailsContainer {
+        width: 100%;
+        padding: 20px 10px;
+    }
+
+    .contentMovieDescription,
+    .keywordsCastDirector {
+        font-size: 12px;
+    }
+
+    .contentMatch {
+        font-size: 14px
+    }
+
+    .contentMatchAge {
+        font-size: 16px;
+    }
+
+    .contentCardBttn {
+        gap: 10px;
+    }
+
+    .contentMovietitle {
+        font-size: 16px;
+    }
+
+    .moreLikethisMovies {
+        padding-bottom: 40px;
+    }
+
+    .movieContentDetails {
+        flex-direction: column;
+    }
+
+    .contentMovieDescription,
+    .keywordsCastDirector {
+        width: 100%;
+        padding: 10px 0;
+    }
+
+}
+
+@media screen and (min-width: 500px) and (max-width: 800px) {
+    .css-1b5yzz0 {
+        width: 75% !important;
+    }
+
+    .contentVideo {
+        height: 250px;
+    }
+
+    .contentDetailsContainer {
+        width: 100%;
+        padding: 20px 15px;
+    }
+
+    .contentMovieDescription,
+    .keywordsCastDirector {
+        font-size: 13px;
+    }
+
+    .contentMatch {
+        font-size: 14px
+    }
+
+    .contentMatchAge {
+        font-size: 16px;
+    }
+
+    .contentCardBttn {
+        gap: 12px;
+    }
+
+    .contentMovietitle {
+        font-size: 16px;
+    }
+
+    .moreLikethisMovies {
+        padding-bottom: 50px;
+    }
+}

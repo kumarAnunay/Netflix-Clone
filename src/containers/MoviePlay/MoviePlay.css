@@ -1,0 +1,11 @@
+.videoPlayContainer {
+    width: 100%;
+    object-fit: cover;
+    background-color: #141414;
+    height: 100vh;
+}
+
+.movieVideo {
+    width: 100%;
+    height: 100%;
+}

@@ -77,8 +77,7 @@
 
 .arrowIcon {
     color: #fff !important;
-    opacity: 0.7;
-    text-shadow: rgba(0, 0, 0, 0.3) !important;
+    text-shadow: rgba(0, 0, 0, 0.7) !important;
     font-size: 24px !important;
 }
 

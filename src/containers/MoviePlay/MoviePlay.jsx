@@ -1,4 +1,5 @@
 import { useLocation } from "react-router";
+import "./MoviePlay.css";
 
 const MoviePlay = () => {
   const location = useLocation();

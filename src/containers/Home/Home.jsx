@@ -32,10 +32,13 @@ const Home = () => {
   const [onlyonNetflixMoviesPage, setOnlyonNetflixMoviesPage] = useState(1);
   const [popularOnNetflixPage, setPopularOnNetflixPage] = useState(1);
 
+  const [loading, setLoading] = useState(false);
+
   const { searching } = useContext(SearchContext);
 
   const fetchMovies = async (filter, page) => {
     try {
+      setLoading(true);
       const response = await axios.get(
         `https://academics.newtonschool.co/api/v1/ott/show`,
         {
@@ -52,6 +55,7 @@ const Home = () => {
       return response.data.data;
     } catch (error) {
       console.error("Error fetching data from the API:", error);
+      setLoading(false);
     }
   };
 
@@ -62,6 +66,7 @@ const Home = () => {
         newReleasesPage
       );
       setNewRealeases(newReleasesData);
+      setLoading(false);
     };
     fetchNewReleases();
   }, [newReleasesPage]);
@@ -73,6 +78,7 @@ const Home = () => {
         trendingContentPage
       );
       setTrendingContent(trendingContentData);
+      setLoading(false);
     };
     fetchTrendingContent();
   }, [trendingContentPage]);
@@ -84,6 +90,7 @@ const Home = () => {
         recommendedMoviesPage
       );
       setRecommendedMovies(recommendedMoviesData);
+      setLoading(false);
     };
     fetchRecommendedContent();
   }, [recommendedMoviesPage]);
@@ -95,6 +102,7 @@ const Home = () => {
         adventureMoviesPage
       );
       setAdventureMovies(adventureMoviesData);
+      setLoading(false);
     };
     fetchAdventureMovies();
   }, [adventureMoviesPage]);
@@ -106,6 +114,7 @@ const Home = () => {
         comedyMoviesPage
       );
       setComedyMovies(comedyMoviesData);
+      setLoading(false);
     };
     fetchComedyMovies();
   }, [comedyMoviesPage]);
@@ -117,6 +126,7 @@ const Home = () => {
         horrorMoviesPage
       );
       setHorrorMovies(horrorMoviesData);
+      setLoading(false);
     };
     fetchHorrorMovies();
   }, [horrorMoviesPage]);
@@ -128,6 +138,7 @@ const Home = () => {
         romanticMoviesPage
       );
       setRomanticMovies(romanticMoviesData);
+      setLoading(false);
     };
     fetchRomanticMovies();
   }, [romanticMoviesPage]);
@@ -139,6 +150,7 @@ const Home = () => {
         onlyonNetflixMoviesPage
       );
       setOnlyonNetflixMovies(onlyonNetflixData);
+      setLoading(false);
     };
     fetchOnlyonNetflix();
   }, [onlyonNetflixMoviesPage]);
@@ -150,6 +162,7 @@ const Home = () => {
         popularOnNetflixPage
       );
       setPopularOnNetflix(popularOnNetflixData);
+      setLoading(false);
     };
     fetchPopularOnNetflix();
   }, [popularOnNetflixPage]);
@@ -194,320 +207,326 @@ const Home = () => {
       {searching && (
         <>
           <MovieTrailer />
-          <div className="movieCategoriesContainer">
-            <div className="subCategoriesContainer">
-              <h1 className="categoryName">New Releases</h1>
-              <div className="categoriesMovieList">
-                <div className="paginationButtons">
-                  <button
-                    onClick={() => {
-                      handlePageChange("newReleases", -1);
-                    }}
-                    disabled={newReleasesPage === 1}
-                  >
-                    <ArrowBackIosIcon className="arrowIcon" />
-                  </button>
-                  <button
-                    onClick={() => {
-                      handlePageChange("newReleases", 1);
-                    }}
-                  >
-                    <ArrowForwardIosIcon className="arrowIcon" />
-                  </button>
-                </div>
-                {newReleases.map((movie, index) => (
-                  <MovieCard
-                    thumbnail={movie.thumbnail}
-                    title={movie.title}
-                    keywords={movie.keywords}
-                    showId={movie._id}
-                    className="categoriesCard"
-                    match="80% Match"
-                    key={index}
-                    videoUrl={movie.video_url}
-                  />
-                ))}
-              </div>
+          {loading ? (
+            <div className="loaderContainer">
+              <div className="loader"></div>
             </div>
+          ) : (
+            <div className="movieCategoriesContainer">
+              <div className="subCategoriesContainer">
+                <h1 className="categoryName">New Releases</h1>
+                <div className="categoriesMovieList">
+                  <div className="paginationButtons">
+                    <button
+                      onClick={() => {
+                        handlePageChange("newReleases", -1);
+                      }}
+                      disabled={newReleasesPage === 1}
+                    >
+                      <ArrowBackIosIcon className="arrowIcon" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        handlePageChange("newReleases", 1);
+                      }}
+                    >
+                      <ArrowForwardIosIcon className="arrowIcon" />
+                    </button>
+                  </div>
+                  {newReleases.map((movie, index) => (
+                    <MovieCard
+                      thumbnail={movie.thumbnail}
+                      title={movie.title}
+                      keywords={movie.keywords}
+                      showId={movie._id}
+                      className="categoriesCard"
+                      match="80% Match"
+                      key={index}
+                      videoUrl={movie.video_url}
+                    />
+                  ))}
+                </div>
+              </div>
 
-            <div className="subCategoriesContainer">
-              <h1 className="categoryName">Trending Content</h1>
-              <div className="categoriesMovieList">
-                <div className="paginationButtons">
-                  <button
-                    onClick={() => {
-                      handlePageChange("trending", -1);
-                    }}
-                    disabled={trendingContentPage === 1}
-                  >
-                    <ArrowBackIosIcon className="arrowIcon" />
-                  </button>
-                  <button
-                    onClick={() => {
-                      handlePageChange("trending", 1);
-                    }}
-                  >
-                    <ArrowForwardIosIcon className="arrowIcon" />
-                  </button>
+              <div className="subCategoriesContainer">
+                <h1 className="categoryName">Trending Content</h1>
+                <div className="categoriesMovieList">
+                  <div className="paginationButtons">
+                    <button
+                      onClick={() => {
+                        handlePageChange("trending", -1);
+                      }}
+                      disabled={trendingContentPage === 1}
+                    >
+                      <ArrowBackIosIcon className="arrowIcon" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        handlePageChange("trending", 1);
+                      }}
+                    >
+                      <ArrowForwardIosIcon className="arrowIcon" />
+                    </button>
+                  </div>
+                  {trendingContent.map((movie, index) => (
+                    <MovieCard
+                      thumbnail={movie.thumbnail}
+                      title={movie.title}
+                      keywords={movie.keywords}
+                      showId={movie._id}
+                      className="categoriesCard"
+                      match="90% Match"
+                      key={index}
+                      videoUrl={movie.video_url}
+                    />
+                  ))}
                 </div>
-                {trendingContent.map((movie, index) => (
-                  <MovieCard
-                    thumbnail={movie.thumbnail}
-                    title={movie.title}
-                    keywords={movie.keywords}
-                    showId={movie._id}
-                    className="categoriesCard"
-                    match="90% Match"
-                    key={index}
-                    videoUrl={movie.video_url}
-                  />
-                ))}
               </div>
-            </div>
-            <div className="subCategoriesContainer">
-              <h1 className="categoryName">Popular on Netflix</h1>
-              <div className="categoriesMovieList">
-                <div className="paginationButtons">
-                  <button
-                    onClick={() => {
-                      handlePageChange("popularonNetflix", -1);
-                    }}
-                    disabled={popularOnNetflixPage === 1}
-                  >
-                    <ArrowBackIosIcon className="arrowIcon" />
-                  </button>
-                  <button
-                    onClick={() => {
-                      handlePageChange("popularonNetflix", 1);
-                    }}
-                  >
-                    <ArrowForwardIosIcon className="arrowIcon" />
-                  </button>
+              <div className="subCategoriesContainer">
+                <h1 className="categoryName">Popular on Netflix</h1>
+                <div className="categoriesMovieList">
+                  <div className="paginationButtons">
+                    <button
+                      onClick={() => {
+                        handlePageChange("popularonNetflix", -1);
+                      }}
+                      disabled={popularOnNetflixPage === 1}
+                    >
+                      <ArrowBackIosIcon className="arrowIcon" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        handlePageChange("popularonNetflix", 1);
+                      }}
+                    >
+                      <ArrowForwardIosIcon className="arrowIcon" />
+                    </button>
+                  </div>
+                  {popularOnNetflix.map((movie, index) => (
+                    <MovieCard
+                      thumbnail={movie.thumbnail}
+                      title={movie.title}
+                      keywords={movie.keywords}
+                      showId={movie._id}
+                      className="categoriesCard"
+                      match="90% Match"
+                      key={index}
+                      videoUrl={movie.video_url}
+                    />
+                  ))}
                 </div>
-                {popularOnNetflix.map((movie, index) => (
-                  <MovieCard
-                    thumbnail={movie.thumbnail}
-                    title={movie.title}
-                    keywords={movie.keywords}
-                    showId={movie._id}
-                    className="categoriesCard"
-                    match="90% Match"
-                    key={index}
-                    videoUrl={movie.video_url}
-                  />
-                ))}
               </div>
-            </div>
 
-            <div className="subCategoriesContainer">
-              <h1 className="categoryName">Recommended Movies</h1>
-              <div className="categoriesMovieList">
-                <div className="paginationButtons">
-                  <button
-                    onClick={() => {
-                      handlePageChange("recommended", -1);
-                    }}
-                    disabled={recommendedMoviesPage === 1}
-                  >
-                    <ArrowBackIosIcon className="arrowIcon" />
-                  </button>
-                  <button
-                    onClick={() => {
-                      handlePageChange("recommended", 1);
-                    }}
-                  >
-                    <ArrowForwardIosIcon className="arrowIcon" />
-                  </button>
+              <div className="subCategoriesContainer">
+                <h1 className="categoryName">Recommended Movies</h1>
+                <div className="categoriesMovieList">
+                  <div className="paginationButtons">
+                    <button
+                      onClick={() => {
+                        handlePageChange("recommended", -1);
+                      }}
+                      disabled={recommendedMoviesPage === 1}
+                    >
+                      <ArrowBackIosIcon className="arrowIcon" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        handlePageChange("recommended", 1);
+                      }}
+                    >
+                      <ArrowForwardIosIcon className="arrowIcon" />
+                    </button>
+                  </div>
+                  {recommendedMovies.map((movie, index) => (
+                    <MovieCard
+                      thumbnail={movie.thumbnail}
+                      title={movie.title}
+                      keywords={movie.keywords}
+                      showId={movie._id}
+                      className="categoriesCard"
+                      match="88% Match"
+                      key={index}
+                      videoUrl={movie.video_url}
+                    />
+                  ))}
                 </div>
-                {recommendedMovies.map((movie, index) => (
-                  <MovieCard
-                    thumbnail={movie.thumbnail}
-                    title={movie.title}
-                    keywords={movie.keywords}
-                    showId={movie._id}
-                    className="categoriesCard"
-                    match="88% Match"
-                    key={index}
-                    videoUrl={movie.video_url}
-                  />
-                ))}
               </div>
-            </div>
 
-            <div className="subCategoriesContainer">
-              <h1 className="categoryName">Adventure Movies</h1>
-              <div className="categoriesMovieList">
-                <div className="paginationButtons">
-                  <button
-                    onClick={() => {
-                      handlePageChange("adventure", -1);
-                    }}
-                    disabled={adventureMoviesPage === 1}
-                  >
-                    <ArrowBackIosIcon className="arrowIcon" />
-                  </button>
-                  <button
-                    onClick={() => {
-                      handlePageChange("adventure", 1);
-                    }}
-                  >
-                    <ArrowForwardIosIcon className="arrowIcon" />
-                  </button>
+              <div className="subCategoriesContainer">
+                <h1 className="categoryName">Adventure Movies</h1>
+                <div className="categoriesMovieList">
+                  <div className="paginationButtons">
+                    <button
+                      onClick={() => {
+                        handlePageChange("adventure", -1);
+                      }}
+                      disabled={adventureMoviesPage === 1}
+                    >
+                      <ArrowBackIosIcon className="arrowIcon" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        handlePageChange("adventure", 1);
+                      }}
+                    >
+                      <ArrowForwardIosIcon className="arrowIcon" />
+                    </button>
+                  </div>
+                  {adventureMovies.map((movie, index) => (
+                    <MovieCard
+                      thumbnail={movie.thumbnail}
+                      title={movie.title}
+                      keywords={movie.keywords}
+                      showId={movie._id}
+                      className="categoriesCard"
+                      match="60% Match"
+                      key={index}
+                      videoUrl={movie.video_url}
+                    />
+                  ))}
                 </div>
-                {adventureMovies.map((movie, index) => (
-                  <MovieCard
-                    thumbnail={movie.thumbnail}
-                    title={movie.title}
-                    keywords={movie.keywords}
-                    showId={movie._id}
-                    className="categoriesCard"
-                    match="60% Match"
-                    key={index}
-                    videoUrl={movie.video_url}
-                  />
-                ))}
               </div>
-            </div>
 
-            <div className="subCategoriesContainer">
-              <h1 className="categoryName">Comedy Movies</h1>
-              <div className="categoriesMovieList">
-                <div className="paginationButtons">
-                  <button
-                    onClick={() => {
-                      handlePageChange("comedy", -1);
-                    }}
-                    disabled={comedyMoviesPage === 1}
-                  >
-                    <ArrowBackIosIcon className="arrowIcon" />
-                  </button>
-                  <button
-                    onClick={() => {
-                      handlePageChange("comedy", 1);
-                    }}
-                  >
-                    <ArrowForwardIosIcon className="arrowIcon" />
-                  </button>
+              <div className="subCategoriesContainer">
+                <h1 className="categoryName">Comedy Movies</h1>
+                <div className="categoriesMovieList">
+                  <div className="paginationButtons">
+                    <button
+                      onClick={() => {
+                        handlePageChange("comedy", -1);
+                      }}
+                      disabled={comedyMoviesPage === 1}
+                    >
+                      <ArrowBackIosIcon className="arrowIcon" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        handlePageChange("comedy", 1);
+                      }}
+                    >
+                      <ArrowForwardIosIcon className="arrowIcon" />
+                    </button>
+                  </div>
+                  {comedyMovies.map((movie, index) => (
+                    <MovieCard
+                      thumbnail={movie.thumbnail}
+                      title={movie.title}
+                      keywords={movie.keywords}
+                      showId={movie._id}
+                      className="categoriesCard"
+                      match="65% Match"
+                      key={index}
+                      videoUrl={movie.video_url}
+                    />
+                  ))}
                 </div>
-                {comedyMovies.map((movie, index) => (
-                  <MovieCard
-                    thumbnail={movie.thumbnail}
-                    title={movie.title}
-                    keywords={movie.keywords}
-                    showId={movie._id}
-                    className="categoriesCard"
-                    match="65% Match"
-                    key={index}
-                    videoUrl={movie.video_url}
-                  />
-                ))}
               </div>
-            </div>
 
-            <div className="subCategoriesContainer">
-              <h1 className="categoryName">Horror Movies</h1>
-              <div className="categoriesMovieList">
-                <div className="paginationButtons">
-                  <button
-                    onClick={() => {
-                      handlePageChange("horror", 1);
-                    }}
-                    disabled={horrorMoviesPage === 1}
-                  >
-                    <ArrowBackIosIcon className="arrowIcon" />
-                  </button>
-                  <button
-                    onClick={() => {
-                      handlePageChange("horror", 1);
-                    }}
-                  >
-                    <ArrowForwardIosIcon className="arrowIcon" />
-                  </button>
+              <div className="subCategoriesContainer">
+                <h1 className="categoryName">Horror Movies</h1>
+                <div className="categoriesMovieList">
+                  <div className="paginationButtons">
+                    <button
+                      onClick={() => {
+                        handlePageChange("horror", 1);
+                      }}
+                      disabled={horrorMoviesPage === 1}
+                    >
+                      <ArrowBackIosIcon className="arrowIcon" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        handlePageChange("horror", 1);
+                      }}
+                    >
+                      <ArrowForwardIosIcon className="arrowIcon" />
+                    </button>
+                  </div>
+                  {horrorMovies.map((movie, index) => (
+                    <MovieCard
+                      thumbnail={movie.thumbnail}
+                      title={movie.title}
+                      keywords={movie.keywords}
+                      showId={movie._id}
+                      className="categoriesCard"
+                      match="73% Match"
+                      key={index}
+                      videoUrl={movie.video_url}
+                    />
+                  ))}
                 </div>
-                {horrorMovies.map((movie, index) => (
-                  <MovieCard
-                    thumbnail={movie.thumbnail}
-                    title={movie.title}
-                    keywords={movie.keywords}
-                    showId={movie._id}
-                    className="categoriesCard"
-                    match="73% Match"
-                    key={index}
-                    videoUrl={movie.video_url}
-                  />
-                ))}
               </div>
-            </div>
 
-            <div className="subCategoriesContainer">
-              <h1 className="categoryName">Romantic Movies</h1>
-              <div className="categoriesMovieList">
-                <div className="paginationButtons">
-                  <button
-                    onClick={() => {
-                      handlePageChange("romantic", -1);
-                    }}
-                    disabled={romanticMoviesPage === 1}
-                  >
-                    <ArrowBackIosIcon className="arrowIcon" />
-                  </button>
-                  <button
-                    onClick={() => {
-                      handlePageChange("romantic", 1);
-                    }}
-                  >
-                    <ArrowForwardIosIcon className="arrowIcon" />
-                  </button>
+              <div className="subCategoriesContainer">
+                <h1 className="categoryName">Romantic Movies</h1>
+                <div className="categoriesMovieList">
+                  <div className="paginationButtons">
+                    <button
+                      onClick={() => {
+                        handlePageChange("romantic", -1);
+                      }}
+                      disabled={romanticMoviesPage === 1}
+                    >
+                      <ArrowBackIosIcon className="arrowIcon" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        handlePageChange("romantic", 1);
+                      }}
+                    >
+                      <ArrowForwardIosIcon className="arrowIcon" />
+                    </button>
+                  </div>
+                  {romanticMovies.map((movie, index) => (
+                    <MovieCard
+                      thumbnail={movie.thumbnail}
+                      title={movie.title}
+                      keywords={movie.keywords}
+                      showId={movie._id}
+                      className="categoriesCard"
+                      match="55% Match"
+                      key={index}
+                      videoUrl={movie.video_url}
+                    />
+                  ))}
                 </div>
-                {romanticMovies.map((movie, index) => (
-                  <MovieCard
-                    thumbnail={movie.thumbnail}
-                    title={movie.title}
-                    keywords={movie.keywords}
-                    showId={movie._id}
-                    className="categoriesCard"
-                    match="55% Match"
-                    key={index}
-                    videoUrl={movie.video_url}
-                  />
-                ))}
+              </div>
+              <div className="subCategoriesContainer">
+                <h1 className="categoryName">Only on Netflix</h1>
+                <div className="categoriesMovieList">
+                  <div className="paginationButtons">
+                    <button
+                      onClick={() => {
+                        handlePageChange("onlyonNetflix", -1);
+                      }}
+                      disabled={onlyonNetflixMoviesPage === 1}
+                    >
+                      <ArrowBackIosIcon className="arrowIcon" />
+                    </button>
+                    <button
+                      onClick={() => {
+                        handlePageChange("onlyonNetflix", 1);
+                      }}
+                    >
+                      <ArrowForwardIosIcon className="arrowIcon" />
+                    </button>
+                  </div>
+                  {onlyonNetflixMovies.map((movie, index) => (
+                    <MovieCard
+                      thumbnail={movie.thumbnail}
+                      title={movie.title}
+                      keywords={movie.keywords}
+                      showId={movie._id}
+                      className="categoriesCard"
+                      match="55% Match"
+                      key={index}
+                      videoUrl={movie.video_url}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-            <div className="subCategoriesContainer">
-              <h1 className="categoryName">Only on Netflix</h1>
-              <div className="categoriesMovieList">
-                <div className="paginationButtons">
-                  <button
-                    onClick={() => {
-                      handlePageChange("onlyonNetflix", -1);
-                    }}
-                    disabled={onlyonNetflixMoviesPage === 1}
-                  >
-                    <ArrowBackIosIcon className="arrowIcon" />
-                  </button>
-                  <button
-                    onClick={() => {
-                      handlePageChange("onlyonNetflix", 1);
-                    }}
-                  >
-                    <ArrowForwardIosIcon className="arrowIcon" />
-                  </button>
-                </div>
-                {onlyonNetflixMovies.map((movie, index) => (
-                  <MovieCard
-                    thumbnail={movie.thumbnail}
-                    title={movie.title}
-                    keywords={movie.keywords}
-                    showId={movie._id}
-                    className="categoriesCard"
-                    match="55% Match"
-                    key={index}
-                    videoUrl={movie.video_url}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
+          )}
         </>
       )}
       <Footer />

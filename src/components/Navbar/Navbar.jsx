@@ -51,13 +51,13 @@ const Navbar = () => {
         }
       );
       searchMoviesRef.current = response.data.data;
-      console.log("setting", searchMoviesRef.current);
-      console.log("searchMovies", searchMoviesRef.current);
+      // console.log("setting", searchMoviesRef.current);
+      // console.log("searchMovies", searchMoviesRef.current);
       const searchResult = searchMoviesRef.current.filter((movie) =>
         movie.title.toLowerCase().includes(searchInput.toLowerCase())
       );
       setSearchedMovies(searchResult);
-      console.log(searchResult);
+      // console.log(searchResult);
       // console.log("response", response.data.data);
     } catch (error) {
       console.error("Error fetching data from search:", error);

@@ -50,7 +50,7 @@ const MyList = () => {
             </div>
           ) : (
             <div className="myListContainer">
-              {myList ? (
+              {myList.length > 0 ? (
                 myList.map((show) => (
                   <MovieCard
                     key={show._id}

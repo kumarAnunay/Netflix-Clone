@@ -27,7 +27,8 @@ const ManageProfile = () => {
 
     if (storedUpdatedImage) {
       setUpdatedImage(storedUpdatedImage);
-    } else {
+    }
+    if (storedUpdatedImage === "undefined") {
       setUpdatedImage(defaultImg);
     }
   }, [updatedImage]);

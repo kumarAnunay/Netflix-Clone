@@ -36,7 +36,7 @@ const Signup = () => {
     if (field === "email") {
       value = value.toLowerCase();
     }
-    console.log(signup.email);
+    // console.log(signup.email);
 
     setSignup({
       ...signup,
@@ -84,7 +84,7 @@ const Signup = () => {
           },
         }
       );
-      console.log("Signup successful:", response);
+      // console.log("Signup successful:", response);
 
       setSignupStatus({
         success: true,

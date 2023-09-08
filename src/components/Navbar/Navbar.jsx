@@ -5,22 +5,11 @@ import netfilxLogo from "../../assets/images/headerLogo.png";
 import SearchIcon from "@mui/icons-material/Search";
 import CloseIcon from "@mui/icons-material/Close";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import { Dropdown } from "@mui/base/Dropdown";
-import { Menu } from "@mui/base/Menu";
-import { MenuButton } from "@mui/base/MenuButton";
-import { MenuItem, menuItemClasses } from "@mui/base/MenuItem";
-import { styled } from "@mui/system";
-import accoutImg from "../../assets/images/avatar.png";
-import ModeOutlinedIcon from "@mui/icons-material/ModeOutlined";
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
-import SubscriptionsOutlinedIcon from "@mui/icons-material/SubscriptionsOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import { signoutHandler } from "../../utils/signoutHandler";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import MovieCard from "../MovieCard/MovieCard";
 import SearchContext from "../SearchContextProvider";
 import { useContext } from "react";
+import NavbarMenu from "./NavbarMenu";
+import MenuDropdown from "../MenuDropdown";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -30,9 +19,7 @@ const Navbar = () => {
   const [searchInput, setSearchInput] = useState("");
   const [searchInputVisivle, setSearchInputVisible] = useState(false);
   const seachIconRef = useRef(null);
-  const [userInfo, setUserInfo] = useState(null);
   const [activeButton, setActiveButton] = useState("");
-  const [updatedImage, setUpdatedImage] = useState("");
   const searchContainerRef = useRef(null);
   const [searchedMovies, setSearchedMovies] = useState([]);
 
@@ -88,22 +75,6 @@ const Navbar = () => {
         break;
     }
   }, [location]);
-
-  useEffect(() => {
-    const storedUserInfo = localStorage.getItem("userInfo");
-    const storedUpdatedImage = localStorage.getItem("updatedImage");
-    // console.log("image", storedUpdatedImage);
-
-    if (storedUserInfo) {
-      setUserInfo(JSON.parse(storedUserInfo));
-    }
-    if (storedUpdatedImage) {
-      setUpdatedImage(storedUpdatedImage);
-    }
-    if (storedUpdatedImage === "undefined" || storedUpdatedImage === "null") {
-      setUpdatedImage(accoutImg);
-    }
-  }, [updatedImage]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -193,68 +164,7 @@ const Navbar = () => {
               Web Series
             </li>
           </ul>
-          <Dropdown>
-            <TriggerButton className="navbarDropdown browseMenu">
-              <span className="smallDevicesNavbar">
-                Browse <ArrowDropDownIcon className="downArrowIcon" />
-              </span>
-            </TriggerButton>
-            <Menu
-              slots={{ listbox: StyledListbox }}
-              className="menuList browseList"
-            >
-              <StyledMenuItem className="accountItems">
-                <p
-                  className={`listItem ${
-                    activeButton === "home" ? "activeListItem" : ""
-                  }`}
-                  onClick={() => navigate("/home")}
-                >
-                  Home
-                </p>
-              </StyledMenuItem>
-              <StyledMenuItem className="accountItems">
-                <p
-                  className={`listItem ${
-                    activeButton === "my-list" ? "activeListItem" : ""
-                  }`}
-                  onClick={() => navigate("/my-list")}
-                >
-                  My List
-                </p>
-              </StyledMenuItem>
-              <StyledMenuItem className="accountItems">
-                <p
-                  className={`listItem ${
-                    activeButton === "movies" ? "activeListItem" : ""
-                  }`}
-                  onClick={() => navigate("/movies")}
-                >
-                  Movies
-                </p>
-              </StyledMenuItem>
-              <StyledMenuItem className="accountItems">
-                <p
-                  className={`listItem ${
-                    activeButton === "tv-shows" ? "activeListItem" : ""
-                  }`}
-                  onClick={() => navigate("/tv-shows")}
-                >
-                  TV Shows
-                </p>
-              </StyledMenuItem>
-              <StyledMenuItem className="accountItems">
-                <p
-                  className={`listItem ${
-                    activeButton === "web-series" ? "activeListItem" : ""
-                  }`}
-                  onClick={() => navigate("/web-series")}
-                >
-                  Web Series
-                </p>
-              </StyledMenuItem>
-            </Menu>
-          </Dropdown>
+          <NavbarMenu />
         </div>
         <div className="rightNav">
           {searchInputVisivle && (
@@ -288,85 +198,7 @@ const Navbar = () => {
             className="icons"
             onClick={() => navigate("/notifications")}
           />
-          <Dropdown>
-            <TriggerButton className="navbarDropdown">
-              <img src={accoutImg} alt="Account" className="accountImg" />
-            </TriggerButton>
-            <Menu slots={{ listbox: StyledListbox }} className="menuList">
-              <StyledMenuItem className="accountItems">
-                <div className="icon_text">
-                  <img
-                    src={updatedImage}
-                    alt="Account"
-                    className="useAccountImg"
-                  />
-                  <p className="iconText">{userInfo?.userName}</p>
-                </div>
-              </StyledMenuItem>
-              <StyledMenuItem className="accountItems">
-                <div className="icon_text">
-                  <ModeOutlinedIcon className="accountIcons" />
-                  <p
-                    className="iconText"
-                    onClick={() => navigate("/manage-profile")}
-                  >
-                    Manage Profile
-                  </p>
-                </div>
-              </StyledMenuItem>
-              <StyledMenuItem className="accountItems">
-                <div className="icon_text">
-                  <AdminPanelSettingsOutlinedIcon className="accountIcons" />
-                  <p
-                    className="iconText"
-                    onClick={() => navigate("/transfer-profile")}
-                  >
-                    Transfer Profile
-                  </p>
-                </div>
-              </StyledMenuItem>
-              <StyledMenuItem className="accountItems">
-                <div className="icon_text">
-                  <PermIdentityOutlinedIcon className="accountIcons" />
-                  <p className="iconText" onClick={() => navigate("/account")}>
-                    Account
-                  </p>
-                </div>
-              </StyledMenuItem>
-              <StyledMenuItem className="accountItems">
-                <div className="icon_text">
-                  <HelpOutlineOutlinedIcon className="accountIcons" />
-                  <p
-                    className="iconText"
-                    onClick={() => navigate("/help-centre")}
-                  >
-                    Help Center
-                  </p>
-                </div>
-              </StyledMenuItem>
-              <StyledMenuItem className="accountItems">
-                <div className="icon_text">
-                  <SubscriptionsOutlinedIcon className="accountIcons" />
-                  <p
-                    className="iconText"
-                    onClick={() => navigate("/subscription-step1")}
-                  >
-                    My Subscription
-                  </p>
-                </div>
-              </StyledMenuItem>
-              <StyledMenuItem className="accountItems">
-                <div className="lastIcon">
-                  <p
-                    className="iconText"
-                    onClick={() => signoutHandler(navigate)}
-                  >
-                    Sign out of Netflix
-                  </p>
-                </div>
-              </StyledMenuItem>
-            </Menu>
-          </Dropdown>
+          <MenuDropdown />
         </div>
       </nav>
       <div className="searchSuggestionsContainer" ref={searchContainerRef}>
@@ -387,93 +219,5 @@ const Navbar = () => {
     </div>
   );
 };
-
-const blue = {
-  100: "#DAECFF",
-  200: "#99CCF3",
-  400: "#3399FF",
-  500: "#007FFF",
-  600: "#0072E5",
-  900: "#003A75",
-};
-
-const grey = {
-  50: "#f6f8fa",
-  100: "#eaeef2",
-  200: "#d0d7de",
-  300: "#afb8c1",
-  400: "#8c959f",
-  500: "#6e7781",
-  600: "#57606a",
-  700: "#424a53",
-  800: "#32383f",
-  900: "#24292f",
-};
-
-const StyledListbox = styled("ul")(
-  ({ theme }) => `
-  font-family: IBM Plex Sans, sans-serif;
-  font-size: 0.875rem;
-  box-sizing: border-box;
-  min-width: 200px;
-  overflow: auto;
-  outline: 0px;
-  z-index: 1;
-  `
-);
-
-const StyledMenuItem = styled(MenuItem)(
-  ({ theme }) => `
-  list-style: none;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: default;
-  user-select: none;
-
-  &:last-of-type {
-    border-bottom: none;
-  }
-
-  &.${menuItemClasses.focusVisible} {
-    outline: 3px solid ${theme.palette.mode === "dark" ? blue[600] : blue[200]};
-    background-color: ${theme.palette.mode === "dark" ? grey[800] : grey[100]};
-    color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
-  }
-
-  &.${menuItemClasses.disabled} {
-    color: ${theme.palette.mode === "dark" ? grey[700] : grey[400]};
-  }
-  `
-);
-
-const TriggerButton = styled(MenuButton)(
-  ({ theme }) => `
-  font-family: IBM Plex Sans, sans-serif;
-  font-size: 0.875rem;
-  font-weight: 600;
-  box-sizing: border-box;
-  min-height: calc(1.5em + 22px);
-  border-radius: 12px;
-  padding: 8px 14px;
-  line-height: 1.5;
-  background: ${theme.palette.mode === "dark" ? grey[900] : "#fff"};
-  border: 1px solid ${theme.palette.mode === "dark" ? grey[700] : grey[200]};
-  color: ${theme.palette.mode === "dark" ? grey[300] : grey[900]};
-
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 120ms;
-
-  &:hover {
-    background: ${theme.palette.mode === "dark" ? grey[800] : grey[50]};
-    border-color: ${theme.palette.mode === "dark" ? grey[600] : grey[300]};
-  }
-
-  &:focus-visible {
-    border-color: ${blue[400]};
-    outline: 3px solid ${theme.palette.mode === "dark" ? blue[500] : blue[200]};
-  }
-  `
-);
 
 export default Navbar;

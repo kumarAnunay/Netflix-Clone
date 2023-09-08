@@ -58,7 +58,7 @@ const ManageProfile = () => {
         }
       );
 
-      console.log("token", storedToken);
+      // console.log("token", storedToken);
 
       const updatedImageUrl = response.data.data.user.profileImage;
       // console.log(updatedImageUrl);

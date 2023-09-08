@@ -92,7 +92,7 @@ const Navbar = () => {
   useEffect(() => {
     const storedUserInfo = localStorage.getItem("userInfo");
     const storedUpdatedImage = localStorage.getItem("updatedImage");
-    console.log("image", storedUpdatedImage);
+    // console.log("image", storedUpdatedImage);
 
     if (storedUserInfo) {
       setUserInfo(JSON.parse(storedUserInfo));
@@ -100,7 +100,7 @@ const Navbar = () => {
     if (storedUpdatedImage) {
       setUpdatedImage(storedUpdatedImage);
     }
-    if (storedUpdatedImage === "undefined") {
+    if (storedUpdatedImage === "undefined" || storedUpdatedImage === "null") {
       setUpdatedImage(accoutImg);
     }
   }, [updatedImage]);

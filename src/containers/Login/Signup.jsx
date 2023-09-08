@@ -87,7 +87,7 @@ const Signup = () => {
       });
       toast.success("Account successfully Registered!", {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -107,7 +107,7 @@ const Signup = () => {
         });
         toast.error("User with this email is already registered.", {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -121,7 +121,7 @@ const Signup = () => {
         });
         toast.error("Error in signing up. Please try again.", {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -137,7 +137,7 @@ const Signup = () => {
     if (signupStatus.success) {
       setTimeout(() => {
         navigate("/signin");
-      }, 3500);
+      }, 2500);
     }
   }, [signupStatus]);
 

@@ -51,7 +51,8 @@ const UpdatePassword = () => {
 
     if (storedUpdatedImage) {
       setUpdatedImage(storedUpdatedImage);
-    } else {
+    }
+    if (storedUpdatedImage === "undefined" || storedUpdatedImage === "null") {
       setUpdatedImage(accoutImg);
     }
   }, [updatedImage]);

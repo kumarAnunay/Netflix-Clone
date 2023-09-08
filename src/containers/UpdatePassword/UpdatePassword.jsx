@@ -80,7 +80,7 @@ const UpdatePassword = () => {
       oldPasswordRef.current.style.display = "block";
     }
     if (
-      newPassword.length < 4 ||
+      newPassword.length < 6 ||
       newPassword.length > 60 ||
       newPassword === ""
     ) {
@@ -123,7 +123,8 @@ const UpdatePassword = () => {
 
     if (
       isPasswordValid &&
-      (newPassword === rePassword || rePassword !== "" || newPassword !== "")
+      newPassword === rePassword &&
+      (rePassword !== "" || newPassword !== "")
     ) {
       try {
         const response = await axios.patch(

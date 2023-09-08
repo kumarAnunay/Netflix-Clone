@@ -57,7 +57,7 @@ const Signin = () => {
     if (!email.match(emailPattern)) {
       emailErrorRef.current.style.display = "block";
     }
-    if (password.length < 4 || password.length > 60) {
+    if (password.length < 6 || password.length > 60) {
       passwordErrorRef.current.style.display = "block";
     }
     try {
@@ -195,7 +195,7 @@ const Signin = () => {
               }}
             />
             <div className="error" ref={emailErrorRef}>
-              Please enter a valid email address or phone number.
+              Please enter a valid email id.
             </div>
             <TextField
               type="password"

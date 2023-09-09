@@ -3,15 +3,26 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import "./Footer.css";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="footerSectionContainer">
       <div className="footerSectionIcons">
-        <FacebookIcon className="footerIcons" />
-        <InstagramIcon className="footerIcons" />
-        <TwitterIcon className="footerIcons" />
-        <YouTubeIcon className="footerIcons" />
+        <Link
+          to={"https://www.facebook.com/NetflixIN/?brand_redir=475822799216240"}
+        >
+          <FacebookIcon className="footerIcons" />
+        </Link>
+        <Link to={"https://www.instagram.com/netflix/?hl=en"}>
+          <InstagramIcon className="footerIcons" />
+        </Link>
+        <Link to={"https://twitter.com/netflixindia?lang=en"}>
+          <TwitterIcon className="footerIcons" />
+        </Link>
+        <Link to={"https://www.youtube.com/@NetflixIndiaOfficial"}>
+          <YouTubeIcon className="footerIcons" />
+        </Link>
       </div>
       <div className="footerSectionListContainer">
         <ul className="footerSectionList" type="none">

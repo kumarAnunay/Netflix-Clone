@@ -19,7 +19,7 @@ const ManageProfile = () => {
   useEffect(() => {
     const storedUserInfo = localStorage.getItem("userInfo");
     const storedUpdatedImage = localStorage.getItem("updatedImage");
-    console.log("token", storedToken);
+    // console.log("token", storedToken);
 
     if (storedUserInfo) {
       setUserInfo(JSON.parse(storedUserInfo));

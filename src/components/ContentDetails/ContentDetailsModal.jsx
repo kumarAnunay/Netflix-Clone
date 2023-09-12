@@ -205,7 +205,7 @@ const ContentDetailsModal = ({
                   </div>
                 ) : (
                   <div className="moviesContainer moreLikethisMovies">
-                    {movies.slice(0, 9).map((movie, index) => (
+                    {movies.slice(0, 8).map((movie, index) => (
                       <MovieCard
                         thumbnail={movie.thumbnail}
                         title={movie.title}

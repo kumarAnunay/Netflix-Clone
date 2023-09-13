@@ -10,6 +10,7 @@ import SearchContext from "../SearchContextProvider";
 import { useContext } from "react";
 import NavbarMenu from "./NavbarMenu";
 import MenuDropdown from "../MenuDropdown";
+import Tooltip from "@mui/material/Tooltip";
 import "./Navbar.css";
 
 const Navbar = () => {
@@ -194,10 +195,12 @@ const Navbar = () => {
             onClick={searchInputVisibleHandler}
             ref={seachIconRef}
           />
-          <NotificationsNoneIcon
-            className="icons"
-            onClick={() => navigate("/notifications")}
-          />
+          <Tooltip title="No Notifications">
+            <NotificationsNoneIcon
+              className="icons"
+              onClick={() => navigate("/notifications")}
+            />
+          </Tooltip>
           <MenuDropdown />
         </div>
       </nav>

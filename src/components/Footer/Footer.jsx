@@ -12,16 +12,16 @@ const Footer = () => {
         <Link
           to={"https://www.facebook.com/NetflixIN/?brand_redir=475822799216240"}
         >
-          <FacebookIcon className="footerIcons" />
+          <FacebookIcon className="footerIcons fbIcon" />
         </Link>
         <Link to={"https://www.instagram.com/netflix/?hl=en"}>
-          <InstagramIcon className="footerIcons" />
+          <InstagramIcon className="footerIcons instaIcon" />
         </Link>
         <Link to={"https://twitter.com/netflixindia?lang=en"}>
-          <TwitterIcon className="footerIcons" />
+          <TwitterIcon className="footerIcons twitterIcon" />
         </Link>
         <Link to={"https://www.youtube.com/@NetflixIndiaOfficial"}>
-          <YouTubeIcon className="footerIcons" />
+          <YouTubeIcon className="footerIcons ytIcon" />
         </Link>
       </div>
       <div className="footerSectionListContainer">

@@ -49,6 +49,22 @@
     font-size: 14px;
 }
 
+.fbIcon:hover {
+    color: rgb(5, 125, 173) !important;
+}
+
+.instaIcon:hover {
+    color: rgb(159, 6, 32) !important;
+}
+
+.twitterIcon:hover {
+    color: rgb(34, 124, 198) !important;
+}
+
+.ytIcon:hover {
+    color: red !important;
+}
+
 @media screen and (max-width: 550px) {
     .footerIcons {
         font-size: 22px !important;

@@ -57,6 +57,7 @@ const MyList = () => {
                     thumbnail={show.thumbnail}
                     title={show.title}
                     showId={show._id}
+                    videoUrl={show.video_url}
                     keywords={show.keywords}
                     match="67%"
                     isMyList={true}

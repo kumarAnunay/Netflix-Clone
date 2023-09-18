@@ -34,6 +34,8 @@ const Home = () => {
 
   const [loading, setLoading] = useState(false);
 
+  const [errorMsg, setErrorMsg] = useState("");
+
   const { searching } = useContext(SearchContext);
 
   const fetchMovies = async (filter, page) => {
@@ -56,6 +58,7 @@ const Home = () => {
     } catch (error) {
       console.error("Error fetching data from the API:", error);
       setLoading(false);
+      setErrorMsg(error);
     }
   };
 
@@ -166,6 +169,16 @@ const Home = () => {
     };
     fetchPopularOnNetflix();
   }, [popularOnNetflixPage]);
+
+  if (errorMsg) {
+    return (
+      <>
+        <Navbar />
+        <div className="errorComponent">API error: {errorMsg.message}</div>
+        <Footer />
+      </>
+    );
+  }
 
   const handlePageChange = (category, increment) => {
     switch (category) {

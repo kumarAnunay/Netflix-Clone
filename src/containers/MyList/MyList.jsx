@@ -10,6 +10,7 @@ import "./MyList.css";
 const MyList = () => {
   const [myList, setMyList] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const { searching } = useContext(SearchContext);
 
@@ -36,8 +37,19 @@ const MyList = () => {
     } catch (error) {
       console.error("Error fetching myList data from the API:", error);
       setLoading(false);
+      setErrorMsg(error);
     }
   };
+
+  if (errorMsg) {
+    return (
+      <>
+        <Navbar />
+        <div className="errorComponent">API error: {errorMsg.message}</div>
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <div className="myListPage">

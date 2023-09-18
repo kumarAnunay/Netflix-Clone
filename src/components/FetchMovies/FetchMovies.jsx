@@ -13,6 +13,8 @@ const FetchMovies = ({ type, match }) => {
 
   const { searching } = useContext(SearchContext);
 
+  const [errorMsg, setErrorMsg] = useState("");
+
   useEffect(() => {
     const fetchMovies = async () => {
       try {
@@ -33,10 +35,22 @@ const FetchMovies = ({ type, match }) => {
       } catch (error) {
         console.error("Error fetching data from the API:", error);
         setLoading(false);
+        setErrorMsg(error);
       }
     };
     fetchMovies();
   }, []);
+
+  if (errorMsg) {
+    return (
+      <>
+        <Navbar />
+        <div className="errorComponent">API error: {errorMsg.message}</div>
+        <Footer />
+      </>
+    );
+  }
+
   return (
     <div className="webseriesPage">
       <Navbar />

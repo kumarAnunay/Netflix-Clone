@@ -18,7 +18,7 @@ const FetchMovies = ({ type, match }) => {
       try {
         setLoading(true);
         const response = await axios.get(
-          "https://academics.newtonschool.co/api/v1/ott/show",
+          "https://academics.newtonschool.co/api/v1/ott/show?limit=100",
           {
             headers: {
               projectId: "lb0fl09ncsvt",

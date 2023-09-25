@@ -61,7 +61,7 @@ const Signup = () => {
     if (!email.match(emailPattern)) {
       emailErrorRef.current.style.display = "block";
     }
-    if (password.length < 4 || password.length > 60) {
+    if (password.length < 6 || password.length > 60) {
       passwordErrorRef.current.style.display = "block";
     }
     try {
@@ -233,14 +233,7 @@ const Signup = () => {
               Sign up
             </button>
           </form>
-          {/* <div className="loginBttns">
-            <button type="submit" className="logoBtn" onClick={loginWithGoogle}>
-              <img src={googleLogo} alt="Google" className="logoImg" />
-            </button>
-            <button type="submit" className="logoBtn" onClick={loginWithGitHub}>
-              <img src={githubLogo} alt="Github" className="logoImg" />
-            </button>
-          </div> */}
+
           <div className="bottomText">
             Already have an account?
             <Link to="/signin" className="link1">
